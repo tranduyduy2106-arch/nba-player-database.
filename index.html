@@ -3,2481 +3,1538 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viettel TechHub Đà Nẵng — Marketing Plan</title>
+<title>NBA Player Database</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 :root{
-    --red:#e31837;
-    --red-dark:#b90f2b;
-    --black:#111111;
-    --dark:#1b1b1b;
-    --gray:#6b7280;
-    --light:#f5f6f7;
-    --line:#e5e7eb;
-    --white:#ffffff;
-    --green:#16834b;
+  --bg:#080a0f;
+  --panel:#10131a;
+  --panel2:#151922;
+  --line:#262b36;
+  --text:#f5f7fa;
+  --muted:#8d95a3;
+  --red:#e31837;
+  --red2:#ff3555;
+  --green:#37d67a;
+  --yellow:#f4c542;
 }
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:Inter,Arial,sans-serif;
-    background:#f3f4f6;
-    color:var(--black);
-    line-height:1.6;
+  background:
+    radial-gradient(circle at 80% -10%, rgba(227,24,55,.16), transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* NAV */
 
 .navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:70px;
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 42px;
-    z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:68px;
+  border-bottom:1px solid var(--line);
+  background:rgba(8,10,15,.9);
+  backdrop-filter:blur(16px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-weight:800;
-    letter-spacing:-.4px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  letter-spacing:-.5px;
 }
 
-.brand-mark{
-    width:38px;
-    height:38px;
-    background:var(--red);
-    color:white;
-    display:grid;
-    place-items:center;
-    font-size:14px;
-    font-weight:800;
+.logo-mark{
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  background:var(--red);
+  display:grid;
+  place-items:center;
+  font-size:15px;
 }
 
-.brand small{
-    display:block;
-    font-size:9px;
-    color:#777;
-    letter-spacing:1.4px;
-    margin-top:-3px;
+.logo span{
+  color:var(--muted);
+  font-weight:500;
 }
 
 .nav-links{
-    display:flex;
-    gap:6px;
+  display:flex;
+  gap:25px;
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:#444;
-    padding:9px 12px;
-    font-size:12px;
-    font-weight:600;
-    border-radius:5px;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
 }
 
 .nav-links a:hover{
-    color:var(--red);
-    background:#fff1f3;
+  color:white;
 }
 
-.nav-actions{
-    display:flex;
-    gap:8px;
-}
-
-.btn{
-    border:0;
-    padding:10px 15px;
-    border-radius:5px;
-    cursor:pointer;
-    font-family:inherit;
-    font-size:11px;
-    font-weight:700;
-}
-
-.btn-dark{
-    background:var(--black);
-    color:white;
-}
-
-.btn-red{
-    background:var(--red);
-    color:white;
-}
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-    margin-top:70px;
-    min-height:650px;
-    background:
-        linear-gradient(90deg,rgba(0,0,0,.91) 0%,rgba(0,0,0,.73) 45%,rgba(0,0,0,.30) 100%),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
-        center/cover;
-    color:white;
-    display:flex;
-    align-items:center;
+  padding:75px 5% 45px;
+  max-width:1450px;
+  margin:auto;
 }
 
-.hero-inner{
-    width:min(1250px,calc(100% - 80px));
-    margin:auto;
-}
-
-.eyebrow{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:#ddd;
-}
-
-.eyebrow span{
-    width:32px;
-    height:2px;
-    background:var(--red);
+.kicker{
+  color:var(--red2);
+  text-transform:uppercase;
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:800;
+  margin-bottom:14px;
 }
 
 .hero h1{
-    margin-top:22px;
-    font-size:clamp(42px,6vw,78px);
-    line-height:.98;
-    max-width:820px;
-    letter-spacing:-3px;
+  font-size:clamp(40px,6vw,78px);
+  line-height:.95;
+  letter-spacing:-4px;
+  max-width:900px;
 }
 
-.hero h1 em{
-    color:var(--red);
-    font-style:normal;
+.hero p{
+  color:var(--muted);
+  max-width:700px;
+  margin-top:22px;
+  line-height:1.7;
+  font-size:16px;
 }
 
-.hero-description{
-    max-width:620px;
-    margin-top:26px;
-    color:#d2d2d2;
-    font-size:15px;
+.hero-stats{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:35px;
 }
 
-.hero-meta{
-    margin-top:38px;
-    display:flex;
-    gap:35px;
-    flex-wrap:wrap;
+.hero-stat{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:12px;
+  padding:17px 22px;
+  min-width:145px;
 }
 
-.meta-item{
-    border-left:2px solid var(--red);
-    padding-left:13px;
+.hero-stat strong{
+  display:block;
+  font-size:25px;
 }
 
-.meta-item strong{
-    display:block;
-    font-size:15px;
+.hero-stat span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
 }
 
-.meta-item span{
-    color:#aaa;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.hero-buttons{
-    margin-top:40px;
-    display:flex;
-    gap:10px;
-}
-
-.hero-buttons .btn{
-    padding:14px 20px;
-}
-
-/* =========================
-   MAIN
-========================= */
+/* CONTROLS */
 
 .container{
-    width:min(1250px,calc(100% - 80px));
-    margin:auto;
+  width:90%;
+  max-width:1450px;
+  margin:auto;
 }
 
-.section{
-    padding:90px 0;
+.controls{
+  position:sticky;
+  top:68px;
+  z-index:50;
+  padding:18px 0;
+  background:rgba(8,10,15,.92);
+  backdrop-filter:blur(15px);
 }
 
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:30px;
-    margin-bottom:40px;
+.control-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:12px;
 }
 
-.section-number{
-    color:var(--red);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    margin-bottom:8px;
+.input,
+.select{
+  width:100%;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:white;
+  border-radius:10px;
+  padding:13px 14px;
+  outline:none;
 }
 
-.section-title{
-    font-size:34px;
-    line-height:1.1;
-    letter-spacing:-1.3px;
+.input:focus,
+.select:focus{
+  border-color:var(--red);
 }
 
-.section-intro{
-    max-width:460px;
-    color:var(--gray);
-    font-size:13px;
+.results-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 0 18px;
 }
 
-/* =========================
-   CARDS
-========================= */
-
-.grid-4{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
+.results-bar strong{
+  font-size:18px;
 }
 
-.grid-3{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
+.results-bar span{
+  color:var(--muted);
+  font-size:13px;
 }
 
-.grid-2{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+/* PLAYER GRID */
+
+.player-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  padding-bottom:80px;
 }
 
 .card{
-    background:white;
-    border:1px solid var(--line);
-    padding:25px;
-    border-radius:7px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border-radius:16px;
+  padding:20px;
+  min-height:300px;
+  transition:.22s ease;
+  cursor:pointer;
 }
 
-.card-number{
-    color:var(--red);
-    font-size:11px;
-    font-weight:800;
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#414957;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
 }
 
-.card h3{
-    margin-top:14px;
-    font-size:16px;
-    line-height:1.25;
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
 }
 
-.card p{
-    margin-top:10px;
-    color:var(--gray);
-    font-size:12px;
+.team-badge{
+  padding:6px 9px;
+  border-radius:7px;
+  background:rgba(227,24,55,.12);
+  color:#ff5b72;
+  font-size:11px;
+  font-weight:800;
 }
 
-.stat-card{
-    background:white;
-    border:1px solid var(--line);
-    padding:26px;
-    position:relative;
-    overflow:hidden;
+.number{
+  color:#4d5563;
+  font-size:22px;
+  font-weight:900;
 }
 
-.stat-card:after{
-    content:"";
-    position:absolute;
-    right:-25px;
-    bottom:-35px;
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:#fff0f2;
+.avatar{
+  width:92px;
+  height:92px;
+  margin:22px 0 15px;
+  border-radius:50%;
+  background:
+    linear-gradient(145deg,#292f3b,#11141b);
+  border:1px solid #363d49;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  font-weight:900;
 }
 
-.stat-value{
-    font-size:32px;
-    font-weight:800;
-    letter-spacing:-1px;
+.card h2{
+  font-size:21px;
+  letter-spacing:-.5px;
 }
 
-.stat-label{
-    margin-top:5px;
-    color:var(--gray);
-    font-size:11px;
+.position{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
 }
 
-.stat-note{
-    margin-top:15px;
-    color:var(--green);
-    font-size:10px;
-    font-weight:700;
+.card-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:17px;
 }
-
-/* =========================
-   POSITIONING
-========================= */
-
-.positioning{
-    background:var(--black);
-    color:white;
-    padding:38px;
-    border-radius:8px;
-    margin-bottom:18px;
-}
-
-.positioning-label{
-    color:#999;
-    text-transform:uppercase;
-    font-size:10px;
-    letter-spacing:2px;
-}
-
-.positioning-text{
-    margin-top:14px;
-    font-size:25px;
-    line-height:1.35;
-    max-width:1000px;
-}
-
-.positioning-text strong{
-    color:var(--red);
-}
-
-/* =========================
-   SWOT
-========================= */
-
-.swot{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-}
-
-.swot-box{
-    background:white;
-    padding:28px;
-}
-
-.swot-box h3{
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.swot-box ul{
-    margin-top:15px;
-    list-style:none;
-}
-
-.swot-box li{
-    font-size:12px;
-    color:#555;
-    padding:8px 0;
-    border-bottom:1px solid #f0f0f0;
-}
-
-.swot-box li:before{
-    content:"";
-    display:inline-block;
-    width:5px;
-    height:5px;
-    background:var(--red);
-    margin-right:9px;
-    vertical-align:middle;
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrap{
-    background:white;
-    border:1px solid var(--line);
-    border-radius:7px;
-    overflow:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:800px;
-}
-
-th{
-    background:#181818;
-    color:white;
-    text-align:left;
-    padding:14px 16px;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-}
-
-td{
-    padding:14px 16px;
-    border-bottom:1px solid var(--line);
-    font-size:11px;
-    color:#444;
-}
-
-tr:last-child td{
-    border-bottom:0;
-}
-
-td strong{
-    color:#111;
-}
-
-/* =========================
-   TARGET PERSONA
-========================= */
-
-.persona{
-    position:relative;
-    min-height:260px;
-}
-
-.persona-tag{
-    display:inline-block;
-    padding:5px 8px;
-    background:#fff0f2;
-    color:var(--red);
-    font-size:9px;
-    font-weight:800;
-    text-transform:uppercase;
-}
-
-.persona h3{
-    font-size:20px;
-    margin-top:16px;
-}
-
-.persona ul{
-    list-style:none;
-    margin-top:15px;
-}
-
-.persona li{
-    color:#666;
-    font-size:11px;
-    margin:7px 0;
-}
-
-.persona li strong{
-    color:#222;
-}
-
-/* =========================
-   FUNNEL
-========================= */
-
-.funnel{
-    display:grid;
-    grid-template-columns:repeat(8,1fr);
-    gap:5px;
-    align-items:stretch;
-}
-
-.funnel-step{
-    min-height:125px;
-    background:white;
-    border:1px solid var(--line);
-    padding:16px 10px;
-    text-align:center;
-    position:relative;
-}
-
-.funnel-step:not(:last-child):after{
-    content:"→";
-    position:absolute;
-    right:-10px;
-    top:50%;
-    transform:translateY(-50%);
-    z-index:2;
-    color:var(--red);
-    font-weight:800;
+
+.tag{
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:6px 8px;
+  color:#c5cad2;
+  font-size:11px;
 }
 
-.funnel-step .num{
-    font-size:9px;
-    color:var(--red);
-    font-weight:800;
+.mini-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  margin-top:18px;
+  padding-top:15px;
+  gap:10px;
 }
 
-.funnel-step h4{
-    margin-top:13px;
-    font-size:11px;
-    line-height:1.3;
+.mini-stat strong{
+  display:block;
+  font-size:16px;
 }
 
-.funnel-step p{
-    margin-top:8px;
-    color:#888;
-    font-size:9px;
+.mini-stat span{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
 }
 
-/* =========================
-   CHANNEL
-========================= */
+/* EMPTY */
 
-.channel-card{
-    background:white;
-    border:1px solid var(--line);
-    border-radius:7px;
-    overflow:hidden;
+.empty{
+  display:none;
+  text-align:center;
+  padding:70px 20px;
+  color:var(--muted);
 }
 
-.channel-top{
-    height:6px;
-    background:var(--red);
-}
+/* MODAL */
 
-.channel-content{
-    padding:23px;
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(8px);
 }
 
-.channel-icon{
-    font-size:10px;
-    font-weight:800;
-    color:var(--red);
-    text-transform:uppercase;
-    letter-spacing:1px;
+.modal.show{
+  display:flex;
 }
 
-.channel-content h3{
-    margin-top:10px;
-    font-size:17px;
+.modal-box{
+  width:min(950px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border:1px solid #303642;
+  border-radius:20px;
+  background:#0d1016;
+  box-shadow:0 30px 100px rgba(0,0,0,.65);
 }
 
-.channel-content p{
-    margin-top:8px;
-    color:#777;
-    font-size:11px;
+.modal-header{
+  padding:28px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.channel-content ul{
-    list-style:none;
-    margin-top:15px;
+.close{
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  color:white;
+  font-size:20px;
 }
 
-.channel-content li{
-    font-size:10px;
-    color:#555;
-    padding:6px 0;
-    border-top:1px solid #eee;
+.profile{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:30px;
+  padding:30px;
 }
 
-/* =========================
-   ROADMAP
-========================= */
-
-.timeline{
-    position:relative;
-    padding-left:28px;
+.profile-avatar{
+  height:240px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#292f3b,#11141b);
+  display:grid;
+  place-items:center;
+  font-size:65px;
+  font-weight:900;
+  border:1px solid #343b48;
 }
 
-.timeline:before{
-    content:"";
-    position:absolute;
-    left:7px;
-    top:5px;
-    bottom:5px;
-    width:2px;
-    background:#ddd;
+.profile h2{
+  font-size:38px;
+  letter-spacing:-1.5px;
 }
 
-.timeline-item{
-    position:relative;
-    padding:0 0 34px 25px;
+.profile-sub{
+  color:var(--muted);
+  margin-top:8px;
 }
 
-.timeline-item:before{
-    content:"";
-    position:absolute;
-    left:-27px;
-    top:4px;
-    width:10px;
-    height:10px;
-    background:var(--red);
-    border-radius:50%;
-    box-shadow:0 0 0 5px #ffe8ec;
+.data-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:25px;
 }
 
-.timeline-period{
-    color:var(--red);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1px;
+.data-box{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:14px;
+  border-radius:10px;
 }
 
-.timeline-item h3{
-    margin-top:5px;
-    font-size:17px;
+.data-box span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:7px;
 }
 
-.timeline-item p{
-    margin-top:5px;
-    color:#777;
-    font-size:11px;
+.data-box strong{
+  font-size:16px;
 }
-
-/* =========================
-   BUDGET
-========================= */
 
-.budget-total{
-    background:var(--black);
-    color:white;
-    border-radius:8px;
-    padding:35px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
+.section{
+  padding:0 30px 30px;
 }
 
-.budget-total span{
-    color:#aaa;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
+.section h3{
+  font-size:17px;
+  margin-bottom:15px;
 }
 
-.budget-total strong{
-    display:block;
-    font-size:38px;
-    margin-top:5px;
+.stats-table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
 }
 
-.budget-total .assumption{
-    max-width:350px;
-    text-align:right;
-    color:#aaa;
-    font-size:10px;
+.stats-table th,
+.stats-table td{
+  text-align:left;
+  padding:13px;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
 }
 
-/* =========================
-   KPI
-========================= */
-
-.kpi{
-    display:flex;
-    align-items:center;
-    gap:15px;
+.stats-table th{
+  color:var(--muted);
+  font-weight:600;
+  background:var(--panel);
 }
 
-.kpi-bar{
-    height:6px;
-    background:#eee;
-    flex:1;
-    border-radius:20px;
-    overflow:hidden;
+.awards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
-.kpi-progress{
-    height:100%;
-    background:var(--red);
+.award{
+  padding:8px 11px;
+  border-radius:8px;
+  background:rgba(244,197,66,.1);
+  border:1px solid rgba(244,197,66,.2);
+  color:#f4c542;
+  font-size:12px;
 }
-
-/* =========================
-   CONDITIONS
-========================= */
 
-.condition{
-    display:flex;
-    gap:15px;
-    padding:20px 0;
-    border-bottom:1px solid var(--line);
+.injury{
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:9px;
+  display:grid;
+  grid-template-columns:100px 1fr auto;
+  gap:15px;
+  align-items:center;
 }
 
-.condition:last-child{
-    border-bottom:0;
+.injury-date{
+  color:var(--muted);
+  font-size:12px;
 }
 
-.condition-num{
-    min-width:28px;
-    height:28px;
-    display:grid;
-    place-items:center;
-    background:#fff0f2;
-    color:var(--red);
-    font-size:10px;
-    font-weight:800;
+.status{
+  padding:6px 8px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:700;
 }
 
-.condition h3{
-    font-size:13px;
+.status.out{
+  color:#ff657d;
+  background:rgba(227,24,55,.1);
 }
 
-.condition p{
-    color:#777;
-    font-size:11px;
-    margin-top:3px;
+.status.returned{
+  color:var(--green);
+  background:rgba(55,214,122,.1);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
-    background:#111;
-    color:white;
-    padding:50px 0;
+  border-top:1px solid var(--line);
+  padding:30px 5%;
+  color:var(--muted);
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
 }
 
-.footer-inner{
-    width:min(1250px,calc(100% - 80px));
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    gap:40px;
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+  .player-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .control-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-.footer-title{
-    font-size:24px;
-    font-weight:800;
-}
+@media(max-width:760px){
+  .nav-links{
+    display:none;
+  }
 
-.footer-sub{
-    color:#888;
-    font-size:11px;
-    margin-top:8px;
-}
+  .hero h1{
+    letter-spacing:-2px;
+  }
 
-.footer-right{
-    text-align:right;
-    color:#777;
-    font-size:10px;
-}
+  .player-grid{
+    grid-template-columns:1fr;
+  }
 
-/* =========================
-   MOBILE
-========================= */
+  .control-grid{
+    grid-template-columns:1fr;
+  }
 
-@media(max-width:1000px){
+  .profile{
+    grid-template-columns:1fr;
+  }
 
-    .nav-links{
-        display:none;
-    }
+  .profile-avatar{
+    height:180px;
+  }
 
-    .grid-4{
-        grid-template-columns:repeat(2,1fr);
-    }
+  .data-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .funnel{
-        grid-template-columns:repeat(4,1fr);
-    }
+  .injury{
+    grid-template-columns:1fr;
+  }
 
-    .funnel-step:not(:last-child):after{
-        display:none;
-    }
-}
-
-@media(max-width:700px){
-
-    .navbar{
-        padding:0 18px;
-    }
-
-    .nav-actions .btn:first-child{
-        display:none;
-    }
-
-    .container,
-    .hero-inner,
-    .footer-inner{
-        width:calc(100% - 36px);
-    }
-
-    .hero{
-        min-height:600px;
-    }
-
-    .hero h1{
-        font-size:44px;
-        letter-spacing:-2px;
-    }
-
-    .hero-meta{
-        gap:20px;
-    }
-
-    .section{
-        padding:65px 0;
-    }
-
-    .section-header{
-        display:block;
-    }
-
-    .section-intro{
-        margin-top:15px;
-    }
-
-    .grid-2,
-    .grid-3,
-    .grid-4,
-    .swot{
-        grid-template-columns:1fr;
-    }
-
-    .funnel{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .budget-total{
-        display:block;
-    }
-
-    .budget-total .assumption{
-        text-align:left;
-        margin-top:15px;
-    }
-
-    .footer-inner{
-        display:block;
-    }
-
-    .footer-right{
-        text-align:left;
-        margin-top:25px;
-    }
-}
-
-/* =========================
-   PRINT
-========================= */
-
-@media print{
-
-    .navbar{
-        display:none;
-    }
-
-    .hero{
-        margin-top:0;
-        min-height:500px;
-    }
-
-    .section{
-        break-inside:avoid;
-    }
-
-    .btn{
-        display:none;
-    }
-
-    body{
-        background:white;
-    }
+  footer{
+    flex-direction:column;
+    gap:8px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
 <nav class="navbar">
+  <div class="logo">
+    <div class="logo-mark">NBA</div>
+    PLAYER DATABASE
+  </div>
 
-    <div class="brand">
-        <div class="brand-mark">V</div>
-        <div>
-            VIETTEL TECHHUB
-            <small>MARKETING PLAN · ĐÀ NẴNG</small>
-        </div>
-    </div>
-
-    <div class="nav-links">
-        <a href="#overview">Tổng quan</a>
-        <a href="#market">Thị trường</a>
-        <a href="#target">Khách hàng</a>
-        <a href="#strategy">Chiến lược</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#kpi">KPI</a>
-        <a href="#budget">Ngân sách</a>
-    </div>
-
-    <div class="nav-actions">
-        <button class="btn btn-dark" onclick="window.print()">IN / PDF</button>
-        <button class="btn btn-red" onclick="scrollToSection('contact')">LIÊN HỆ</button>
-    </div>
-
+  <div class="nav-links">
+    <a href="#players">Players</a>
+    <a href="#database">Database</a>
+    <a href="#about">About</a>
+  </div>
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
 <header class="hero">
+  <div class="kicker">Basketball Data Project</div>
 
-    <div class="hero-inner">
+  <h1>NBA PLAYER<br>DATABASE</h1>
 
-        <div class="eyebrow">
-            <span></span>
-            CHIẾN LƯỢC MARKETING & PHÁT TRIỂN THỊ TRƯỜNG
-        </div>
+  <p>
+    Cơ sở dữ liệu cầu thủ NBA với thông tin thể hình,
+    đội bóng, thống kê, danh hiệu và lịch sử chấn thương.
+  </p>
 
-        <h1>
-            VIETTEL<br>
-            <em>TECHHUB</em><br>
-            ĐÀ NẴNG
-        </h1>
-
-        <p class="hero-description">
-            Kế hoạch Marketing định hướng phát triển thị trường,
-            tạo Lead và hỗ trợ hoạt động cho thuê văn phòng
-            dự án Viettel TechHub Đà Nẵng.
-        </p>
-
-        <div class="hero-meta">
-
-            <div class="meta-item">
-                <strong>~80.000 m²</strong>
-                <span>Tổng diện tích xây dựng</span>
-            </div>
-
-            <div class="meta-item">
-                <strong>02 Tòa</strong>
-                <span>18 tầng + 2 tầng hầm</span>
-            </div>
-
-            <div class="meta-item">
-                <strong>Q3/2027</strong>
-                <span>Dự kiến Tower A</span>
-            </div>
-
-        </div>
-
-        <div class="hero-buttons">
-            <button class="btn btn-red"
-                    onclick="scrollToSection('strategy')">
-                XEM CHIẾN LƯỢC
-            </button>
-
-            <button class="btn"
-                    style="background:white;color:#111"
-                    onclick="scrollToSection('roadmap')">
-                ROADMAP 12 THÁNG
-            </button>
-        </div>
-
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong id="totalPlayers">0</strong>
+      <span>Cầu thủ trong database</span>
     </div>
 
+    <div class="hero-stat">
+      <strong>30</strong>
+      <span>NBA Teams</span>
+    </div>
+
+    <div class="hero-stat">
+      <strong>2026</strong>
+      <span>Database season</span>
+    </div>
+  </div>
 </header>
 
+<section class="controls" id="database">
+  <div class="container">
 
-<!-- =========================
-     OVERVIEW
-========================= -->
+    <div class="control-grid">
 
-<section class="section" id="overview">
+      <input
+        id="search"
+        class="input"
+        type="text"
+        placeholder="Tìm cầu thủ, đội bóng..."
+      >
 
-<div class="container">
+      <select id="team" class="select">
+        <option value="">Tất cả đội</option>
+      </select>
 
-    <div class="section-header">
+      <select id="position" class="select">
+        <option value="">Tất cả vị trí</option>
+        <option value="PG">PG</option>
+        <option value="SG">SG</option>
+        <option value="SF">SF</option>
+        <option value="PF">PF</option>
+        <option value="C">C</option>
+      </select>
 
-        <div>
-            <div class="section-number">01 / TỔNG QUAN</div>
-            <h2 class="section-title">Thông tin dự án</h2>
-        </div>
-
-        <p class="section-intro">
-            Các thông tin dưới đây là cơ sở để xây dựng định vị,
-            chiến lược Marketing và kế hoạch tạo khách hàng tiềm năng.
-        </p>
-
-    </div>
-
-
-    <div class="grid-4">
-
-        <div class="stat-card">
-            <div class="stat-value">80K+</div>
-            <div class="stat-label">m² tổng diện tích xây dựng</div>
-            <div class="stat-note">QUY MÔ DỰ ÁN</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-value">18.6K</div>
-            <div class="stat-label">m² diện tích khai thác Tower A</div>
-            <div class="stat-note">DỰ KIẾN</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-value">1.0–1.3K</div>
-            <div class="stat-label">m² diện tích sàn điển hình</div>
-            <div class="stat-note">TOWER A</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-value">Q3/27</div>
-            <div class="stat-label">dự kiến vận hành Tower A</div>
-            <div class="stat-note">TIẾN ĐỘ GIẢ ĐỊNH</div>
-        </div>
+      <select id="sort" class="select">
+        <option value="name">Tên A-Z</option>
+        <option value="age">Tuổi</option>
+        <option value="ppg">PPG</option>
+        <option value="height">Chiều cao</option>
+      </select>
 
     </div>
 
-
-    <div style="height:18px"></div>
-
-
-    <div class="positioning">
-
-        <div class="positioning-label">
-            Định vị đề xuất
-        </div>
-
-        <div class="positioning-text">
-            Viettel TechHub Đà Nẵng là
-            <strong>tổ hợp văn phòng công nghệ cao</strong>
-            kết hợp hạ tầng thông minh, tiêu chuẩn quốc tế
-            và hệ sinh thái Viettel, hướng tới doanh nghiệp
-            công nghệ, FIE và các doanh nghiệp dịch vụ chuyên môn.
-        </div>
-
-    </div>
-
-
-    <div class="grid-2">
-
-        <div class="card">
-
-            <div class="card-number">01</div>
-
-            <h3>Vị trí</h3>
-
-            <p>
-                Trục 2/9 – Trần Thị Lý, Hòa Cường,
-                Đà Nẵng. Kết nối khu vực trung tâm,
-                sân bay và các khu vực kinh tế trọng điểm.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">02</div>
-
-            <h3>Hệ sinh thái</h3>
-
-            <p>
-                Khai thác lợi thế thương hiệu Viettel,
-                năng lực công nghệ và khả năng kết nối
-                với hệ sinh thái doanh nghiệp.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">03</div>
-
-            <h3>Hạ tầng thông minh</h3>
-
-            <p>
-                Định hướng tích hợp BMS, EMS, IAQ,
-                smart parking, an ninh và các giải pháp
-                công nghệ hỗ trợ vận hành.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">04</div>
-
-            <h3>Tiêu chuẩn</h3>
-
-            <p>
-                Định hướng các tiêu chuẩn LEED,
-                WiredScore và SmartScore nhằm nâng cao
-                chất lượng và khả năng cạnh tranh của tài sản.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
+  </div>
 </section>
 
+<main class="container" id="players">
 
-<!-- =========================
-     SWOT
-========================= -->
+  <div class="results-bar">
+    <strong>Player Directory</strong>
+    <span id="resultCount"></span>
+  </div>
 
-<section class="section" style="background:white" id="market">
+  <div id="playerGrid" class="player-grid"></div>
 
-<div class="container">
+  <div id="empty" class="empty">
+    Không tìm thấy cầu thủ phù hợp.
+  </div>
 
-    <div class="section-header">
+</main>
 
-        <div>
-            <div class="section-number">02 / PHÂN TÍCH</div>
-            <h2 class="section-title">SWOT dự án</h2>
-        </div>
-
-        <p class="section-intro">
-            Đánh giá ban đầu phục vụ quá trình xây dựng chiến lược.
-            Cần cập nhật bằng dữ liệu thị trường thực tế trước khi triển khai.
-        </p>
-
-    </div>
-
-
-    <div class="swot">
-
-        <div class="swot-box">
-            <h3>Strengths · Điểm mạnh</h3>
-            <ul>
-                <li>Thương hiệu Viettel và năng lực công nghệ</li>
-                <li>Định hướng văn phòng Class A</li>
-                <li>Hệ thống hạ tầng thông minh</li>
-                <li>Khả năng kết nối hệ sinh thái Viettel</li>
-                <li>Quy mô lớn, phù hợp doanh nghiệp tăng trưởng</li>
-            </ul>
-        </div>
-
-
-        <div class="swot-box">
-            <h3>Weaknesses · Điểm yếu</h3>
-            <ul>
-                <li>Dự án chưa vận hành thực tế</li>
-                <li>Khách hàng chưa có trải nghiệm trực tiếp</li>
-                <li>Dữ liệu lịch sử Marketing còn hạn chế</li>
-                <li>Sale Kit và tài sản truyền thông cần hoàn thiện</li>
-                <li>Một số thông tin thương mại cần xác nhận</li>
-            </ul>
-        </div>
-
-
-        <div class="swot-box">
-            <h3>Opportunities · Cơ hội</h3>
-            <ul>
-                <li>Nhu cầu văn phòng chất lượng cao</li>
-                <li>Đà Nẵng định hướng phát triển công nghệ</li>
-                <li>Thu hút doanh nghiệp quốc tế</li>
-                <li>Xu hướng văn phòng thông minh</li>
-                <li>Hệ sinh thái công nghệ có thể tạo khác biệt</li>
-            </ul>
-        </div>
-
-
-        <div class="swot-box">
-            <h3>Threats · Thách thức</h3>
-            <ul>
-                <li>Cạnh tranh từ các dự án văn phòng hiện hữu</li>
-                <li>Khách thuê có nhiều lựa chọn</li>
-                <li>Thời gian ra quyết định thuê dài</li>
-                <li>Áp lực về giá và ưu đãi thương mại</li>
-                <li>Biến động nhu cầu doanh nghiệp</li>
-            </ul>
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     TARGET TENANTS
-========================= -->
-
-<section class="section" id="target">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">03 / TARGET TENANTS</div>
-            <h2 class="section-title">Khách hàng mục tiêu</h2>
-        </div>
-
-        <p class="section-intro">
-            Ưu tiên doanh nghiệp có khả năng phù hợp với
-            định vị công nghệ, chất lượng và quy mô diện tích của dự án.
-        </p>
-
-    </div>
-
-
-    <div class="grid-3">
-
-        <div class="card persona">
-
-            <span class="persona-tag">Primary</span>
-
-            <h3>Doanh nghiệp công nghệ</h3>
-
-            <ul>
-                <li><strong>Ngành:</strong> IT, Software, SaaS, AI, Fintech</li>
-                <li><strong>Quy mô:</strong> 500–2.000 m²</li>
-                <li><strong>Nhu cầu:</strong> Hạ tầng công nghệ, mở rộng</li>
-                <li><strong>Quyết định:</strong> CEO / COO / Admin / HR</li>
-                <li><strong>Kênh:</strong> LinkedIn, Broker, Direct Sales</li>
-            </ul>
-
-        </div>
-
-
-        <div class="card persona">
-
-            <span class="persona-tag">Secondary</span>
-
-            <h3>FIE / Doanh nghiệp quốc tế</h3>
-
-            <ul>
-                <li><strong>Ngành:</strong> Technology, Finance, Services</li>
-                <li><strong>Quy mô:</strong> 500–2.000 m²</li>
-                <li><strong>Nhu cầu:</strong> Tiêu chuẩn, an ninh, chất lượng</li>
-                <li><strong>Quyết định:</strong> Regional / Country Management</li>
-                <li><strong>Kênh:</strong> Broker, Investment Network, PR</li>
-            </ul>
-
-        </div>
-
-
-        <div class="card persona">
-
-            <span class="persona-tag">Secondary</span>
-
-            <h3>Dịch vụ chuyên môn</h3>
-
-            <ul>
-                <li><strong>Ngành:</strong> Banking, Consulting, Legal, Media</li>
-                <li><strong>Quy mô:</strong> 200–1.000 m²</li>
-                <li><strong>Nhu cầu:</strong> Vị trí, hình ảnh, tiện ích</li>
-                <li><strong>Quyết định:</strong> Ban lãnh đạo / Procurement</li>
-                <li><strong>Kênh:</strong> Broker, Direct Outreach</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     STRATEGY
-========================= -->
-
-<section class="section" style="background:white" id="strategy">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">04 / STRATEGY</div>
-            <h2 class="section-title">Chiến lược Marketing</h2>
-        </div>
-
-        <p class="section-intro">
-            Chuyển lợi thế tài sản thành thông điệp có khả năng
-            tạo nhận diện, Lead và hỗ trợ chuyển đổi thành hợp đồng.
-        </p>
-
-    </div>
-
-
-    <div class="grid-3">
-
-        <div class="card">
-            <div class="card-number">01</div>
-            <h3>Định vị</h3>
-            <p>
-                Smart Tech Office + Viettel Ecosystem.
-                Tập trung vào chất lượng hạ tầng,
-                công nghệ và trải nghiệm doanh nghiệp.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="card-number">02</div>
-            <h3>Sản phẩm</h3>
-            <p>
-                Không chỉ bán diện tích thuê mà bán
-                môi trường làm việc, hạ tầng công nghệ
-                và hình ảnh doanh nghiệp.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="card-number">03</div>
-            <h3>Giá</h3>
-            <p>
-                Khung giá đề xuất cần được xác nhận
-                bởi bộ phận kinh doanh và đối chiếu
-                với mặt bằng cạnh tranh.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="card-number">04</div>
-            <h3>Kênh</h3>
-            <p>
-                Kết hợp Broker + Direct Sales + Digital
-                + Viettel Ecosystem thay vì phụ thuộc
-                vào một kênh duy nhất.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="card-number">05</div>
-            <h3>Trải nghiệm</h3>
-            <p>
-                Xây dựng TechHub Experience Day,
-                Site Visit và trải nghiệm trực tiếp
-                để biến đặc tính công nghệ thành giá trị.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="card-number">06</div>
-            <h3>Chuyển đổi</h3>
-            <p>
-                Theo dõi xuyên suốt từ Lead đến Site Visit,
-                Proposal, Negotiation và Contract.
-            </p>
-        </div>
-
-    </div>
-
-
-    <div style="height:45px"></div>
-
-
-    <h3 style="font-size:18px;margin-bottom:18px">
-        Marketing Funnel
-    </h3>
-
-
-    <div class="funnel">
-
-        <div class="funnel-step">
-            <div class="num">01</div>
-            <h4>MARKETING</h4>
-            <p>Awareness</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">02</div>
-            <h4>LEAD</h4>
-            <p>Contact</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">03</div>
-            <h4>QUALIFIED</h4>
-            <p>Fit + Need</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">04</div>
-            <h4>SITE VISIT</h4>
-            <p>Tour</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">05</div>
-            <h4>PROPOSAL</h4>
-            <p>Quotation</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">06</div>
-            <h4>NEGOTIATION</h4>
-            <p>Commercial</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">07</div>
-            <h4>CONTRACT</h4>
-            <p>Lease Signed</p>
-        </div>
-
-        <div class="funnel-step">
-            <div class="num">08</div>
-            <h4>RETENTION</h4>
-            <p>Experience</p>
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CHANNEL
-========================= -->
-
-<section class="section" id="channels">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">05 / CHANNEL</div>
-            <h2 class="section-title">Channel Strategy</h2>
-        </div>
-
-        <p class="section-intro">
-            Phân bổ nguồn lực theo khả năng tạo Lead,
-            chất lượng Lead và khả năng hỗ trợ chuyển đổi.
-        </p>
-
-    </div>
-
-
-    <div class="grid-3">
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">01 · DIGITAL</div>
-
-                <h3>Digital Marketing</h3>
-
-                <p>
-                    Xây dựng nhận diện và tạo nhu cầu
-                    từ nhóm doanh nghiệp mục tiêu.
-                </p>
-
-                <ul>
-                    <li>Website / Landing Page</li>
-                    <li>LinkedIn</li>
-                    <li>Facebook / Zalo</li>
-                    <li>Google Search</li>
-                    <li>Video / 3D / Virtual Tour</li>
-                </ul>
-
-            </div>
-        </div>
-
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">02 · BROKER</div>
-
-                <h3>Broker Network</h3>
-
-                <p>
-                    Phát triển mạng lưới môi giới văn phòng
-                    và tăng khả năng tiếp cận khách thuê.
-                </p>
-
-                <ul>
-                    <li>Broker Database</li>
-                    <li>Broker Meeting</li>
-                    <li>Project Briefing</li>
-                    <li>Site Tour</li>
-                    <li>Commission / Referral</li>
-                </ul>
-
-            </div>
-        </div>
-
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">03 · DIRECT</div>
-
-                <h3>Direct Outreach</h3>
-
-                <p>
-                    Tiếp cận trực tiếp các doanh nghiệp
-                    phù hợp với tiêu chí khách thuê.
-                </p>
-
-                <ul>
-                    <li>Target Account List</li>
-                    <li>Email Outreach</li>
-                    <li>LinkedIn Outreach</li>
-                    <li>Business Meeting</li>
-                    <li>Referral Network</li>
-                </ul>
-
-            </div>
-        </div>
-
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">04 · EVENT</div>
-
-                <h3>TechHub Experience Day</h3>
-
-                <p>
-                    Tạo trải nghiệm trực tiếp thay vì
-                    chỉ truyền thông bằng hình ảnh.
-                </p>
-
-                <ul>
-                    <li>Broker Open House</li>
-                    <li>Corporate Tour</li>
-                    <li>Technology Showcase</li>
-                    <li>Networking</li>
-                    <li>Lead Collection</li>
-                </ul>
-
-            </div>
-        </div>
-
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">05 · PR</div>
-
-                <h3>PR & Content</h3>
-
-                <p>
-                    Xây dựng hình ảnh TechHub như
-                    một điểm đến công nghệ và văn phòng chất lượng cao.
-                </p>
-
-                <ul>
-                    <li>Project Story</li>
-                    <li>Technology Story</li>
-                    <li>Viettel Ecosystem</li>
-                    <li>Business Media</li>
-                    <li>Case Study</li>
-                </ul>
-
-            </div>
-        </div>
-
-
-        <div class="channel-card">
-            <div class="channel-top"></div>
-            <div class="channel-content">
-
-                <div class="channel-icon">06 · ECOSYSTEM</div>
-
-                <h3>Viettel Network</h3>
-
-                <p>
-                    Khai thác mạng lưới doanh nghiệp,
-                    đối tác và quan hệ nội bộ Viettel.
-                </p>
-
-                <ul>
-                    <li>Internal Referral</li>
-                    <li>Enterprise Network</li>
-                    <li>Partners</li>
-                    <li>Technology Ecosystem</li>
-                    <li>Business Introductions</li>
-                </ul>
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     ROADMAP
-========================= -->
-
-<section class="section" style="background:white" id="roadmap">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">06 / ROADMAP</div>
-            <h2 class="section-title">Roadmap Marketing</h2>
-        </div>
-
-        <p class="section-intro">
-            Lộ trình được thiết kế theo trạng thái phát triển
-            của tài sản: chuẩn bị → tạo thị trường → mở bán → chuyển đổi.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">Q4/2026 · PREPARE</div>
-
-            <h3>Xây dựng nền tảng</h3>
-
-            <p>
-                Hoàn thiện Sale Kit, bộ nhận diện dự án,
-                Landing Page, hình ảnh 3D, Floor Plan,
-                Target Account List và Broker Database.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">Q1/2027 · BUILD AWARENESS</div>
-
-            <h3>Phát triển nhận diện</h3>
-
-            <p>
-                Triển khai Content, PR, Digital,
-                Direct Outreach và bắt đầu xây dựng
-                mạng lưới Broker.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">Q2/2027 · GENERATE LEADS</div>
-
-            <h3>Tăng tốc tạo Lead</h3>
-
-            <p>
-                Chạy chiến dịch Lead Generation,
-                Broker Meeting, Corporate Outreach
-                và chuẩn bị Site Visit.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">Q3/2027 · LAUNCH</div>
-
-            <h3>Launch Tower A</h3>
-
-            <p>
-                Tổ chức TechHub Experience Day,
-                Site Visit, Proposal và thúc đẩy
-                quá trình đàm phán với khách hàng.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">Q4/2027 · CONVERT</div>
-
-            <h3>Tập trung chuyển đổi</h3>
-
-            <p>
-                Tối ưu Lead → Site Visit → Proposal →
-                Negotiation → Contract và điều chỉnh
-                ngân sách theo hiệu quả từng kênh.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-period">2028 · SCALE</div>
-
-            <h3>Mở rộng thị trường</h3>
-
-            <p>
-                Duy trì thị trường Tower A,
-                chuẩn bị nguồn cầu cho Tower B
-                và xây dựng pipeline khách hàng dài hạn.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     KPI
-========================= -->
-
-<section class="section" id="kpi">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">07 / KPI</div>
-            <h2 class="section-title">KPI & Measurement</h2>
-        </div>
-
-        <p class="section-intro">
-            KPI minh họa để xây dựng mô hình đo lường.
-            Cần hiệu chỉnh sau khi có dữ liệu kinh doanh thực tế.
-        </p>
-
-    </div>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Funnel</th>
-                    <th>KPI</th>
-                    <th>Mục tiêu đề xuất</th>
-                    <th>Cách đo</th>
-                    <th>Chủ trì</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td><strong>Awareness</strong></td>
-                    <td>Reach / Impression</td>
-                    <td>Thiết lập theo ngân sách</td>
-                    <td>Digital Dashboard</td>
-                    <td>Marketing</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Lead</strong></td>
-                    <td>Qualified Lead</td>
-                    <td>Thiết lập theo từng tháng</td>
-                    <td>CRM / Lead Sheet</td>
-                    <td>Marketing + Sales</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Site Visit</strong></td>
-                    <td>Visit / Qualified Lead</td>
-                    <td>≥ 25%*</td>
-                    <td>Visit Log</td>
-                    <td>Sales</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Proposal</strong></td>
-                    <td>Proposal / Visit</td>
-                    <td>≥ 30%*</td>
-                    <td>Pipeline</td>
-                    <td>Sales</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Contract</strong></td>
-                    <td>Contract / Proposal</td>
-                    <td>≥ 20%*</td>
-                    <td>Leasing Report</td>
-                    <td>Sales</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Efficiency</strong></td>
-                    <td>Marketing Cost / m² leased</td>
-                    <td>Đánh giá theo thực tế</td>
-                    <td>Budget + Contract</td>
-                    <td>Marketing</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-    <p style="font-size:9px;color:#999;margin-top:10px">
-        * Tỷ lệ minh họa cho mục đích lập kế hoạch, không phải benchmark chính thức của dự án.
-    </p>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     BUDGET
-========================= -->
-
-<section class="section" style="background:white" id="budget">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">08 / BUDGET</div>
-            <h2 class="section-title">Ngân sách đề xuất</h2>
-        </div>
-
-        <p class="section-intro">
-            Ngân sách dưới đây là mô hình giả định để minh họa
-            cách phân bổ nguồn lực Marketing.
-        </p>
-
-    </div>
-
-
-    <div class="budget-total">
-
-        <div>
-            <span>Tổng ngân sách giả định</span>
-            <strong>500 triệu VNĐ</strong>
-        </div>
-
-        <div class="assumption">
-            Chưa phải ngân sách được phê duyệt.
-            Cần điều chỉnh theo mục tiêu Leasing,
-            nguồn lực nội bộ và báo giá thực tế.
-        </div>
-
-    </div>
-
-
-    <div class="table-wrap">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Hạng mục</th>
-                    <th>Ngân sách</th>
-                    <th>Tỷ trọng</th>
-                    <th>Mục đích</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td><strong>Digital Marketing</strong></td>
-                    <td>100 triệu</td>
-                    <td>20%</td>
-                    <td>Awareness + Lead Generation</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Sale Kit / 3D / Video</strong></td>
-                    <td>80 triệu</td>
-                    <td>16%</td>
-                    <td>Công cụ bán hàng</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Broker</strong></td>
-                    <td>100 triệu</td>
-                    <td>20%</td>
-                    <td>Phát triển nguồn Lead</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Event</strong></td>
-                    <td>80 triệu</td>
-                    <td>16%</td>
-                    <td>Experience + Site Visit</td>
-                </tr>
-
-                <tr>
-                    <td><strong>PR / Content</strong></td>
-                    <td>50 triệu</td>
-                    <td>10%</td>
-                    <td>Brand Awareness</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Direct Marketing</strong></td>
-                    <td>40 triệu</td>
-                    <td>8%</td>
-                    <td>Target Account Outreach</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Dự phòng</strong></td>
-                    <td>50 triệu</td>
-                    <td>10%</td>
-                    <td>Điều chỉnh theo hiệu quả</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     KPI RESPONSE
-========================= -->
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">09 / OPTIMIZATION</div>
-            <h2 class="section-title">Nếu KPI không đạt?</h2>
-        </div>
-
-        <p class="section-intro">
-            Không cắt Marketing ngay lập tức. Xác định
-            chính xác điểm nghẽn trong Funnel trước khi điều chỉnh.
-        </p>
-
-    </div>
-
-
-    <div class="grid-2">
-
-        <div class="card">
-
-            <div class="condition">
-
-                <div class="condition-num">01</div>
-
-                <div>
-                    <h3>Lead thấp</h3>
-                    <p>
-                        Kiểm tra lượng tiếp cận, thông điệp,
-                        Target và hiệu quả từng kênh.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="condition">
-
-                <div class="condition-num">02</div>
-
-                <div>
-                    <h3>Lead nhiều nhưng chất lượng thấp</h3>
-                    <p>
-                        Thu hẹp tiêu chí Target và bổ sung
-                        bước Qualified Lead.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="condition">
-
-                <div class="condition-num">03</div>
-
-                <div>
-                    <h3>Site Visit thấp</h3>
-                    <p>
-                        Kiểm tra Sale Kit, thông điệp,
-                        ưu đãi và trải nghiệm Site Visit.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="condition">
-
-                <div class="condition-num">04</div>
-
-                <div>
-                    <h3>Proposal nhiều nhưng ít đàm phán</h3>
-                    <p>
-                        Phân tích giá, điều kiện thương mại,
-                        diện tích và nhu cầu thực tế.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="condition">
-
-                <div class="condition-num">05</div>
-
-                <div>
-                    <h3>Đàm phán kéo dài</h3>
-                    <p>
-                        Phân loại nguyên nhân theo giá,
-                        fit-out, lease term, pháp lý và quyết định nội bộ.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="condition">
-
-                <div class="condition-num">06</div>
-
-                <div>
-                    <h3>Điều chỉnh ngân sách</h3>
-                    <p>
-                        Chuyển ngân sách từ kênh có hiệu quả thấp
-                        sang kênh tạo Qualified Lead tốt hơn.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     REPORTING
-========================= -->
-
-<section class="section" style="background:#fff">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">10 / REPORTING</div>
-            <h2 class="section-title">Cơ chế báo cáo</h2>
-        </div>
-
-        <p class="section-intro">
-            Marketing và Sales sử dụng chung một Funnel
-            để tránh tình trạng Marketing báo Lead còn Sales không thấy Pipeline.
-        </p>
-
-    </div>
-
-
-    <div class="grid-3">
-
-        <div class="card">
-
-            <div class="card-number">WEEKLY</div>
-
-            <h3>Báo cáo tuần</h3>
-
-            <p>
-                Lead mới, nguồn Lead, Site Visit,
-                Proposal, Deal đang đàm phán,
-                thay đổi từ đối thủ.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">MONTHLY</div>
-
-            <h3>Báo cáo tháng</h3>
-
-            <p>
-                Funnel tổng thể, ngân sách,
-                Cost per Lead, Pipeline,
-                hiệu quả từng kênh.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-number">QUARTERLY</div>
-
-            <h3>Đánh giá quý</h3>
-
-            <p>
-                So sánh mục tiêu và thực tế,
-                điều chỉnh chiến lược,
-                phân bổ lại ngân sách.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CONDITIONS
-========================= -->
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-header">
-
-        <div>
-            <div class="section-number">11 / SUCCESS CONDITIONS</div>
-            <h2 class="section-title">Điều kiện để triển khai</h2>
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="condition">
-
-            <div class="condition-num">01</div>
-
-            <div>
-                <h3>Thông tin thương mại được xác nhận</h3>
-                <p>
-                    Giá thuê, diện tích, điều kiện thuê,
-                    thời điểm bàn giao và chính sách thương mại.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="condition">
-
-            <div class="condition-num">02</div>
-
-            <div>
-                <h3>Sale Kit hoàn chỉnh</h3>
-                <p>
-                    Floor Plan, hình ảnh, 3D, thông số,
-                    tiện ích, bảng giá và thông tin liên hệ.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="condition">
-
-            <div class="condition-num">03</div>
-
-            <div>
-                <h3>Marketing – Sales sử dụng chung dữ liệu</h3>
-                <p>
-                    Một hệ thống theo dõi Lead, Pipeline,
-                    Site Visit và Contract.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="condition">
-
-            <div class="condition-num">04</div>
-
-            <div>
-                <h3>Ngân sách và quyền phê duyệt rõ ràng</h3>
-                <p>
-                    Xác định người phê duyệt, thời gian xử lý
-                    và cơ chế điều chỉnh ngân sách.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="condition">
-
-            <div class="condition-num">05</div>
-
-            <div>
-                <h3>Phối hợp Broker và Sales</h3>
-                <p>
-                    Marketing tạo nhu cầu và Lead;
-                    Sales chịu trách nhiệm chuyển đổi và đàm phán.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="section" id="contact"
-         style="background:#e31837;color:white">
-
-<div class="container">
-
-    <div style="max-width:800px">
-
-        <div style="
-            font-size:10px;
-            font-weight:800;
-            letter-spacing:2px;
-            margin-bottom:15px;">
-            VIETTEL TECHHUB ĐÀ NẴNG
-        </div>
-
-        <h2 style="
-            font-size:clamp(35px,5vw,60px);
-            line-height:1;
-            letter-spacing:-2px;">
-            READY FOR<br>
-            THE NEXT MOVE.
-        </h2>
-
-        <p style="
-            margin-top:20px;
-            color:#ffecef;
-            font-size:13px;
-            max-width:560px;">
-            Mục tiêu của Marketing không chỉ là tạo nhận diện,
-            mà là xây dựng nguồn khách hàng tiềm năng có khả năng
-            chuyển đổi thành diện tích thuê và hợp đồng.
-        </p>
-
-        <button
-            class="btn"
-            style="margin-top:28px;background:white;color:#111"
-            onclick="window.print()">
-            XUẤT BẢN / PDF
-        </button>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-<div class="footer-inner">
-
-    <div>
-
-        <div class="footer-title">
-            VIETTEL TECHHUB
-        </div>
-
-        <div class="footer-sub">
-            MARKETING & MARKET DEVELOPMENT PLAN · ĐÀ NẴNG
-        </div>
-
-    </div>
-
-
-    <div class="footer-right">
-
-        <div>
-            Tài liệu lập kế hoạch
-        </div>
-
-        <div style="margin-top:5px">
-            Các số liệu giả định cần được xác nhận
-            trước khi sử dụng chính thức.
-        </div>
-
-    </div>
-
-</div>
-
+<footer id="about">
+  <div>NBA PLAYER DATABASE</div>
+  <div>Personal basketball data project · 2026</div>
 </footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div>
+        <div class="kicker">Player Profile</div>
+        <div id="modalTeam"></div>
+      </div>
+
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+
+    <div class="profile">
+
+      <div id="modalAvatar" class="profile-avatar"></div>
+
+      <div>
+
+        <h2 id="modalName"></h2>
+
+        <div id="modalSub" class="profile-sub"></div>
+
+        <div class="data-grid">
+
+          <div class="data-box">
+            <span>Chiều cao</span>
+            <strong id="mHeight"></strong>
+          </div>
+
+          <div class="data-box">
+            <span>Cân nặng</span>
+            <strong id="mWeight"></strong>
+          </div>
+
+          <div class="data-box">
+            <span>Tuổi</span>
+            <strong id="mAge"></strong>
+          </div>
+
+          <div class="data-box">
+            <span>Quốc tịch</span>
+            <strong id="mNation"></strong>
+          </div>
+
+          <div class="data-box">
+            <span>Draft</span>
+            <strong id="mDraft"></strong>
+          </div>
+
+          <div class="data-box">
+            <span>Năm vào NBA</span>
+            <strong id="mNBA"></strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <section class="section">
+
+      <h3>Season Statistics</h3>
+
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>PPG</th>
+            <th>RPG</th>
+            <th>APG</th>
+            <th>SPG</th>
+            <th>BPG</th>
+            <th>FG%</th>
+            <th>3P%</th>
+            <th>FT%</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td id="sPPG"></td>
+            <td id="sRPG"></td>
+            <td id="sAPG"></td>
+            <td id="sSPG"></td>
+            <td id="sBPG"></td>
+            <td id="sFG"></td>
+            <td id="s3P"></td>
+            <td id="sFT"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="section">
+
+      <h3>Career Achievements</h3>
+
+      <div id="awards" class="awards"></div>
+
+    </section>
+
+    <section class="section">
+
+      <h3>Injury History</h3>
+
+      <div id="injuries"></div>
+
+    </section>
+
+  </div>
+</div>
 
 
 <script>
 
-/* =========================
-   NAVIGATION
-========================= */
+/* =========================================================
+   PLAYER DATABASE
+   =========================================================
 
-function scrollToSection(id){
+   Đây là dữ liệu mẫu để chạy giao diện.
+   Khi có nguồn dữ liệu chính thức, có thể thay object
+   trong mảng PLAYERS bằng dữ liệu thật.
+========================================================= */
 
-    const element = document.getElementById(id);
+const PLAYERS = [
 
-    if(element){
-        element.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-    }
+{
+ name:"Victor Wembanyama",
+ team:"San Antonio Spurs",
+ abbr:"SAS",
+ number:1,
+ position:"C",
+ height:224,
+ weight:106,
+ age:22,
+ nation:"France",
+ draft:"2023 — Pick 1",
+ nba:2023,
 
+ stats:{
+   ppg:26.2,
+   rpg:10.1,
+   apg:4.0,
+   spg:1.8,
+   bpg:3.8,
+   fg:47.6,
+   three:35.2,
+   ft:83.0
+ },
+
+ awards:[
+   "Rookie of the Year",
+   "All-Rookie First Team",
+   "Defensive honors"
+ ],
+
+ injuries:[
+   {
+     date:"2025",
+     type:"Ankle",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"Bam Adebayo",
+ team:"Miami Heat",
+ abbr:"MIA",
+ number:13,
+ position:"C",
+ height:206,
+ weight:115,
+ age:29,
+ nation:"USA",
+ draft:"2017 — Pick 14",
+ nba:2017,
+
+ stats:{
+   ppg:20.1,
+   rpg:9.8,
+   apg:4.3,
+   spg:1.0,
+   bpg:0.8,
+   fg:49.1,
+   three:31.0,
+   ft:79.8
+ },
+
+ awards:[
+   "NBA All-Star",
+   "All-Defensive Team",
+   "Olympic Gold Medal"
+ ],
+
+ injuries:[
+   {
+     date:"2024",
+     type:"Knee",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"Kevin Durant",
+ team:"Houston Rockets",
+ abbr:"HOU",
+ number:7,
+ position:"SF",
+ height:208,
+ weight:109,
+ age:37,
+ nation:"USA",
+ draft:"2007 — Pick 2",
+ nba:2007,
+
+ stats:{
+   ppg:26.0,
+   rpg:6.4,
+   apg:4.4,
+   spg:0.9,
+   bpg:1.1,
+   fg:52.3,
+   three:41.0,
+   ft:88.5
+ },
+
+ awards:[
+   "2× NBA Champion",
+   "2× Finals MVP",
+   "NBA MVP",
+   "15× All-Star",
+   "4× Scoring Champion",
+   "Olympic Gold Medal"
+ ],
+
+ injuries:[
+   {
+     date:"2019",
+     type:"Achilles",
+     status:"returned"
+   },
+   {
+     date:"2024",
+     type:"Calf",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"Joel Embiid",
+ team:"Philadelphia 76ers",
+ abbr:"PHI",
+ number:21,
+ position:"C",
+ height:213,
+ weight:127,
+ age:32,
+ nation:"Cameroon",
+ draft:"2014 — Pick 3",
+ nba:2014,
+
+ stats:{
+   ppg:30.6,
+   rpg:11.2,
+   apg:4.2,
+   spg:1.0,
+   bpg:1.7,
+   fg:49.9,
+   three:33.8,
+   ft:88.3
+ },
+
+ awards:[
+   "NBA MVP",
+   "NBA Scoring Champion",
+   "7× All-Star",
+   "All-NBA",
+   "All-Defensive Team"
+ ],
+
+ injuries:[
+   {
+     date:"2024",
+     type:"Knee",
+     status:"returned"
+   },
+   {
+     date:"2025",
+     type:"Knee",
+     status:"out"
+   }
+ ]
+},
+
+{
+ name:"Giannis Antetokounmpo",
+ team:"Milwaukee Bucks",
+ abbr:"MIL",
+ number:34,
+ position:"PF",
+ height:211,
+ weight:110,
+ age:31,
+ nation:"Greece",
+ draft:"2013 — Pick 15",
+ nba:2013,
+
+ stats:{
+   ppg:30.4,
+   rpg:11.9,
+   apg:6.5,
+   spg:1.2,
+   bpg:1.5,
+   fg:60.1,
+   three:35.0,
+   ft:70.5
+ },
+
+ awards:[
+   "2× NBA MVP",
+   "NBA Champion",
+   "Finals MVP",
+   "8× All-Star",
+   "Defensive Player of the Year",
+   "Most Improved Player"
+ ],
+
+ injuries:[
+   {
+     date:"2024",
+     type:"Calf",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"Stephen Curry",
+ team:"Golden State Warriors",
+ abbr:"GSW",
+ number:30,
+ position:"PG",
+ height:188,
+ weight:84,
+ age:38,
+ nation:"USA",
+ draft:"2009 — Pick 7",
+ nba:2009,
+
+ stats:{
+   ppg:24.5,
+   rpg:4.4,
+   apg:6.1,
+   spg:1.1,
+   bpg:0.2,
+   fg:43.8,
+   three:39.7,
+   ft:92.0
+ },
+
+ awards:[
+   "4× NBA Champion",
+   "2× NBA MVP",
+   "Finals MVP",
+   "12× All-Star",
+   "2× Scoring Champion",
+   "3× Three-Point Champion"
+ ],
+
+ injuries:[
+   {
+     date:"2024",
+     type:"Ankle",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"LeBron James",
+ team:"Los Angeles Lakers",
+ abbr:"LAL",
+ number:23,
+ position:"SF",
+ height:206,
+ weight:113,
+ age:41,
+ nation:"USA",
+ draft:"2003 — Pick 1",
+ nba:2003,
+
+ stats:{
+   ppg:24.4,
+   rpg:7.8,
+   apg:8.2,
+   spg:0.9,
+   bpg:0.6,
+   fg:50.5,
+   three:37.6,
+   ft:73.5
+ },
+
+ awards:[
+   "4× NBA Champion",
+   "4× NBA MVP",
+   "4× Finals MVP",
+   "21× All-Star",
+   "All-Time Scoring Leader",
+   "Olympic Gold Medal"
+ ],
+
+ injuries:[
+   {
+     date:"2023",
+     type:"Foot",
+     status:"returned"
+   }
+ ]
+},
+
+{
+ name:"Tyrese Haliburton",
+ team:"Indiana Pacers",
+ abbr:"IND",
+ number:0,
+ position:"PG",
+ height:196,
+ weight:84,
+ age:26,
+ nation:"USA",
+ draft:"2020 — Pick 12",
+ nba:2020,
+
+ stats:{
+   ppg:18.7,
+   rpg:3.5,
+   apg:9.2,
+   spg:1.4,
+   bpg:0.5,
+   fg:47.2,
+   three:39.5,
+   ft:85.9
+ },
+
+ awards:[
+   "2× NBA All-Star",
+   "All-NBA",
+   "All-Rookie Team"
+ ],
+
+ injuries:[
+   {
+     date:"2025",
+     type:"Achilles",
+     status:"out"
+   }
+ ]
+},
+
+{
+ name:"Jimmy Butler III",
+ team:"Golden State Warriors",
+ abbr:"GSW",
+ number:10,
+ position:"SF",
+ height:201,
+ weight:104,
+ age:36,
+ nation:"USA",
+ draft:"2011 — Pick 30",
+ nba:2011,
+
+ stats:{
+   ppg:17.3,
+   rpg:5.6,
+   apg:5.9,
+   spg:1.3,
+   bpg:0.4,
+   fg:50.0,
+   three:35.4,
+   ft:85.0
+ },
+
+ awards:[
+   "6× NBA All-Star",
+   "5× All-Defensive Team",
+   "Most Improved Player"
+ ],
+
+ injuries:[
+   {
+     date:"2024",
+     type:"Knee",
+     status:"returned"
+   }
+ ]
 }
 
+];
 
-/* =========================
-   ACTIVE NAV
-========================= */
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
+/* =========================================================
+   DOM
+========================================================= */
 
-window.addEventListener("scroll",()=>{
+const grid = document.getElementById("playerGrid");
+const search = document.getElementById("search");
+const teamFilter = document.getElementById("team");
+const positionFilter = document.getElementById("position");
+const sortFilter = document.getElementById("sort");
+const empty = document.getElementById("empty");
+const resultCount = document.getElementById("resultCount");
+const totalPlayers = document.getElementById("totalPlayers");
 
-    let current = "";
 
-    sections.forEach(section=>{
+/* =========================================================
+   TEAM FILTER
+========================================================= */
 
-        const top = section.offsetTop - 120;
+const teams = [...new Set(PLAYERS.map(p => p.team))].sort();
 
-        if(window.scrollY >= top){
-            current = section.getAttribute("id");
-        }
+teams.forEach(team => {
 
-    });
+  const option = document.createElement("option");
 
-    navLinks.forEach(link=>{
+  option.value = team;
+  option.textContent = team;
 
-        link.style.color = "";
-
-        if(link.getAttribute("href") === "#" + current){
-            link.style.color = "#e31837";
-        }
-
-    });
+  teamFilter.appendChild(option);
 
 });
 
 
-/* =========================
-   SIMPLE REVEAL
-========================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
-const observer = new IntersectionObserver(
-    entries => {
+function initials(name){
 
-        entries.forEach(entry => {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0,2)
+    .map(x => x[0])
+    .join("")
+    .toUpperCase();
 
-            if(entry.isIntersecting){
-
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-
-            }
-
-        });
-
-    },
-    {
-        threshold:.08
-    }
-);
+}
 
 
-document
-    .querySelectorAll(".card,.stat-card,.channel-card,.timeline-item")
-    .forEach(el=>{
+function renderPlayers(){
 
-        el.style.opacity = "0";
-        el.style.transform = "translateY(18px)";
-        el.style.transition = "opacity .6s ease, transform .6s ease";
+  let list = [...PLAYERS];
 
-        observer.observe(el);
+  const q = search.value.toLowerCase().trim();
+  const team = teamFilter.value;
+  const position = positionFilter.value;
+  const sort = sortFilter.value;
+
+
+  if(q){
+
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.team.toLowerCase().includes(q) ||
+      p.abbr.toLowerCase().includes(q)
+    );
+
+  }
+
+
+  if(team){
+    list = list.filter(p => p.team === team);
+  }
+
+
+  if(position){
+    list = list.filter(p => p.position === position);
+  }
+
+
+  if(sort === "name"){
+    list.sort((a,b) => a.name.localeCompare(b.name));
+  }
+
+  if(sort === "age"){
+    list.sort((a,b) => b.age - a.age);
+  }
+
+  if(sort === "ppg"){
+    list.sort((a,b) => b.stats.ppg - a.stats.ppg);
+  }
+
+  if(sort === "height"){
+    list.sort((a,b) => b.height - a.height);
+  }
+
+
+  grid.innerHTML = "";
+
+  resultCount.textContent =
+    `${list.length} cầu thủ`;
+
+  empty.style.display =
+    list.length ? "none" : "block";
+
+
+  list.forEach(player => {
+
+    const card = document.createElement("article");
+
+    card.className = "card";
+
+    card.onclick = () => openModal(player);
+
+    card.innerHTML = `
+
+      <div class="card-top">
+
+        <div class="team-badge">
+          ${player.abbr}
+        </div>
+
+        <div class="number">
+          #${player.number}
+        </div>
+
+      </div>
+
+      <div class="avatar">
+        ${initials(player.name)}
+      </div>
+
+      <h2>${player.name}</h2>
+
+      <div class="position">
+        ${player.position} · ${player.team}
+      </div>
+
+      <div class="card-meta">
+
+        <div class="tag">
+          ${player.height} cm
+        </div>
+
+        <div class="tag">
+          ${player.weight} kg
+        </div>
+
+        <div class="tag">
+          ${player.age} tuổi
+        </div>
+
+      </div>
+
+      <div class="mini-stats">
+
+        <div class="mini-stat">
+          <strong>${player.stats.ppg}</strong>
+          <span>PPG</span>
+        </div>
+
+        <div class="mini-stat">
+          <strong>${player.stats.rpg}</strong>
+          <span>RPG</span>
+        </div>
+
+        <div class="mini-stat">
+          <strong>${player.stats.apg}</strong>
+          <span>APG</span>
+        </div>
+
+      </div>
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+totalPlayers.textContent = PLAYERS.length;
+
+renderPlayers();
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+search.addEventListener("input", renderPlayers);
+teamFilter.addEventListener("change", renderPlayers);
+positionFilter.addEventListener("change", renderPlayers);
+sortFilter.addEventListener("change", renderPlayers);
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(player){
+
+  document.getElementById("modal").classList.add("show");
+
+  document.getElementById("modalAvatar").textContent =
+    initials(player.name);
+
+  document.getElementById("modalName").textContent =
+    player.name;
+
+  document.getElementById("modalSub").textContent =
+    `${player.position} · #${player.number} · ${player.team}`;
+
+  document.getElementById("modalTeam").textContent =
+    player.team;
+
+
+  document.getElementById("mHeight").textContent =
+    `${player.height} cm`;
+
+  document.getElementById("mWeight").textContent =
+    `${player.weight} kg`;
+
+  document.getElementById("mAge").textContent =
+    player.age;
+
+  document.getElementById("mNation").textContent =
+    player.nation;
+
+  document.getElementById("mDraft").textContent =
+    player.draft;
+
+  document.getElementById("mNBA").textContent =
+    player.nba;
+
+
+  document.getElementById("sPPG").textContent =
+    player.stats.ppg;
+
+  document.getElementById("sRPG").textContent =
+    player.stats.rpg;
+
+  document.getElementById("sAPG").textContent =
+    player.stats.apg;
+
+  document.getElementById("sSPG").textContent =
+    player.stats.spg;
+
+  document.getElementById("sBPG").textContent =
+    player.stats.bpg;
+
+  document.getElementById("sFG").textContent =
+    player.stats.fg + "%";
+
+  document.getElementById("s3P").textContent =
+    player.stats.three + "%";
+
+  document.getElementById("sFT").textContent =
+    player.stats.ft + "%";
+
+
+  const awards =
+    document.getElementById("awards");
+
+  awards.innerHTML = "";
+
+  player.awards.forEach(a => {
+
+    const el = document.createElement("div");
+
+    el.className = "award";
+
+    el.textContent = a;
+
+    awards.appendChild(el);
+
+  });
+
+
+  const injuries =
+    document.getElementById("injuries");
+
+  injuries.innerHTML = "";
+
+  if(!player.injuries.length){
+
+    injuries.innerHTML =
+      `<div class="data-box">Không có dữ liệu.</div>`;
+
+  }else{
+
+    player.injuries.forEach(i => {
+
+      const row = document.createElement("div");
+
+      row.className = "injury";
+
+      row.innerHTML = `
+
+        <div class="injury-date">
+          ${i.date}
+        </div>
+
+        <div>
+          <strong>${i.type}</strong>
+        </div>
+
+        <div class="status ${i.status}">
+          ${
+            i.status === "out"
+              ? "OUT"
+              : "RETURNED"
+          }
+        </div>
+
+      `;
+
+      injuries.appendChild(row);
 
     });
 
+  }
 
-/* =========================
-   KEYBOARD
-========================= */
+}
 
-document.addEventListener("keydown",event=>{
 
-    if(event.key === "Escape"){
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.remove("show");
+
+}
+
+
+document.getElementById("modal")
+  .addEventListener("click", function(e){
+
+    if(e.target === this){
+      closeModal();
     }
+
+  });
+
+
+document.addEventListener("keydown", function(e){
+
+  if(e.key === "Escape"){
+    closeModal();
+  }
 
 });
 
