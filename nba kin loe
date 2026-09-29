@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viettel TechHub Đà Nẵng — Marketing Plan</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+    --red:#e31837;
+    --red-dark:#b90f2b;
+    --black:#111111;
+    --dark:#1b1b1b;
+    --gray:#6b7280;
+    --light:#f5f6f7;
+    --line:#e5e7eb;
+    --white:#ffffff;
+    --green:#16834b;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:#f3f4f6;
+    color:var(--black);
+    line-height:1.6;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:70px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 42px;
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-weight:800;
+    letter-spacing:-.4px;
+}
+
+.brand-mark{
+    width:38px;
+    height:38px;
+    background:var(--red);
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:14px;
+    font-weight:800;
+}
+
+.brand small{
+    display:block;
+    font-size:9px;
+    color:#777;
+    letter-spacing:1.4px;
+    margin-top:-3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:6px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#444;
+    padding:9px 12px;
+    font-size:12px;
+    font-weight:600;
+    border-radius:5px;
+}
+
+.nav-links a:hover{
+    color:var(--red);
+    background:#fff1f3;
+}
+
+.nav-actions{
+    display:flex;
+    gap:8px;
+}
+
+.btn{
+    border:0;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:700;
+}
+
+.btn-dark{
+    background:var(--black);
+    color:white;
+}
+
+.btn-red{
+    background:var(--red);
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    margin-top:70px;
+    min-height:650px;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.91) 0%,rgba(0,0,0,.73) 45%,rgba(0,0,0,.30) 100%),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    color:white;
+    display:flex;
+    align-items:center;
+}
+
+.hero-inner{
+    width:min(1250px,calc(100% - 80px));
+    margin:auto;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#ddd;
+}
+
+.eyebrow span{
+    width:32px;
+    height:2px;
+    background:var(--red);
+}
+
+.hero h1{
+    margin-top:22px;
+    font-size:clamp(42px,6vw,78px);
+    line-height:.98;
+    max-width:820px;
+    letter-spacing:-3px;
+}
+
+.hero h1 em{
+    color:var(--red);
+    font-style:normal;
+}
+
+.hero-description{
+    max-width:620px;
+    margin-top:26px;
+    color:#d2d2d2;
+    font-size:15px;
+}
+
+.hero-meta{
+    margin-top:38px;
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+.meta-item{
+    border-left:2px solid var(--red);
+    padding-left:13px;
+}
+
+.meta-item strong{
+    display:block;
+    font-size:15px;
+}
+
+.meta-item span{
+    color:#aaa;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    gap:10px;
+}
+
+.hero-buttons .btn{
+    padding:14px 20px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    width:min(1250px,calc(100% - 80px));
+    margin:auto;
+}
+
+.section{
+    padding:90px 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:40px;
+}
+
+.section-number{
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.section-title{
+    font-size:34px;
+    line-height:1.1;
+    letter-spacing:-1.3px;
+}
+
+.section-intro{
+    max-width:460px;
+    color:var(--gray);
+    font-size:13px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:1px solid var(--line);
+    padding:25px;
+    border-radius:7px;
+}
+
+.card-number{
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+}
+
+.card h3{
+    margin-top:14px;
+    font-size:16px;
+    line-height:1.25;
+}
+
+.card p{
+    margin-top:10px;
+    color:var(--gray);
+    font-size:12px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid var(--line);
+    padding:26px;
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-card:after{
+    content:"";
+    position:absolute;
+    right:-25px;
+    bottom:-35px;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#fff0f2;
+}
+
+.stat-value{
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.stat-label{
+    margin-top:5px;
+    color:var(--gray);
+    font-size:11px;
+}
+
+.stat-note{
+    margin-top:15px;
+    color:var(--green);
+    font-size:10px;
+    font-weight:700;
+}
+
+/* =========================
+   POSITIONING
+========================= */
+
+.positioning{
+    background:var(--black);
+    color:white;
+    padding:38px;
+    border-radius:8px;
+    margin-bottom:18px;
+}
+
+.positioning-label{
+    color:#999;
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.positioning-text{
+    margin-top:14px;
+    font-size:25px;
+    line-height:1.35;
+    max-width:1000px;
+}
+
+.positioning-text strong{
+    color:var(--red);
+}
+
+/* =========================
+   SWOT
+========================= */
+
+.swot{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+}
+
+.swot-box{
+    background:white;
+    padding:28px;
+}
+
+.swot-box h3{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.swot-box ul{
+    margin-top:15px;
+    list-style:none;
+}
+
+.swot-box li{
+    font-size:12px;
+    color:#555;
+    padding:8px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.swot-box li:before{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    background:var(--red);
+    margin-right:9px;
+    vertical-align:middle;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:7px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:800px;
+}
+
+th{
+    background:#181818;
+    color:white;
+    text-align:left;
+    padding:14px 16px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+td{
+    padding:14px 16px;
+    border-bottom:1px solid var(--line);
+    font-size:11px;
+    color:#444;
+}
+
+tr:last-child td{
+    border-bottom:0;
+}
+
+td strong{
+    color:#111;
+}
+
+/* =========================
+   TARGET PERSONA
+========================= */
+
+.persona{
+    position:relative;
+    min-height:260px;
+}
+
+.persona-tag{
+    display:inline-block;
+    padding:5px 8px;
+    background:#fff0f2;
+    color:var(--red);
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.persona h3{
+    font-size:20px;
+    margin-top:16px;
+}
+
+.persona ul{
+    list-style:none;
+    margin-top:15px;
+}
+
+.persona li{
+    color:#666;
+    font-size:11px;
+    margin:7px 0;
+}
+
+.persona li strong{
+    color:#222;
+}
+
+/* =========================
+   FUNNEL
+========================= */
+
+.funnel{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:5px;
+    align-items:stretch;
+}
+
+.funnel-step{
+    min-height:125px;
+    background:white;
+    border:1px solid var(--line);
+    padding:16px 10px;
+    text-align:center;
+    position:relative;
+}
+
+.funnel-step:not(:last-child):after{
+    content:"→";
+    position:absolute;
+    right:-10px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    color:var(--red);
+    font-weight:800;
+}
+
+.funnel-step .num{
+    font-size:9px;
+    color:var(--red);
+    font-weight:800;
+}
+
+.funnel-step h4{
+    margin-top:13px;
+    font-size:11px;
+    line-height:1.3;
+}
+
+.funnel-step p{
+    margin-top:8px;
+    color:#888;
+    font-size:9px;
+}
+
+/* =========================
+   CHANNEL
+========================= */
+
+.channel-card{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:7px;
+    overflow:hidden;
+}
+
+.channel-top{
+    height:6px;
+    background:var(--red);
+}
+
+.channel-content{
+    padding:23px;
+}
+
+.channel-icon{
+    font-size:10px;
+    font-weight:800;
+    color:var(--red);
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.channel-content h3{
+    margin-top:10px;
+    font-size:17px;
+}
+
+.channel-content p{
+    margin-top:8px;
+    color:#777;
+    font-size:11px;
+}
+
+.channel-content ul{
+    list-style:none;
+    margin-top:15px;
+}
+
+.channel-content li{
+    font-size:10px;
+    color:#555;
+    padding:6px 0;
+    border-top:1px solid #eee;
+}
+
+/* =========================
+   ROADMAP
+========================= */
+
+.timeline{
+    position:relative;
+    padding-left:28px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:5px;
+    bottom:5px;
+    width:2px;
+    background:#ddd;
+}
+
+.timeline-item{
+    position:relative;
+    padding:0 0 34px 25px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-27px;
+    top:4px;
+    width:10px;
+    height:10px;
+    background:var(--red);
+    border-radius:50%;
+    box-shadow:0 0 0 5px #ffe8ec;
+}
+
+.timeline-period{
+    color:var(--red);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.timeline-item h3{
+    margin-top:5px;
+    font-size:17px;
+}
+
+.timeline-item p{
+    margin-top:5px;
+    color:#777;
+    font-size:11px;
+}
+
+/* =========================
+   BUDGET
+========================= */
+
+.budget-total{
+    background:var(--black);
+    color:white;
+    border-radius:8px;
+    padding:35px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.budget-total span{
+    color:#aaa;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.budget-total strong{
+    display:block;
+    font-size:38px;
+    margin-top:5px;
+}
+
+.budget-total .assumption{
+    max-width:350px;
+    text-align:right;
+    color:#aaa;
+    font-size:10px;
+}
+
+/* =========================
+   KPI
+========================= */
+
+.kpi{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.kpi-bar{
+    height:6px;
+    background:#eee;
+    flex:1;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.kpi-progress{
+    height:100%;
+    background:var(--red);
+}
+
+/* =========================
+   CONDITIONS
+========================= */
+
+.condition{
+    display:flex;
+    gap:15px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.condition:last-child{
+    border-bottom:0;
+}
+
+.condition-num{
+    min-width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    background:#fff0f2;
+    color:var(--red);
+    font-size:10px;
+    font-weight:800;
+}
+
+.condition h3{
+    font-size:13px;
+}
+
+.condition p{
+    color:#777;
+    font-size:11px;
+    margin-top:3px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#111;
+    color:white;
+    padding:50px 0;
+}
+
+.footer-inner{
+    width:min(1250px,calc(100% - 80px));
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.footer-title{
+    font-size:24px;
+    font-weight:800;
+}
+
+.footer-sub{
+    color:#888;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.footer-right{
+    text-align:right;
+    color:#777;
+    font-size:10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .funnel{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .funnel-step:not(:last-child):after{
+        display:none;
+    }
+}
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:0 18px;
+    }
+
+    .nav-actions .btn:first-child{
+        display:none;
+    }
+
+    .container,
+    .hero-inner,
+    .footer-inner{
+        width:calc(100% - 36px);
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:44px;
+        letter-spacing:-2px;
+    }
+
+    .hero-meta{
+        gap:20px;
+    }
+
+    .section{
+        padding:65px 0;
+    }
+
+    .section-header{
+        display:block;
+    }
+
+    .section-intro{
+        margin-top:15px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .swot{
+        grid-template-columns:1fr;
+    }
+
+    .funnel{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .budget-total{
+        display:block;
+    }
+
+    .budget-total .assumption{
+        text-align:left;
+        margin-top:15px;
+    }
+
+    .footer-inner{
+        display:block;
+    }
+
+    .footer-right{
+        text-align:left;
+        margin-top:25px;
+    }
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    .navbar{
+        display:none;
+    }
+
+    .hero{
+        margin-top:0;
+        min-height:500px;
+    }
+
+    .section{
+        break-inside:avoid;
+    }
+
+    .btn{
+        display:none;
+    }
+
+    body{
+        background:white;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        <div class="brand-mark">V</div>
+        <div>
+            VIETTEL TECHHUB
+            <small>MARKETING PLAN · ĐÀ NẴNG</small>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#overview">Tổng quan</a>
+        <a href="#market">Thị trường</a>
+        <a href="#target">Khách hàng</a>
+        <a href="#strategy">Chiến lược</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#kpi">KPI</a>
+        <a href="#budget">Ngân sách</a>
+    </div>
+
+    <div class="nav-actions">
+        <button class="btn btn-dark" onclick="window.print()">IN / PDF</button>
+        <button class="btn btn-red" onclick="scrollToSection('contact')">LIÊN HỆ</button>
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-inner">
+
+        <div class="eyebrow">
+            <span></span>
+            CHIẾN LƯỢC MARKETING & PHÁT TRIỂN THỊ TRƯỜNG
+        </div>
+
+        <h1>
+            VIETTEL<br>
+            <em>TECHHUB</em><br>
+            ĐÀ NẴNG
+        </h1>
+
+        <p class="hero-description">
+            Kế hoạch Marketing định hướng phát triển thị trường,
+            tạo Lead và hỗ trợ hoạt động cho thuê văn phòng
+            dự án Viettel TechHub Đà Nẵng.
+        </p>
+
+        <div class="hero-meta">
+
+            <div class="meta-item">
+                <strong>~80.000 m²</strong>
+                <span>Tổng diện tích xây dựng</span>
+            </div>
+
+            <div class="meta-item">
+                <strong>02 Tòa</strong>
+                <span>18 tầng + 2 tầng hầm</span>
+            </div>
+
+            <div class="meta-item">
+                <strong>Q3/2027</strong>
+                <span>Dự kiến Tower A</span>
+            </div>
+
+        </div>
+
+        <div class="hero-buttons">
+            <button class="btn btn-red"
+                    onclick="scrollToSection('strategy')">
+                XEM CHIẾN LƯỢC
+            </button>
+
+            <button class="btn"
+                    style="background:white;color:#111"
+                    onclick="scrollToSection('roadmap')">
+                ROADMAP 12 THÁNG
+            </button>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     OVERVIEW
+========================= -->
+
+<section class="section" id="overview">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">01 / TỔNG QUAN</div>
+            <h2 class="section-title">Thông tin dự án</h2>
+        </div>
+
+        <p class="section-intro">
+            Các thông tin dưới đây là cơ sở để xây dựng định vị,
+            chiến lược Marketing và kế hoạch tạo khách hàng tiềm năng.
+        </p>
+
+    </div>
+
+
+    <div class="grid-4">
+
+        <div class="stat-card">
+            <div class="stat-value">80K+</div>
+            <div class="stat-label">m² tổng diện tích xây dựng</div>
+            <div class="stat-note">QUY MÔ DỰ ÁN</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">18.6K</div>
+            <div class="stat-label">m² diện tích khai thác Tower A</div>
+            <div class="stat-note">DỰ KIẾN</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">1.0–1.3K</div>
+            <div class="stat-label">m² diện tích sàn điển hình</div>
+            <div class="stat-note">TOWER A</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">Q3/27</div>
+            <div class="stat-label">dự kiến vận hành Tower A</div>
+            <div class="stat-note">TIẾN ĐỘ GIẢ ĐỊNH</div>
+        </div>
+
+    </div>
+
+
+    <div style="height:18px"></div>
+
+
+    <div class="positioning">
+
+        <div class="positioning-label">
+            Định vị đề xuất
+        </div>
+
+        <div class="positioning-text">
+            Viettel TechHub Đà Nẵng là
+            <strong>tổ hợp văn phòng công nghệ cao</strong>
+            kết hợp hạ tầng thông minh, tiêu chuẩn quốc tế
+            và hệ sinh thái Viettel, hướng tới doanh nghiệp
+            công nghệ, FIE và các doanh nghiệp dịch vụ chuyên môn.
+        </div>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="card">
+
+            <div class="card-number">01</div>
+
+            <h3>Vị trí</h3>
+
+            <p>
+                Trục 2/9 – Trần Thị Lý, Hòa Cường,
+                Đà Nẵng. Kết nối khu vực trung tâm,
+                sân bay và các khu vực kinh tế trọng điểm.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">02</div>
+
+            <h3>Hệ sinh thái</h3>
+
+            <p>
+                Khai thác lợi thế thương hiệu Viettel,
+                năng lực công nghệ và khả năng kết nối
+                với hệ sinh thái doanh nghiệp.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">03</div>
+
+            <h3>Hạ tầng thông minh</h3>
+
+            <p>
+                Định hướng tích hợp BMS, EMS, IAQ,
+                smart parking, an ninh và các giải pháp
+                công nghệ hỗ trợ vận hành.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">04</div>
+
+            <h3>Tiêu chuẩn</h3>
+
+            <p>
+                Định hướng các tiêu chuẩn LEED,
+                WiredScore và SmartScore nhằm nâng cao
+                chất lượng và khả năng cạnh tranh của tài sản.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SWOT
+========================= -->
+
+<section class="section" style="background:white" id="market">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">02 / PHÂN TÍCH</div>
+            <h2 class="section-title">SWOT dự án</h2>
+        </div>
+
+        <p class="section-intro">
+            Đánh giá ban đầu phục vụ quá trình xây dựng chiến lược.
+            Cần cập nhật bằng dữ liệu thị trường thực tế trước khi triển khai.
+        </p>
+
+    </div>
+
+
+    <div class="swot">
+
+        <div class="swot-box">
+            <h3>Strengths · Điểm mạnh</h3>
+            <ul>
+                <li>Thương hiệu Viettel và năng lực công nghệ</li>
+                <li>Định hướng văn phòng Class A</li>
+                <li>Hệ thống hạ tầng thông minh</li>
+                <li>Khả năng kết nối hệ sinh thái Viettel</li>
+                <li>Quy mô lớn, phù hợp doanh nghiệp tăng trưởng</li>
+            </ul>
+        </div>
+
+
+        <div class="swot-box">
+            <h3>Weaknesses · Điểm yếu</h3>
+            <ul>
+                <li>Dự án chưa vận hành thực tế</li>
+                <li>Khách hàng chưa có trải nghiệm trực tiếp</li>
+                <li>Dữ liệu lịch sử Marketing còn hạn chế</li>
+                <li>Sale Kit và tài sản truyền thông cần hoàn thiện</li>
+                <li>Một số thông tin thương mại cần xác nhận</li>
+            </ul>
+        </div>
+
+
+        <div class="swot-box">
+            <h3>Opportunities · Cơ hội</h3>
+            <ul>
+                <li>Nhu cầu văn phòng chất lượng cao</li>
+                <li>Đà Nẵng định hướng phát triển công nghệ</li>
+                <li>Thu hút doanh nghiệp quốc tế</li>
+                <li>Xu hướng văn phòng thông minh</li>
+                <li>Hệ sinh thái công nghệ có thể tạo khác biệt</li>
+            </ul>
+        </div>
+
+
+        <div class="swot-box">
+            <h3>Threats · Thách thức</h3>
+            <ul>
+                <li>Cạnh tranh từ các dự án văn phòng hiện hữu</li>
+                <li>Khách thuê có nhiều lựa chọn</li>
+                <li>Thời gian ra quyết định thuê dài</li>
+                <li>Áp lực về giá và ưu đãi thương mại</li>
+                <li>Biến động nhu cầu doanh nghiệp</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     TARGET TENANTS
+========================= -->
+
+<section class="section" id="target">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">03 / TARGET TENANTS</div>
+            <h2 class="section-title">Khách hàng mục tiêu</h2>
+        </div>
+
+        <p class="section-intro">
+            Ưu tiên doanh nghiệp có khả năng phù hợp với
+            định vị công nghệ, chất lượng và quy mô diện tích của dự án.
+        </p>
+
+    </div>
+
+
+    <div class="grid-3">
+
+        <div class="card persona">
+
+            <span class="persona-tag">Primary</span>
+
+            <h3>Doanh nghiệp công nghệ</h3>
+
+            <ul>
+                <li><strong>Ngành:</strong> IT, Software, SaaS, AI, Fintech</li>
+                <li><strong>Quy mô:</strong> 500–2.000 m²</li>
+                <li><strong>Nhu cầu:</strong> Hạ tầng công nghệ, mở rộng</li>
+                <li><strong>Quyết định:</strong> CEO / COO / Admin / HR</li>
+                <li><strong>Kênh:</strong> LinkedIn, Broker, Direct Sales</li>
+            </ul>
+
+        </div>
+
+
+        <div class="card persona">
+
+            <span class="persona-tag">Secondary</span>
+
+            <h3>FIE / Doanh nghiệp quốc tế</h3>
+
+            <ul>
+                <li><strong>Ngành:</strong> Technology, Finance, Services</li>
+                <li><strong>Quy mô:</strong> 500–2.000 m²</li>
+                <li><strong>Nhu cầu:</strong> Tiêu chuẩn, an ninh, chất lượng</li>
+                <li><strong>Quyết định:</strong> Regional / Country Management</li>
+                <li><strong>Kênh:</strong> Broker, Investment Network, PR</li>
+            </ul>
+
+        </div>
+
+
+        <div class="card persona">
+
+            <span class="persona-tag">Secondary</span>
+
+            <h3>Dịch vụ chuyên môn</h3>
+
+            <ul>
+                <li><strong>Ngành:</strong> Banking, Consulting, Legal, Media</li>
+                <li><strong>Quy mô:</strong> 200–1.000 m²</li>
+                <li><strong>Nhu cầu:</strong> Vị trí, hình ảnh, tiện ích</li>
+                <li><strong>Quyết định:</strong> Ban lãnh đạo / Procurement</li>
+                <li><strong>Kênh:</strong> Broker, Direct Outreach</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     STRATEGY
+========================= -->
+
+<section class="section" style="background:white" id="strategy">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">04 / STRATEGY</div>
+            <h2 class="section-title">Chiến lược Marketing</h2>
+        </div>
+
+        <p class="section-intro">
+            Chuyển lợi thế tài sản thành thông điệp có khả năng
+            tạo nhận diện, Lead và hỗ trợ chuyển đổi thành hợp đồng.
+        </p>
+
+    </div>
+
+
+    <div class="grid-3">
+
+        <div class="card">
+            <div class="card-number">01</div>
+            <h3>Định vị</h3>
+            <p>
+                Smart Tech Office + Viettel Ecosystem.
+                Tập trung vào chất lượng hạ tầng,
+                công nghệ và trải nghiệm doanh nghiệp.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">02</div>
+            <h3>Sản phẩm</h3>
+            <p>
+                Không chỉ bán diện tích thuê mà bán
+                môi trường làm việc, hạ tầng công nghệ
+                và hình ảnh doanh nghiệp.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">03</div>
+            <h3>Giá</h3>
+            <p>
+                Khung giá đề xuất cần được xác nhận
+                bởi bộ phận kinh doanh và đối chiếu
+                với mặt bằng cạnh tranh.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">04</div>
+            <h3>Kênh</h3>
+            <p>
+                Kết hợp Broker + Direct Sales + Digital
+                + Viettel Ecosystem thay vì phụ thuộc
+                vào một kênh duy nhất.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">05</div>
+            <h3>Trải nghiệm</h3>
+            <p>
+                Xây dựng TechHub Experience Day,
+                Site Visit và trải nghiệm trực tiếp
+                để biến đặc tính công nghệ thành giá trị.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">06</div>
+            <h3>Chuyển đổi</h3>
+            <p>
+                Theo dõi xuyên suốt từ Lead đến Site Visit,
+                Proposal, Negotiation và Contract.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div style="height:45px"></div>
+
+
+    <h3 style="font-size:18px;margin-bottom:18px">
+        Marketing Funnel
+    </h3>
+
+
+    <div class="funnel">
+
+        <div class="funnel-step">
+            <div class="num">01</div>
+            <h4>MARKETING</h4>
+            <p>Awareness</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">02</div>
+            <h4>LEAD</h4>
+            <p>Contact</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">03</div>
+            <h4>QUALIFIED</h4>
+            <p>Fit + Need</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">04</div>
+            <h4>SITE VISIT</h4>
+            <p>Tour</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">05</div>
+            <h4>PROPOSAL</h4>
+            <p>Quotation</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">06</div>
+            <h4>NEGOTIATION</h4>
+            <p>Commercial</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">07</div>
+            <h4>CONTRACT</h4>
+            <p>Lease Signed</p>
+        </div>
+
+        <div class="funnel-step">
+            <div class="num">08</div>
+            <h4>RETENTION</h4>
+            <p>Experience</p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CHANNEL
+========================= -->
+
+<section class="section" id="channels">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">05 / CHANNEL</div>
+            <h2 class="section-title">Channel Strategy</h2>
+        </div>
+
+        <p class="section-intro">
+            Phân bổ nguồn lực theo khả năng tạo Lead,
+            chất lượng Lead và khả năng hỗ trợ chuyển đổi.
+        </p>
+
+    </div>
+
+
+    <div class="grid-3">
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">01 · DIGITAL</div>
+
+                <h3>Digital Marketing</h3>
+
+                <p>
+                    Xây dựng nhận diện và tạo nhu cầu
+                    từ nhóm doanh nghiệp mục tiêu.
+                </p>
+
+                <ul>
+                    <li>Website / Landing Page</li>
+                    <li>LinkedIn</li>
+                    <li>Facebook / Zalo</li>
+                    <li>Google Search</li>
+                    <li>Video / 3D / Virtual Tour</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">02 · BROKER</div>
+
+                <h3>Broker Network</h3>
+
+                <p>
+                    Phát triển mạng lưới môi giới văn phòng
+                    và tăng khả năng tiếp cận khách thuê.
+                </p>
+
+                <ul>
+                    <li>Broker Database</li>
+                    <li>Broker Meeting</li>
+                    <li>Project Briefing</li>
+                    <li>Site Tour</li>
+                    <li>Commission / Referral</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">03 · DIRECT</div>
+
+                <h3>Direct Outreach</h3>
+
+                <p>
+                    Tiếp cận trực tiếp các doanh nghiệp
+                    phù hợp với tiêu chí khách thuê.
+                </p>
+
+                <ul>
+                    <li>Target Account List</li>
+                    <li>Email Outreach</li>
+                    <li>LinkedIn Outreach</li>
+                    <li>Business Meeting</li>
+                    <li>Referral Network</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">04 · EVENT</div>
+
+                <h3>TechHub Experience Day</h3>
+
+                <p>
+                    Tạo trải nghiệm trực tiếp thay vì
+                    chỉ truyền thông bằng hình ảnh.
+                </p>
+
+                <ul>
+                    <li>Broker Open House</li>
+                    <li>Corporate Tour</li>
+                    <li>Technology Showcase</li>
+                    <li>Networking</li>
+                    <li>Lead Collection</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">05 · PR</div>
+
+                <h3>PR & Content</h3>
+
+                <p>
+                    Xây dựng hình ảnh TechHub như
+                    một điểm đến công nghệ và văn phòng chất lượng cao.
+                </p>
+
+                <ul>
+                    <li>Project Story</li>
+                    <li>Technology Story</li>
+                    <li>Viettel Ecosystem</li>
+                    <li>Business Media</li>
+                    <li>Case Study</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="channel-card">
+            <div class="channel-top"></div>
+            <div class="channel-content">
+
+                <div class="channel-icon">06 · ECOSYSTEM</div>
+
+                <h3>Viettel Network</h3>
+
+                <p>
+                    Khai thác mạng lưới doanh nghiệp,
+                    đối tác và quan hệ nội bộ Viettel.
+                </p>
+
+                <ul>
+                    <li>Internal Referral</li>
+                    <li>Enterprise Network</li>
+                    <li>Partners</li>
+                    <li>Technology Ecosystem</li>
+                    <li>Business Introductions</li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ROADMAP
+========================= -->
+
+<section class="section" style="background:white" id="roadmap">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">06 / ROADMAP</div>
+            <h2 class="section-title">Roadmap Marketing</h2>
+        </div>
+
+        <p class="section-intro">
+            Lộ trình được thiết kế theo trạng thái phát triển
+            của tài sản: chuẩn bị → tạo thị trường → mở bán → chuyển đổi.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">Q4/2026 · PREPARE</div>
+
+            <h3>Xây dựng nền tảng</h3>
+
+            <p>
+                Hoàn thiện Sale Kit, bộ nhận diện dự án,
+                Landing Page, hình ảnh 3D, Floor Plan,
+                Target Account List và Broker Database.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">Q1/2027 · BUILD AWARENESS</div>
+
+            <h3>Phát triển nhận diện</h3>
+
+            <p>
+                Triển khai Content, PR, Digital,
+                Direct Outreach và bắt đầu xây dựng
+                mạng lưới Broker.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">Q2/2027 · GENERATE LEADS</div>
+
+            <h3>Tăng tốc tạo Lead</h3>
+
+            <p>
+                Chạy chiến dịch Lead Generation,
+                Broker Meeting, Corporate Outreach
+                và chuẩn bị Site Visit.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">Q3/2027 · LAUNCH</div>
+
+            <h3>Launch Tower A</h3>
+
+            <p>
+                Tổ chức TechHub Experience Day,
+                Site Visit, Proposal và thúc đẩy
+                quá trình đàm phán với khách hàng.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">Q4/2027 · CONVERT</div>
+
+            <h3>Tập trung chuyển đổi</h3>
+
+            <p>
+                Tối ưu Lead → Site Visit → Proposal →
+                Negotiation → Contract và điều chỉnh
+                ngân sách theo hiệu quả từng kênh.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-period">2028 · SCALE</div>
+
+            <h3>Mở rộng thị trường</h3>
+
+            <p>
+                Duy trì thị trường Tower A,
+                chuẩn bị nguồn cầu cho Tower B
+                và xây dựng pipeline khách hàng dài hạn.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     KPI
+========================= -->
+
+<section class="section" id="kpi">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">07 / KPI</div>
+            <h2 class="section-title">KPI & Measurement</h2>
+        </div>
+
+        <p class="section-intro">
+            KPI minh họa để xây dựng mô hình đo lường.
+            Cần hiệu chỉnh sau khi có dữ liệu kinh doanh thực tế.
+        </p>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Funnel</th>
+                    <th>KPI</th>
+                    <th>Mục tiêu đề xuất</th>
+                    <th>Cách đo</th>
+                    <th>Chủ trì</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><strong>Awareness</strong></td>
+                    <td>Reach / Impression</td>
+                    <td>Thiết lập theo ngân sách</td>
+                    <td>Digital Dashboard</td>
+                    <td>Marketing</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Lead</strong></td>
+                    <td>Qualified Lead</td>
+                    <td>Thiết lập theo từng tháng</td>
+                    <td>CRM / Lead Sheet</td>
+                    <td>Marketing + Sales</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Site Visit</strong></td>
+                    <td>Visit / Qualified Lead</td>
+                    <td>≥ 25%*</td>
+                    <td>Visit Log</td>
+                    <td>Sales</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Proposal</strong></td>
+                    <td>Proposal / Visit</td>
+                    <td>≥ 30%*</td>
+                    <td>Pipeline</td>
+                    <td>Sales</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Contract</strong></td>
+                    <td>Contract / Proposal</td>
+                    <td>≥ 20%*</td>
+                    <td>Leasing Report</td>
+                    <td>Sales</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Efficiency</strong></td>
+                    <td>Marketing Cost / m² leased</td>
+                    <td>Đánh giá theo thực tế</td>
+                    <td>Budget + Contract</td>
+                    <td>Marketing</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p style="font-size:9px;color:#999;margin-top:10px">
+        * Tỷ lệ minh họa cho mục đích lập kế hoạch, không phải benchmark chính thức của dự án.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BUDGET
+========================= -->
+
+<section class="section" style="background:white" id="budget">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">08 / BUDGET</div>
+            <h2 class="section-title">Ngân sách đề xuất</h2>
+        </div>
+
+        <p class="section-intro">
+            Ngân sách dưới đây là mô hình giả định để minh họa
+            cách phân bổ nguồn lực Marketing.
+        </p>
+
+    </div>
+
+
+    <div class="budget-total">
+
+        <div>
+            <span>Tổng ngân sách giả định</span>
+            <strong>500 triệu VNĐ</strong>
+        </div>
+
+        <div class="assumption">
+            Chưa phải ngân sách được phê duyệt.
+            Cần điều chỉnh theo mục tiêu Leasing,
+            nguồn lực nội bộ và báo giá thực tế.
+        </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Hạng mục</th>
+                    <th>Ngân sách</th>
+                    <th>Tỷ trọng</th>
+                    <th>Mục đích</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><strong>Digital Marketing</strong></td>
+                    <td>100 triệu</td>
+                    <td>20%</td>
+                    <td>Awareness + Lead Generation</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Sale Kit / 3D / Video</strong></td>
+                    <td>80 triệu</td>
+                    <td>16%</td>
+                    <td>Công cụ bán hàng</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Broker</strong></td>
+                    <td>100 triệu</td>
+                    <td>20%</td>
+                    <td>Phát triển nguồn Lead</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Event</strong></td>
+                    <td>80 triệu</td>
+                    <td>16%</td>
+                    <td>Experience + Site Visit</td>
+                </tr>
+
+                <tr>
+                    <td><strong>PR / Content</strong></td>
+                    <td>50 triệu</td>
+                    <td>10%</td>
+                    <td>Brand Awareness</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Direct Marketing</strong></td>
+                    <td>40 triệu</td>
+                    <td>8%</td>
+                    <td>Target Account Outreach</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Dự phòng</strong></td>
+                    <td>50 triệu</td>
+                    <td>10%</td>
+                    <td>Điều chỉnh theo hiệu quả</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     KPI RESPONSE
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">09 / OPTIMIZATION</div>
+            <h2 class="section-title">Nếu KPI không đạt?</h2>
+        </div>
+
+        <p class="section-intro">
+            Không cắt Marketing ngay lập tức. Xác định
+            chính xác điểm nghẽn trong Funnel trước khi điều chỉnh.
+        </p>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="card">
+
+            <div class="condition">
+
+                <div class="condition-num">01</div>
+
+                <div>
+                    <h3>Lead thấp</h3>
+                    <p>
+                        Kiểm tra lượng tiếp cận, thông điệp,
+                        Target và hiệu quả từng kênh.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="condition">
+
+                <div class="condition-num">02</div>
+
+                <div>
+                    <h3>Lead nhiều nhưng chất lượng thấp</h3>
+                    <p>
+                        Thu hẹp tiêu chí Target và bổ sung
+                        bước Qualified Lead.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="condition">
+
+                <div class="condition-num">03</div>
+
+                <div>
+                    <h3>Site Visit thấp</h3>
+                    <p>
+                        Kiểm tra Sale Kit, thông điệp,
+                        ưu đãi và trải nghiệm Site Visit.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="condition">
+
+                <div class="condition-num">04</div>
+
+                <div>
+                    <h3>Proposal nhiều nhưng ít đàm phán</h3>
+                    <p>
+                        Phân tích giá, điều kiện thương mại,
+                        diện tích và nhu cầu thực tế.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="condition">
+
+                <div class="condition-num">05</div>
+
+                <div>
+                    <h3>Đàm phán kéo dài</h3>
+                    <p>
+                        Phân loại nguyên nhân theo giá,
+                        fit-out, lease term, pháp lý và quyết định nội bộ.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="condition">
+
+                <div class="condition-num">06</div>
+
+                <div>
+                    <h3>Điều chỉnh ngân sách</h3>
+                    <p>
+                        Chuyển ngân sách từ kênh có hiệu quả thấp
+                        sang kênh tạo Qualified Lead tốt hơn.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     REPORTING
+========================= -->
+
+<section class="section" style="background:#fff">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">10 / REPORTING</div>
+            <h2 class="section-title">Cơ chế báo cáo</h2>
+        </div>
+
+        <p class="section-intro">
+            Marketing và Sales sử dụng chung một Funnel
+            để tránh tình trạng Marketing báo Lead còn Sales không thấy Pipeline.
+        </p>
+
+    </div>
+
+
+    <div class="grid-3">
+
+        <div class="card">
+
+            <div class="card-number">WEEKLY</div>
+
+            <h3>Báo cáo tuần</h3>
+
+            <p>
+                Lead mới, nguồn Lead, Site Visit,
+                Proposal, Deal đang đàm phán,
+                thay đổi từ đối thủ.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">MONTHLY</div>
+
+            <h3>Báo cáo tháng</h3>
+
+            <p>
+                Funnel tổng thể, ngân sách,
+                Cost per Lead, Pipeline,
+                hiệu quả từng kênh.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">QUARTERLY</div>
+
+            <h3>Đánh giá quý</h3>
+
+            <p>
+                So sánh mục tiêu và thực tế,
+                điều chỉnh chiến lược,
+                phân bổ lại ngân sách.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONDITIONS
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div>
+            <div class="section-number">11 / SUCCESS CONDITIONS</div>
+            <h2 class="section-title">Điều kiện để triển khai</h2>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="condition">
+
+            <div class="condition-num">01</div>
+
+            <div>
+                <h3>Thông tin thương mại được xác nhận</h3>
+                <p>
+                    Giá thuê, diện tích, điều kiện thuê,
+                    thời điểm bàn giao và chính sách thương mại.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="condition">
+
+            <div class="condition-num">02</div>
+
+            <div>
+                <h3>Sale Kit hoàn chỉnh</h3>
+                <p>
+                    Floor Plan, hình ảnh, 3D, thông số,
+                    tiện ích, bảng giá và thông tin liên hệ.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="condition">
+
+            <div class="condition-num">03</div>
+
+            <div>
+                <h3>Marketing – Sales sử dụng chung dữ liệu</h3>
+                <p>
+                    Một hệ thống theo dõi Lead, Pipeline,
+                    Site Visit và Contract.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="condition">
+
+            <div class="condition-num">04</div>
+
+            <div>
+                <h3>Ngân sách và quyền phê duyệt rõ ràng</h3>
+                <p>
+                    Xác định người phê duyệt, thời gian xử lý
+                    và cơ chế điều chỉnh ngân sách.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="condition">
+
+            <div class="condition-num">05</div>
+
+            <div>
+                <h3>Phối hợp Broker và Sales</h3>
+                <p>
+                    Marketing tạo nhu cầu và Lead;
+                    Sales chịu trách nhiệm chuyển đổi và đàm phán.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="section" id="contact"
+         style="background:#e31837;color:white">
+
+<div class="container">
+
+    <div style="max-width:800px">
+
+        <div style="
+            font-size:10px;
+            font-weight:800;
+            letter-spacing:2px;
+            margin-bottom:15px;">
+            VIETTEL TECHHUB ĐÀ NẴNG
+        </div>
+
+        <h2 style="
+            font-size:clamp(35px,5vw,60px);
+            line-height:1;
+            letter-spacing:-2px;">
+            READY FOR<br>
+            THE NEXT MOVE.
+        </h2>
+
+        <p style="
+            margin-top:20px;
+            color:#ffecef;
+            font-size:13px;
+            max-width:560px;">
+            Mục tiêu của Marketing không chỉ là tạo nhận diện,
+            mà là xây dựng nguồn khách hàng tiềm năng có khả năng
+            chuyển đổi thành diện tích thuê và hợp đồng.
+        </p>
+
+        <button
+            class="btn"
+            style="margin-top:28px;background:white;color:#111"
+            onclick="window.print()">
+            XUẤT BẢN / PDF
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-inner">
+
+    <div>
+
+        <div class="footer-title">
+            VIETTEL TECHHUB
+        </div>
+
+        <div class="footer-sub">
+            MARKETING & MARKET DEVELOPMENT PLAN · ĐÀ NẴNG
+        </div>
+
+    </div>
+
+
+    <div class="footer-right">
+
+        <div>
+            Tài liệu lập kế hoạch
+        </div>
+
+        <div style="margin-top:5px">
+            Các số liệu giả định cần được xác nhận
+            trước khi sử dụng chính thức.
+        </div>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function scrollToSection(id){
+
+    const element = document.getElementById(id);
+
+    if(element){
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    }
+
+}
+
+
+/* =========================
+   ACTIVE NAV
+========================= */
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+
+    let current = "";
+
+    sections.forEach(section=>{
+
+        const top = section.offsetTop - 120;
+
+        if(window.scrollY >= top){
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link=>{
+
+        link.style.color = "";
+
+        if(link.getAttribute("href") === "#" + current){
+            link.style.color = "#e31837";
+        }
+
+    });
+
+});
+
+
+/* =========================
+   SIMPLE REVEAL
+========================= */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.08
+    }
+);
+
+
+document
+    .querySelectorAll(".card,.stat-card,.channel-card,.timeline-item")
+    .forEach(el=>{
+
+        el.style.opacity = "0";
+        el.style.transform = "translateY(18px)";
+        el.style.transition = "opacity .6s ease, transform .6s ease";
+
+        observer.observe(el);
+
+    });
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key === "Escape"){
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+
+});
+
+</script>
+
+</body>
+</html>
