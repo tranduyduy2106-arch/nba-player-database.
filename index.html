@@ -2,37 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NBA Player Database</title>
 
 <style>
+:root{
+    --red:#e31837;
+    --red2:#ff3151;
+    --bg:#05070a;
+    --panel:#0c1016;
+    --panel2:#111722;
+    --border:#202936;
+    --text:#f5f7fa;
+    --muted:#8c96a5;
+    --green:#38d996;
+    --blue:#4da3ff;
+    --gold:#f5c451;
+}
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
-body{
-    background:#07090d;
-    color:#f5f5f5;
-    font-family:Arial,Helvetica,sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
-header{
-    height:72px;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 80% 0%,rgba(227,24,55,.13),transparent 30%),
+        radial-gradient(circle at 10% 20%,rgba(50,100,255,.07),transparent 25%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
     position:sticky;
     top:0;
     z-index:100;
-    background:rgba(7,9,13,.95);
-    border-bottom:1px solid #242936;
-    backdrop-filter:blur(15px);
+    height:72px;
+    background:rgba(5,7,10,.92);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
 }
 
-.nav{
-    width:94%;
-    max-width:1450px;
+.header-inner{
+    max-width:1500px;
     height:100%;
     margin:auto;
+    padding:0 24px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -41,298 +83,502 @@ header{
 .brand{
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:13px;
 }
 
-.logo{
-    width:42px;
-    height:52px;
+.nba-logo{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
 }
 
 .brand-title{
-    font-size:18px;
+    font-size:17px;
     font-weight:900;
-    letter-spacing:.08em;
+    letter-spacing:1.3px;
 }
 
 .brand-sub{
     font-size:10px;
-    color:#777f8d;
-    margin-top:4px;
-    letter-spacing:.15em;
+    color:var(--muted);
+    letter-spacing:2px;
+    margin-top:3px;
 }
 
-.live{
+.header-nav{
     display:flex;
-    gap:8px;
-    align-items:center;
-    font-size:11px;
-    color:#9ba3af;
+    gap:26px;
+    color:#aeb7c5;
+    font-size:13px;
+    font-weight:700;
 }
 
-.dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#2ed158;
-    box-shadow:0 0 10px #2ed158;
+.header-nav a:hover{
+    color:#fff;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    width:94%;
-    max-width:1450px;
-    margin:auto;
-    padding:70px 0 45px;
+    position:relative;
+    overflow:hidden;
+    min-height:390px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid var(--border);
 }
 
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.5fr 1fr;
-    gap:40px;
-    align-items:end;
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,#05070a 0%,rgba(5,7,10,.92) 35%,rgba(5,7,10,.4) 70%,#05070a 100%),
+        linear-gradient(0deg,#05070a 0%,transparent 45%,rgba(0,0,0,.25));
+}
+
+.hero-lines{
+    position:absolute;
+    inset:0;
+    opacity:.13;
+    background-image:
+        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:min(1500px,100%);
+    margin:auto;
+    padding:70px 24px;
 }
 
 .eyebrow{
-    color:#e31837;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--red);
     font-size:12px;
     font-weight:900;
-    letter-spacing:.2em;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:clamp(45px,6vw,82px);
-    line-height:.9;
-    letter-spacing:-.055em;
-}
-
-h1 span{
-    color:#e31837;
-}
-
-.description{
-    max-width:700px;
-    color:#858e9c;
-    line-height:1.7;
-    margin-top:25px;
-    font-size:14px;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-
-.stat{
-    padding:20px;
-    border:1px solid #242936;
-    background:#10131a;
-    border-radius:14px;
-}
-
-.stat-number{
-    font-size:28px;
-    font-weight:900;
-}
-
-.stat-label{
-    color:#777f8d;
-    font-size:9px;
-    margin-top:7px;
-    letter-spacing:.12em;
-}
-
-/* CONTROLS */
-
-.controls{
-    width:94%;
-    max-width:1450px;
-    margin:0 auto 30px;
-
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:10px;
-}
-
-.control{
-    height:48px;
-    background:#0e1117;
-    color:#eee;
-    border:1px solid #242936;
-    border-radius:9px;
-    padding:0 14px;
-    outline:none;
-}
-
-.control:focus{
-    border-color:#555d6b;
-}
-
-/* DATABASE BAR */
-
-.database-bar{
-    width:94%;
-    max-width:1450px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    letter-spacing:2px;
+    text-transform:uppercase;
     margin-bottom:18px;
 }
 
-.database-title{
-    font-size:18px;
+.eyebrow-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--red);
+    box-shadow:0 0 14px var(--red);
+}
+
+.hero h1{
+    font-size:clamp(44px,7vw,92px);
+    line-height:.92;
+    font-weight:1000;
+    letter-spacing:-5px;
+    max-width:900px;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero-description{
+    max-width:650px;
+    color:#9da7b5;
+    font-size:16px;
+    line-height:1.7;
+    margin-top:25px;
+}
+
+.hero-stats{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:32px;
+}
+
+.hero-stat{
+    min-width:130px;
+    padding:15px 18px;
+    background:rgba(15,20,28,.78);
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.hero-stat strong{
+    display:block;
+    font-size:25px;
     font-weight:900;
 }
 
-.database-status{
+.hero-stat span{
+    display:block;
+    color:var(--muted);
     font-size:11px;
-    color:#777f8d;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-top:4px;
 }
 
-/* GRID */
+/* =========================
+   MAIN
+========================= */
 
-.grid{
-    width:94%;
-    max-width:1450px;
+.container{
+    width:min(1500px,100%);
     margin:auto;
+    padding:35px 24px 80px;
+}
 
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:minmax(250px,1fr) 190px 170px 190px;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.search-box{
+    position:relative;
+}
+
+.search-box svg{
+    position:absolute;
+    left:17px;
+    top:50%;
+    transform:translateY(-50%);
+    width:18px;
+    height:18px;
+    fill:#697384;
+}
+
+.search-input,
+.filter{
+    width:100%;
+    height:52px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:#fff;
+    outline:none;
+}
+
+.search-input{
+    padding:0 18px 0 48px;
+}
+
+.filter{
+    padding:0 14px;
+}
+
+.search-input:focus,
+.filter:focus{
+    border-color:#4b5667;
+}
+
+.filter option{
+    background:#0c1016;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.results-text{
+    color:#a9b2bf;
+    font-size:13px;
+}
+
+.results-text strong{
+    color:#fff;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px rgba(56,217,150,.5);
+}
+
+.status-dot.loading{
+    background:var(--gold);
+    box-shadow:0 0 10px rgba(245,196,81,.5);
+}
+
+.status-dot.error{
+    background:var(--red);
+    box-shadow:0 0 10px rgba(227,24,55,.5);
+}
+
+/* =========================
+   PLAYER GRID
+========================= */
+
+.player-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
     gap:16px;
 }
 
-.card{
-    min-height:380px;
-    background:#10131a;
-    border:1px solid #242936;
-    border-radius:17px;
-    overflow:hidden;
-    cursor:pointer;
+.player-card{
     position:relative;
-    transition:.25s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#444b58;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
-}
-
-.card-image{
-    height:270px;
+    overflow:hidden;
+    min-height:350px;
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(227,24,55,.18),
-            transparent 42%
-        ),
-        linear-gradient(
-            180deg,
-            #171b24,
-            #0c0f14
-        );
+        linear-gradient(145deg,#121923,#090d13);
+    border:1px solid var(--border);
+    border-radius:15px;
+    transition:.25s ease;
+    cursor:pointer;
+}
 
+.player-card:hover{
+    transform:translateY(-5px);
+    border-color:#3b4655;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35),
+        0 0 0 1px rgba(227,24,55,.12);
+}
+
+.player-card::after{
+    content:"";
+    position:absolute;
+    inset:auto -30% -45% -30%;
+    height:180px;
+    background:radial-gradient(circle,rgba(227,24,55,.18),transparent 65%);
+    pointer-events:none;
+}
+
+.card-top{
+    position:absolute;
+    top:14px;
+    left:15px;
+    right:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:3;
+}
+
+.team-badge{
+    padding:6px 9px;
+    background:rgba(5,7,10,.75);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:6px;
+    color:#dbe0e7;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.player-number{
+    font-size:28px;
+    font-weight:900;
+    color:rgba(255,255,255,.13);
+}
+
+.player-photo-wrap{
+    height:255px;
     display:flex;
     align-items:flex-end;
     justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 90%,rgba(227,24,55,.18),transparent 55%);
 }
 
-.card-image img{
+.player-photo{
     width:100%;
     height:100%;
     object-fit:contain;
     object-position:center bottom;
+    transition:.3s ease;
+}
+
+.player-card:hover .player-photo{
+    transform:scale(1.035);
+}
+
+.photo-placeholder{
+    width:160px;
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#424b58;
+    font-size:70px;
+    font-weight:900;
 }
 
 .card-info{
-    padding:16px;
+    position:relative;
+    z-index:4;
+    padding:15px 17px 18px;
+    border-top:1px solid rgba(255,255,255,.04);
 }
 
 .player-name{
     font-size:18px;
     font-weight:900;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
-.team{
-    margin-top:7px;
-    color:#aab2be;
-    font-size:12px;
-}
-
-.badges{
+.player-meta{
     display:flex;
+    gap:8px;
     flex-wrap:wrap;
-    gap:6px;
+    margin-top:8px;
+}
+
+.meta-pill{
+    padding:5px 7px;
+    border-radius:5px;
+    background:#171e28;
+    color:#8f99a8;
+    font-size:10px;
+    font-weight:700;
+}
+
+.card-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin-top:13px;
+    color:#697384;
+    font-size:10px;
 }
 
-.badge{
-    padding:5px 8px;
-    background:#0b0e13;
-    border:1px solid #242936;
-    border-radius:6px;
-    color:#9099a7;
-    font-size:9px;
+/* =========================
+   EMPTY / ERROR
+========================= */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:90px 20px;
+    border:1px dashed #303946;
+    border-radius:15px;
+    background:#090d13;
 }
 
-.number{
-    position:absolute;
-    right:13px;
-    top:11px;
-    color:#717a88;
-    font-size:11px;
-    font-weight:bold;
+.empty.show{
+    display:block;
 }
 
-/* PAGINATION */
+.empty-icon{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.empty h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.empty p{
+    color:var(--muted);
+    max-width:550px;
+    margin:auto;
+    line-height:1.7;
+}
+
+.retry-btn{
+    margin-top:20px;
+    border:0;
+    background:var(--red);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:8px;
+    font-weight:800;
+}
+
+/* =========================
+   PAGINATION
+========================= */
 
 .pagination{
-    width:94%;
-    max-width:1450px;
-    margin:30px auto 70px;
     display:flex;
-    justify-content:center;
-    gap:7px;
-}
-
-.page{
-    width:40px;
-    height:40px;
-    border:1px solid #242936;
-    background:#10131a;
-    color:white;
-    border-radius:7px;
-    cursor:pointer;
-}
-
-.page.active{
-    background:#e31837;
-    border-color:#e31837;
-}
-
-.page:disabled{
-    opacity:.3;
-}
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:1000;
-
-    background:rgba(0,0,0,.82);
-    backdrop-filter:blur(10px);
-
     align-items:center;
     justify-content:center;
+    gap:8px;
+    margin-top:35px;
+}
 
+.page-btn{
+    min-width:40px;
+    height:40px;
+    padding:0 12px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:#9aa4b2;
+    font-weight:700;
+}
+
+.page-btn:hover{
+    color:#fff;
+    border-color:#465161;
+}
+
+.page-btn.active{
+    background:var(--red);
+    border-color:var(--red);
+    color:#fff;
+}
+
+.page-btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    display:none;
+    align-items:center;
+    justify-content:center;
     padding:20px;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(12px);
 }
 
 .modal.open{
@@ -340,268 +586,230 @@ h1 span{
 }
 
 .modal-box{
-    width:min(1050px,100%);
+    width:min(1000px,100%);
     max-height:90vh;
     overflow:auto;
-
-    background:#0d1016;
-    border:1px solid #303642;
-    border-radius:20px;
+    background:#0a0e14;
+    border:1px solid #29313d;
+    border-radius:18px;
+    box-shadow:0 30px 100px rgba(0,0,0,.6);
 }
 
-.modal-top{
-    display:grid;
-    grid-template-columns:340px 1fr;
-}
-
-.modal-image{
-    height:430px;
-
+.modal-head{
+    position:sticky;
+    top:0;
+    z-index:10;
     display:flex;
-    align-items:flex-end;
-    justify-content:center;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(227,24,55,.2),
-            transparent 42%
-        ),
-        linear-gradient(
-            180deg,
-            #171b24,
-            #0a0d12
-        );
-}
-
-.modal-image img{
-    width:100%;
-    height:430px;
-    object-fit:contain;
-}
-
-.modal-content{
-    padding:38px;
+    justify-content:flex-end;
+    padding:12px;
+    background:linear-gradient(#0a0e14,rgba(10,14,20,.7));
 }
 
 .close{
-    float:right;
-    width:35px;
-    height:35px;
-    border:0;
-    border-radius:50%;
-    background:#191d25;
-    color:white;
+    width:38px;
+    height:38px;
+    border:1px solid #303947;
+    border-radius:9px;
+    background:#121822;
+    color:#fff;
     font-size:20px;
-    cursor:pointer;
 }
 
-.modal-team{
-    color:#e31837;
-    font-weight:900;
-    font-size:11px;
-    letter-spacing:.15em;
-    margin-bottom:12px;
+.close:hover{
+    background:var(--red);
+    border-color:var(--red);
 }
 
-.modal-name{
-    font-size:42px;
-    font-weight:950;
-    line-height:1;
-    margin-bottom:28px;
-}
-
-.info-grid{
+.profile{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
+    grid-template-columns:360px 1fr;
+    gap:0;
 }
 
-.info{
-    padding:13px;
-    border:1px solid #242936;
-    background:#11151c;
+.profile-left{
+    min-height:550px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(227,24,55,.2),transparent 55%),
+        linear-gradient(145deg,#121923,#07090d);
+    overflow:hidden;
+}
+
+.profile-image{
+    width:100%;
+    height:550px;
+    object-fit:contain;
+    object-position:center bottom;
+}
+
+.profile-right{
+    padding:35px;
+}
+
+.profile-team{
+    color:var(--red);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.profile-name{
+    font-size:42px;
+    line-height:1;
+    font-weight:1000;
+    letter-spacing:-2px;
+}
+
+.profile-sub{
+    margin-top:12px;
+    color:#929cab;
+    font-size:14px;
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:28px;
+}
+
+.detail{
+    padding:15px;
+    background:#101620;
+    border:1px solid #202936;
     border-radius:9px;
 }
 
-.info-label{
-    color:#6f7886;
+.detail-label{
+    color:#687383;
     font-size:9px;
     text-transform:uppercase;
+    letter-spacing:1px;
 }
 
-.info-value{
+.detail-value{
     margin-top:6px;
-    font-size:13px;
-    font-weight:800;
-}
-
-.modal-section{
-    padding:25px 38px;
-    border-top:1px solid #242936;
-}
-
-.section-title{
-    font-size:11px;
+    font-size:17px;
     font-weight:900;
-    letter-spacing:.14em;
-    margin-bottom:14px;
 }
 
-.stat-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
+.profile-section{
+    margin-top:28px;
+}
+
+.profile-section h3{
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#aeb7c4;
+    margin-bottom:12px;
+}
+
+.awards{
+    display:flex;
+    flex-wrap:wrap;
     gap:8px;
 }
 
-.mini{
-    background:#11151c;
-    border:1px solid #242936;
-    padding:13px 5px;
-    text-align:center;
-    border-radius:8px;
-}
-
-.mini strong{
-    display:block;
-    font-size:17px;
-}
-
-.mini span{
-    display:block;
-    margin-top:5px;
-    color:#707987;
-    font-size:8px;
-}
-
-.pills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-.pill{
+.award{
     padding:8px 10px;
-    background:#171b23;
-    border:1px solid #242936;
-    border-radius:7px;
-    font-size:10px;
-    color:#b7bec9;
+    border-radius:6px;
+    background:rgba(245,196,81,.09);
+    border:1px solid rgba(245,196,81,.18);
+    color:#e6c96f;
+    font-size:11px;
+    font-weight:800;
 }
 
-/* LOADING */
+/* =========================
+   FOOTER
+========================= */
 
-.loading{
+.footer{
+    border-top:1px solid var(--border);
+    padding:30px 24px;
+    color:#606a78;
+    font-size:11px;
     text-align:center;
-    padding:80px 20px;
-    color:#818a98;
-}
-
-.spinner{
-    width:34px;
-    height:34px;
-    margin:0 auto 18px;
-
-    border:3px solid #262c36;
-    border-top-color:#e31837;
-    border-radius:50%;
-
-    animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* ERROR */
-
-.error{
-    width:94%;
-    max-width:900px;
-    margin:50px auto;
-    padding:25px;
-
-    border:1px solid #54232d;
-    background:#190c10;
-    color:#ff9aaa;
-    border-radius:12px;
     line-height:1.7;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:1100px){
-
-    .grid{
+@media(max-width:1150px){
+    .player-grid{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-
-    .controls{
+    .toolbar{
         grid-template-columns:1fr 1fr;
     }
 }
 
-@media(max-width:760px){
+@media(max-width:800px){
+    .header-nav{
+        display:none;
+    }
 
-    .grid{
+    .player-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .modal-top{
+    .profile{
         grid-template-columns:1fr;
     }
 
-    .modal-image{
-        height:300px;
+    .profile-left{
+        min-height:360px;
     }
 
-    .modal-image img{
-        height:300px;
+    .profile-image{
+        height:360px;
     }
 
-    .stats{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .stat{
-        padding:13px;
-    }
-
-    .stat-number{
-        font-size:21px;
-    }
-
-    .stat-label{
-        font-size:8px;
+    .detail-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:500px){
+@media(max-width:560px){
+    .container{
+        padding:25px 14px 60px;
+    }
 
-    .grid{
+    .hero-content{
+        padding:55px 18px;
+    }
+
+    .hero h1{
+        font-size:50px;
+        letter-spacing:-3px;
+    }
+
+    .player-grid{
         grid-template-columns:1fr;
     }
 
-    .controls{
+    .toolbar{
         grid-template-columns:1fr;
     }
 
-    .hero{
-        padding-top:45px;
+    .status-row{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
-    .modal-name{
+    .profile-right{
+        padding:24px;
+    }
+
+    .profile-name{
         font-size:32px;
-    }
-
-    .stat-grid{
-        grid-template-columns:repeat(3,1fr);
     }
 }
 </style>
@@ -609,1481 +817,1887 @@ h1 span{
 
 <body>
 
-<header>
+<!-- =========================
+     HEADER
+========================= -->
 
-<div class="nav">
+<header class="header">
 
-<div class="brand">
+    <div class="header-inner">
 
-<img
-class="logo"
-src="https://cdn.nba.com/logos/leagues/logo-nba.svg"
-alt="NBA"
->
+        <a class="brand" href="#top">
 
-<div>
+            <img
+                class="nba-logo"
+                src="https://cdn.nba.com/logos/leagues/logo-nba.svg"
+                alt="NBA"
+            >
 
-<div class="brand-title">
-NBA DATABASE
-</div>
+            <div class="brand-text">
+                <div class="brand-title">
+                    NBA DATABASE
+                </div>
 
-<div class="brand-sub">
-PLAYER INFORMATION SYSTEM
-</div>
+                <div class="brand-sub">
+                    PLAYER INDEX
+                </div>
+            </div>
 
-</div>
+        </a>
 
-</div>
+        <nav class="header-nav">
+            <a href="#players">Players</a>
+            <a href="#players">Teams</a>
+            <a href="#players">Stats</a>
+            <a href="https://www.nba.com/players" target="_blank">
+                NBA.com
+            </a>
+        </nav>
 
-<div class="live">
-
-<span class="dot"></span>
-
-LIVE DATABASE
-
-</div>
-
-</div>
+    </div>
 
 </header>
 
 
-<main>
+<!-- =========================
+     HERO
+========================= -->
 
-<section class="hero">
+<section class="hero" id="top">
 
-<div class="hero-grid">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
 
-<div>
+    <div class="hero-content">
 
-<div class="eyebrow">
-NATIONAL BASKETBALL ASSOCIATION
-</div>
+        <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            2025–26 NBA PLAYER DATABASE
+        </div>
 
-<h1>
-NBA<br>
-PLAYER <span>DATABASE</span>
-</h1>
+        <h1>
+            EVERY PLAYER.<br>
+            <span>ONE DATABASE.</span>
+        </h1>
 
-<p class="description">
-Search and explore NBA players with roster,
-physical profile, statistics, achievements and
-career information.
-</p>
+        <p class="hero-description">
+            Search, filter and explore NBA players by team,
+            position, physical profile and career information.
+        </p>
 
-</div>
+        <div class="hero-stats">
 
+            <div class="hero-stat">
+                <strong id="heroCount">—</strong>
+                <span>Players loaded</span>
+            </div>
 
-<div class="stats">
+            <div class="hero-stat">
+                <strong id="heroTeams">30</strong>
+                <span>NBA teams</span>
+            </div>
 
-<div class="stat">
+            <div class="hero-stat">
+                <strong id="heroPositions">—</strong>
+                <span>Positions</span>
+            </div>
 
-<div
-class="stat-number"
-id="totalPlayers"
->
-—
-</div>
+        </div>
 
-<div class="stat-label">
-PLAYERS LOADED
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-number">
-30
-</div>
-
-<div class="stat-label">
-NBA TEAMS
-</div>
-
-</div>
-
-
-<div class="stat">
-
-<div
-class="stat-number"
-id="visiblePlayers"
->
-—
-</div>
-
-<div class="stat-label">
-CURRENT VIEW
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<section class="controls">
+<!-- =========================
+     MAIN
+========================= -->
 
-<input
-id="search"
-class="control"
-placeholder="Search player..."
->
+<main class="container" id="players">
 
-<select
-id="team"
-class="control"
->
+    <div class="toolbar">
 
-<option value="">
-All Teams
-</option>
+        <div class="search-box">
 
-</select>
+            <svg viewBox="0 0 24 24">
+                <path d="M10.8 18.1a7.3 7.3 0 1 1 5.17-2.14A7.26 7.26 0 0 1 10.8 18.1Zm0-12.6a5.3 5.3 0 1 0 3.75 1.55A5.27 5.27 0 0 0 10.8 5.5Zm9.4 15.7-5.2-5.2 1.4-1.4 5.2 5.2-1.4 1.4Z"/>
+            </svg>
 
+            <input
+                id="searchInput"
+                class="search-input"
+                type="text"
+                placeholder="Search player..."
+                autocomplete="off"
+            >
 
-<select
-id="position"
-class="control"
->
-
-<option value="">
-All Positions
-</option>
-
-</select>
+        </div>
 
 
-<select
-id="sort"
-class="control"
->
-
-<option value="az">
-Name A → Z
-</option>
-
-<option value="za">
-Name Z → A
-</option>
-
-<option value="height">
-Height
-</option>
-
-<option value="weight">
-Weight
-</option>
-
-</select>
-
-</section>
+        <select id="teamFilter" class="filter">
+            <option value="all">All Teams</option>
+        </select>
 
 
-<section class="database-bar">
-
-<div class="database-title">
-Player Directory
-</div>
-
-<div
-class="database-status"
-id="status"
->
-Connecting...
-</div>
-
-</section>
+        <select id="positionFilter" class="filter">
+            <option value="all">All Positions</option>
+        </select>
 
 
-<div
-id="loading"
-class="loading"
->
+        <select id="sortFilter" class="filter">
 
-<div class="spinner"></div>
+            <option value="name-asc">
+                Name A–Z
+            </option>
 
-Loading NBA player database...
+            <option value="name-desc">
+                Name Z–A
+            </option>
 
-</div>
+            <option value="team">
+                Team
+            </option>
+
+            <option value="height">
+                Height
+            </option>
+
+            <option value="weight">
+                Weight
+            </option>
+
+        </select>
+
+    </div>
 
 
-<div
-id="error"
-class="error"
-style="display:none"
-></div>
+    <div class="status-row">
+
+        <div class="results-text">
+            Showing
+            <strong id="resultCount">0</strong>
+            players
+        </div>
+
+        <div class="status">
+
+            <span
+                id="statusDot"
+                class="status-dot loading"
+            ></span>
+
+            <span id="statusText">
+                Loading player database...
+            </span>
+
+        </div>
+
+    </div>
 
 
-<section
-id="grid"
-class="grid"
-style="display:none"
-></section>
+    <div id="playerGrid" class="player-grid"></div>
 
 
-<div
-id="pagination"
-class="pagination"
-style="display:none"
-></div>
+    <div id="emptyState" class="empty">
+
+        <div class="empty-icon">
+            🏀
+        </div>
+
+        <h2 id="emptyTitle">
+            No players found
+        </h2>
+
+        <p id="emptyMessage">
+            Try another player name, team or position.
+        </p>
+
+        <button
+            id="retryBtn"
+            class="retry-btn"
+            style="display:none"
+        >
+            Reload database
+        </button>
+
+    </div>
+
+
+    <div id="pagination" class="pagination"></div>
 
 </main>
 
 
-<!-- MODAL -->
+<!-- =========================
+     MODAL
+========================= -->
 
 <div
-id="modal"
-class="modal"
+    id="playerModal"
+    class="modal"
+    aria-hidden="true"
 >
 
-<div class="modal-box">
+    <div class="modal-box">
 
-<div class="modal-top">
+        <div class="modal-head">
 
-<div class="modal-image">
+            <button
+                id="closeModal"
+                class="close"
+                aria-label="Close"
+            >
+                ×
+            </button>
 
-<img
-id="modalImg"
-src=""
-alt=""
->
+        </div>
+
+
+        <div class="profile">
+
+            <div class="profile-left">
+
+                <img
+                    id="modalImage"
+                    class="profile-image"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="profile-right">
+
+                <div
+                    id="modalTeam"
+                    class="profile-team"
+                >
+                    NBA
+                </div>
+
+                <h2
+                    id="modalName"
+                    class="profile-name"
+                >
+                    Player
+                </h2>
+
+                <div
+                    id="modalSub"
+                    class="profile-sub"
+                >
+                    —
+                </div>
+
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            Position
+                        </div>
+
+                        <div
+                            id="modalPosition"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            Height
+                        </div>
+
+                        <div
+                            id="modalHeight"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            Weight
+                        </div>
+
+                        <div
+                            id="modalWeight"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            Jersey
+                        </div>
+
+                        <div
+                            id="modalNumber"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            Country
+                        </div>
+
+                        <div
+                            id="modalCountry"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="detail-label">
+                            College
+                        </div>
+
+                        <div
+                            id="modalCollege"
+                            class="detail-value"
+                        >
+                            —
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-section">
+
+                    <h3>
+                        Career
+                    </h3>
+
+                    <div
+                        id="modalCareer"
+                        class="profile-sub"
+                    >
+                        Career information will appear here
+                        when available in players.json.
+                    </div>
+
+                </div>
+
+
+                <div class="profile-section">
+
+                    <h3>
+                        Awards
+                    </h3>
+
+                    <div
+                        id="modalAwards"
+                        class="awards"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-<div class="modal-content">
+<!-- =========================
+     FOOTER
+========================= -->
 
-<button
-class="close"
-onclick="closeModal()"
->
-×
-</button>
+<footer class="footer">
 
+    NBA Player Database —
+    independent fan-made interface.
 
-<div
-id="modalTeam"
-class="modal-team"
-></div>
+    <br>
 
+    Player roster fields are structured from
+    NBA roster data. Verify current information
+    with NBA.com before using it as an official source.
 
-<div
-id="modalName"
-class="modal-name"
-></div>
-
-
-<div
-id="infoGrid"
-class="info-grid"
-></div>
-
-</div>
-
-</div>
-
-
-<div class="modal-section">
-
-<div class="section-title">
-STATISTICS
-</div>
-
-<div
-id="statGrid"
-class="stat-grid"
-></div>
-
-</div>
-
-
-<div class="modal-section">
-
-<div class="section-title">
-AWARDS & ACHIEVEMENTS
-</div>
-
-<div
-id="awards"
-class="pills"
-></div>
-
-</div>
-
-
-<div class="modal-section">
-
-<div class="section-title">
-INJURY HISTORY
-</div>
-
-<div
-id="injuries"
-class="pills"
-></div>
-
-</div>
-
-</div>
-
-</div>
+</footer>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
+   NBA PLAYER DATABASE
+   =========================================================
+
+   IMPORTANT:
+
+   This page expects:
+
+       index.html
+       players.json
+
+   in the SAME folder.
+
+   Example:
+
+       nba-player-database/
+       ├── index.html
+       └── players.json
+
+   ========================================================= */
+
+
+/* =========================
    CONFIG
-===================================================== */
+========================= */
 
-const API =
-"https://www.balldontlie.io/api/v1/players";
+const DATA_FILE = "./players.json";
 
-const NBA_IMAGE =
-"https://cdn.nba.com/headshots/nba/latest/1040x760/";
-
-
-const PER_PAGE = 24;
+const NBA_HEADSHOT =
+    "https://cdn.nba.com/headshots/nba/latest/1040x760/";
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+const PLAYERS_PER_PAGE = 24;
+
+
+/* =========================
+   STATE
+========================= */
 
 let players = [];
 
-let filtered = [];
+let filteredPlayers = [];
 
 let currentPage = 1;
 
 
-/* =====================================================
-   DOM
-===================================================== */
+/* =========================
+   ELEMENTS
+========================= */
 
-const grid =
-document.getElementById("grid");
+const playerGrid =
+    document.getElementById("playerGrid");
 
-const loading =
-document.getElementById("loading");
+const searchInput =
+    document.getElementById("searchInput");
 
-const error =
-document.getElementById("error");
+const teamFilter =
+    document.getElementById("teamFilter");
+
+const positionFilter =
+    document.getElementById("positionFilter");
+
+const sortFilter =
+    document.getElementById("sortFilter");
+
+const resultCount =
+    document.getElementById("resultCount");
+
+const heroCount =
+    document.getElementById("heroCount");
+
+const heroPositions =
+    document.getElementById("heroPositions");
+
+const statusDot =
+    document.getElementById("statusDot");
+
+const statusText =
+    document.getElementById("statusText");
 
 const pagination =
-document.getElementById("pagination");
+    document.getElementById("pagination");
 
-const search =
-document.getElementById("search");
+const emptyState =
+    document.getElementById("emptyState");
 
-const team =
-document.getElementById("team");
+const emptyTitle =
+    document.getElementById("emptyTitle");
 
-const position =
-document.getElementById("position");
+const emptyMessage =
+    document.getElementById("emptyMessage");
 
-const sort =
-document.getElementById("sort");
+const retryBtn =
+    document.getElementById("retryBtn");
 
 
-/* =====================================================
-   LOAD
-===================================================== */
-
-async function loadPlayers(){
-
-try{
-
-let all = [];
-
-let page = 1;
-
-let more = true;
-
-
-/*
-   Load multiple pages.
-   The API may impose a limit.
-*/
-
-while(more && page <= 30){
-
-const response =
-await fetch(
-`${API}?per_page=100&page=${page}`
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"API request failed."
-);
-
-}
-
-
-const data =
-await response.json();
-
-
-if(
-!data.data ||
-!data.data.length
-){
-
-break;
-
-}
-
-
-all =
-all.concat(data.data);
-
-
-more =
-data.meta &&
-data.meta.next_page
-? true
-: false;
-
-
-page++;
-
-}
-
-
-/*
-   Remove duplicate IDs
-*/
-
-const map =
-new Map();
-
-
-all.forEach(player => {
-
-if(player.id){
-
-map.set(
-player.id,
-player
-);
-
-}
-
-});
-
-
-players =
-Array.from(
-map.values()
-)
-.map(normalize);
-
-
-filtered =
-[...players];
-
-
-document
-.getElementById("totalPlayers")
-.textContent =
-players.length;
-
-
-document
-.getElementById("visiblePlayers")
-.textContent =
-players.length;
-
-
-document
-.getElementById("status")
-.textContent =
-`${players.length} PLAYERS LOADED`;
-
-
-loading.style.display =
-"none";
-
-
-grid.style.display =
-"grid";
-
-
-pagination.style.display =
-"flex";
-
-
-populateFilters();
-
-render();
-
-
-}
-
-catch(err){
-
-loading.style.display =
-"none";
-
-
-error.style.display =
-"block";
-
-
-error.innerHTML = `
-
-<strong>
-DATABASE CONNECTION ERROR
-</strong>
-
-<br><br>
-
-${escapeHTML(err.message)}
-
-<br><br>
-
-The external player API may be
-temporarily unavailable or may have
-changed its access policy.
-
-`;
-
-}
-
-}
-
-
-/* =====================================================
-   NORMALIZE
-===================================================== */
-
-function normalize(p){
-
-return {
-
-id:p.id,
-
-name:
-`${p.first_name || ""}
- ${p.last_name || ""}`
-.trim(),
-
-team:
-p.team
-? p.team.full_name
-: "Unknown",
-
-teamAbbr:
-p.team
-? p.team.abbreviation
-: "",
-
-position:
-p.position || "",
-
-height:
-p.height_feet
-?
-`${p.height_feet}'${p.height_inches || 0}"`
-:
-"",
-
-weight:
-p.weight_pounds
-?
-`${p.weight_pounds} lb`
-:
-"",
-
-number:
-p.jersey_number || "",
-
-country:
-p.country || "",
-
-college:
-p.college || "",
-
-stats:{},
-
-awards:[],
-
-injuries:[]
-
-};
-
-}
-
-
-/* =====================================================
-   FILTERS
-===================================================== */
-
-function populateFilters(){
-
-const teams =
-[
-...new Set(
-players
-.map(p => p.team)
-.filter(Boolean)
-)
-]
-.sort();
-
-
-teams.forEach(t => {
-
-team.innerHTML += `
-<option value="${escapeHTML(t)}">
-${escapeHTML(t)}
-</option>
-`;
-
-});
-
-
-const positions =
-[
-...new Set(
-players
-.map(p => p.position)
-.filter(Boolean)
-)
-]
-.sort();
-
-
-positions.forEach(p => {
-
-position.innerHTML += `
-<option value="${escapeHTML(p)}">
-${escapeHTML(p)}
-</option>
-`;
-
-});
-
-}
-
-
-/* =====================================================
-   APPLY
-===================================================== */
-
-function apply(){
-
-const q =
-search.value
-.toLowerCase()
-.trim();
-
-
-const selectedTeam =
-team.value;
-
-
-const selectedPosition =
-position.value;
-
-
-filtered =
-players.filter(p => {
-
-const matchSearch =
-!q ||
-p.name
-.toLowerCase()
-.includes(q);
-
-
-const matchTeam =
-!selectedTeam ||
-p.team === selectedTeam;
-
-
-const matchPosition =
-!selectedPosition ||
-p.position === selectedPosition;
-
-
-return (
-matchSearch &&
-matchTeam &&
-matchPosition
-);
-
-});
-
-
-sortPlayers();
-
-currentPage = 1;
-
-render();
-
-}
-
-
-/* =====================================================
-   SORT
-===================================================== */
-
-function sortPlayers(){
-
-const mode =
-sort.value;
-
-
-if(mode === "az"){
-
-filtered.sort(
-(a,b) =>
-a.name.localeCompare(b.name)
-);
-
-}
-
-
-if(mode === "za"){
-
-filtered.sort(
-(a,b) =>
-b.name.localeCompare(a.name)
-);
-
-}
-
-
-if(mode === "height"){
-
-filtered.sort(
-(a,b) =>
-parseHeight(b.height)
--
-parseHeight(a.height)
-);
-
-}
-
-
-if(mode === "weight"){
-
-filtered.sort(
-(a,b) =>
-parseWeight(b.weight)
--
-parseWeight(a.weight)
-);
-
-}
-
-}
-
-
-/* =====================================================
-   PARSE HEIGHT
-===================================================== */
-
-function parseHeight(v){
-
-if(!v)
-return 0;
-
-
-const m =
-v.match(/(\d+)'(\d+)/);
-
-
-if(!m)
-return 0;
-
-
-return (
-Number(m[1]) * 12 +
-Number(m[2])
-);
-
-}
-
-
-/* =====================================================
-   PARSE WEIGHT
-===================================================== */
-
-function parseWeight(v){
-
-if(!v)
-return 0;
-
-
-const m =
-v.match(/\d+/);
-
-
-return m
-? Number(m[0])
-: 0;
-
-}
-
-
-/* =====================================================
-   RENDER
-===================================================== */
-
-function render(){
-
-grid.innerHTML = "";
-
-
-document
-.getElementById("visiblePlayers")
-.textContent =
-filtered.length;
-
-
-document
-.getElementById("status")
-.textContent =
-`${filtered.length} MATCHING PLAYERS`;
-
-
-const start =
-(currentPage - 1)
-* PER_PAGE;
-
-
-const pagePlayers =
-filtered.slice(
-start,
-start + PER_PAGE
-);
-
-
-pagePlayers.forEach(player => {
-
-grid.appendChild(
-createCard(player)
-);
-
-});
-
-
-renderPagination();
-
-}
-
-
-/* =====================================================
-   CARD
-===================================================== */
-
-function createCard(player){
-
-const card =
-document.createElement("article");
-
-
-card.className =
-"card";
-
-
-card.onclick =
-() => openModal(player);
-
-
-const image =
-NBA_IMAGE +
-player.id +
-".png";
-
-
-card.innerHTML = `
-
-<div class="number">
-${escapeHTML(player.number)}
-</div>
-
-<div class="card-image">
-
-<img
-src="${image}"
-alt="${escapeHTML(player.name)}"
-loading="lazy"
-onerror="this.style.display='none'"
->
-
-</div>
-
-
-<div class="card-info">
-
-<div class="player-name">
-${escapeHTML(player.name)}
-</div>
-
-<div class="team">
-${escapeHTML(player.team)}
-</div>
-
-
-<div class="badges">
-
-${
-player.position
-?
-`
-<span class="badge">
-${escapeHTML(player.position)}
-</span>
-`
-:""
-}
-
-
-${
-player.height
-?
-`
-<span class="badge">
-${escapeHTML(player.height)}
-</span>
-`
-:""
-}
-
-
-${
-player.weight
-?
-`
-<span class="badge">
-${escapeHTML(player.weight)}
-</span>
-`
-:""
-}
-
-</div>
-
-</div>
-
-`;
-
-
-return card;
-
-}
-
-
-/* =====================================================
-   PAGINATION
-===================================================== */
-
-function renderPagination(){
-
-pagination.innerHTML = "";
-
-
-const pages =
-Math.ceil(
-filtered.length /
-PER_PAGE
-);
-
-
-if(pages <= 1)
-return;
-
-
-const previous =
-document.createElement("button");
-
-
-previous.className =
-"page";
-
-
-previous.textContent =
-"‹";
-
-
-previous.disabled =
-currentPage === 1;
-
-
-previous.onclick = () => {
-
-currentPage--;
-
-render();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-};
-
-
-pagination.appendChild(
-previous
-);
-
-
-let start =
-Math.max(
-1,
-currentPage - 2
-);
-
-
-let end =
-Math.min(
-pages,
-currentPage + 2
-);
-
-
-for(
-let i=start;
-i<=end;
-i++
-){
-
-const button =
-document.createElement("button");
-
-
-button.className =
-"page";
-
-
-if(i === currentPage){
-
-button.classList.add(
-"active"
-);
-
-}
-
-
-button.textContent =
-i;
-
-
-button.onclick = () => {
-
-currentPage = i;
-
-render();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-};
-
-
-pagination.appendChild(
-button
-);
-
-}
-
-
-const next =
-document.createElement("button");
-
-
-next.className =
-"page";
-
-
-next.textContent =
-"›";
-
-
-next.disabled =
-currentPage === pages;
-
-
-next.onclick = () => {
-
-currentPage++;
-
-render();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-};
-
-
-pagination.appendChild(
-next
-);
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-function openModal(player){
-
-const modal =
-document.getElementById(
-"modal"
-);
-
-
-modal.classList.add(
-"open"
-);
-
-
-document
-.getElementById("modalImg")
-.src =
-NBA_IMAGE +
-player.id +
-".png";
-
-
-document
-.getElementById("modalName")
-.textContent =
-player.name;
-
-
-document
-.getElementById("modalTeam")
-.textContent =
-`${player.team} ${
-player.number
-?
-"#"+player.number
-:""
-}`;
-
-
-const info =
-document.getElementById(
-"infoGrid"
-);
-
-
-info.innerHTML = "";
-
-
-addInfo(
-"Position",
-player.position
-);
-
-
-addInfo(
-"Height",
-player.height
-);
-
-
-addInfo(
-"Weight",
-player.weight
-);
-
-
-addInfo(
-"Country",
-player.country
-);
-
-
-addInfo(
-"College",
-player.college
-);
-
-
-function addInfo(
-label,
-value
-){
-
-info.innerHTML += `
-
-<div class="info">
-
-<div class="info-label">
-${label}
-</div>
-
-<div class="info-value">
-${escapeHTML(
-value || "—"
-)}
-</div>
-
-</div>
-
-`;
-
-}
-
-
-renderStats(player);
-
-renderAwards(player);
-
-renderInjuries(player);
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-function renderStats(player){
-
-const container =
-document.getElementById(
-"statGrid"
-);
-
-
-container.innerHTML = "";
-
-
-const stats = [
-
-["PPG","—"],
-["RPG","—"],
-["APG","—"],
-["SPG","—"],
-["BPG","—"],
-["FG%","—"]
-
-];
-
-
-stats.forEach(
-([label,value]) => {
-
-container.innerHTML += `
-
-<div class="mini">
-
-<strong>
-${value}
-</strong>
-
-<span>
-${label}
-</span>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-/* =====================================================
-   AWARDS
-===================================================== */
-
-function renderAwards(player){
-
-const container =
-document.getElementById(
-"awards"
-);
-
-
-container.innerHTML = "";
-
-
-if(!player.awards.length){
-
-container.innerHTML = `
-<span class="pill">
-No award data
-</span>
-`;
-
-return;
-
-}
-
-
-player.awards.forEach(
-award => {
-
-container.innerHTML += `
-<span class="pill">
-${escapeHTML(award)}
-</span>
-`;
-
-});
-
-}
-
-
-/* =====================================================
-   INJURIES
-===================================================== */
-
-function renderInjuries(player){
-
-const container =
-document.getElementById(
-"injuries"
-);
-
-
-container.innerHTML = "";
-
-
-if(!player.injuries.length){
-
-container.innerHTML = `
-<span class="pill">
-No injury data
-</span>
-`;
-
-return;
-
-}
-
-
-player.injuries.forEach(
-injury => {
-
-container.innerHTML += `
-<span class="pill">
-${escapeHTML(injury)}
-</span>
-`;
-
-});
-
-}
-
-
-/* =====================================================
-   CLOSE
-===================================================== */
-
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList.remove(
-"open"
-);
-
-}
-
-
-document
-.getElementById("modal")
-.addEventListener(
-"click",
-e => {
-
-if(
-e.target.id === "modal"
-){
-
-closeModal();
-
-}
-
-});
-
-
-document.addEventListener(
-"keydown",
-e => {
-
-if(
-e.key === "Escape"
-){
-
-closeModal();
-
-}
-
-});
-
-
-/* =====================================================
-   EVENTS
-===================================================== */
-
-search.addEventListener(
-"input",
-apply
-);
-
-team.addEventListener(
-"change",
-apply
-);
-
-position.addEventListener(
-"change",
-apply
-);
-
-sort.addEventListener(
-"change",
-apply
-);
-
-
-/* =====================================================
-   ESCAPE
-===================================================== */
+/* =========================
+   UTILITY
+========================= */
 
 function escapeHTML(value){
 
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+    if(value === null ||
+       value === undefined){
+
+        return "";
+
+    }
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+
+function getValue(player, ...keys){
+
+    for(const key of keys){
+
+        if(
+            player[key] !== undefined &&
+            player[key] !== null &&
+            player[key] !== ""
+        ){
+
+            return player[key];
+
+        }
+
+    }
+
+    return "";
 
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+function normalizePlayer(player,index){
 
-loadPlayers();
+    return {
+
+        id:
+            getValue(
+                player,
+                "id",
+                "playerId",
+                "nbaId"
+            ) || index + 1,
+
+        name:
+            getValue(
+                player,
+                "name",
+                "full_name",
+                "fullName",
+                "player"
+            ) || "Unknown Player",
+
+        team:
+            getValue(
+                player,
+                "team",
+                "teamAbbreviation",
+                "team_abbreviation"
+            ) || "—",
+
+        teamName:
+            getValue(
+                player,
+                "teamName",
+                "team_name"
+            ) || "",
+
+        number:
+            getValue(
+                player,
+                "number",
+                "jersey"
+            ) || "—",
+
+        position:
+            getValue(
+                player,
+                "position",
+                "pos"
+            ) || "—",
+
+        height:
+            getValue(
+                player,
+                "height"
+            ) || "—",
+
+        weight:
+            getValue(
+                player,
+                "weight"
+            ) || "—",
+
+        country:
+            getValue(
+                player,
+                "country",
+                "nationality"
+            ) || "—",
+
+        college:
+            getValue(
+                player,
+                "college",
+                "school",
+                "lastAttended"
+            ) || "—",
+
+        draft:
+            getValue(
+                player,
+                "draft",
+                "draftYear",
+                "draft_year"
+            ) || "—",
+
+        experience:
+            getValue(
+                player,
+                "experience",
+                "years"
+            ) || "—",
+
+        image:
+            getValue(
+                player,
+                "image",
+                "photo",
+                "headshot"
+            ) || "",
+
+        awards:
+            Array.isArray(player.awards)
+                ? player.awards
+                : [],
+
+        stats:
+            player.stats || {},
+
+        injuries:
+            Array.isArray(player.injuries)
+                ? player.injuries
+                : []
+
+    };
+
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+function getPlayerImage(player){
+
+    if(player.image){
+
+        return player.image;
+
+    }
+
+    /*
+       IMPORTANT:
+
+       Only use NBA CDN image when the
+       JSON contains a real NBA player ID.
+
+       Example:
+
+       {
+           "id": 2544,
+           "name": "LeBron James"
+       }
+
+    */
+
+    if(
+        String(player.id).match(/^\d+$/) &&
+        Number(player.id) > 100
+    ){
+
+        return NBA_HEADSHOT + player.id + ".png";
+
+    }
+
+    return "";
+
+}
+
+
+/* =========================
+   LOAD DATABASE
+========================= */
+
+async function loadDatabase(){
+
+    setStatus(
+        "loading",
+        "Loading player database..."
+    );
+
+    try{
+
+        const response =
+            await fetch(
+                DATA_FILE + "?v=" + Date.now()
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "players.json could not be loaded."
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+
+        if(Array.isArray(data)){
+
+            players =
+                data.map(normalizePlayer);
+
+        }
+
+        else if(
+            Array.isArray(data.players)
+        ){
+
+            players =
+                data.players.map(normalizePlayer);
+
+        }
+
+        else{
+
+            throw new Error(
+                "Invalid players.json structure."
+            );
+
+        }
+
+
+        if(players.length === 0){
+
+            throw new Error(
+                "players.json contains no players."
+            );
+
+        }
+
+
+        filteredPlayers =
+            [...players];
+
+
+        buildFilters();
+
+        updateHeroStats();
+
+        applyFilters();
+
+
+        setStatus(
+            "success",
+            `${players.length} players loaded`
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        players = [];
+
+        filteredPlayers = [];
+
+        playerGrid.innerHTML = "";
+
+        pagination.innerHTML = "";
+
+        resultCount.textContent = "0";
+
+        emptyTitle.textContent =
+            "Player database not found";
+
+        emptyMessage.innerHTML =
+            `
+            <strong>players.json</strong>
+            was not loaded.
+            <br><br>
+            Put <strong>players.json</strong>
+            in the same GitHub folder as
+            <strong>index.html</strong>.
+            `;
+
+        emptyState.classList.add("show");
+
+        retryBtn.style.display =
+            "inline-block";
+
+        setStatus(
+            "error",
+            "Database failed to load"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+function setStatus(type,message){
+
+    statusText.textContent = message;
+
+    statusDot.className =
+        "status-dot";
+
+    if(type === "loading"){
+
+        statusDot.classList.add(
+            "loading"
+        );
+
+    }
+
+    if(type === "error"){
+
+        statusDot.classList.add(
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   HERO STATS
+========================= */
+
+function updateHeroStats(){
+
+    heroCount.textContent =
+        players.length.toLocaleString();
+
+
+    const positions =
+        new Set(
+            players
+                .map(p => p.position)
+                .filter(Boolean)
+                .filter(p => p !== "—")
+        );
+
+    heroPositions.textContent =
+        positions.size;
+
+}
+
+
+/* =========================
+   FILTERS
+========================= */
+
+function buildFilters(){
+
+    teamFilter.innerHTML =
+        `<option value="all">All Teams</option>`;
+
+    positionFilter.innerHTML =
+        `<option value="all">All Positions</option>`;
+
+
+    const teams =
+        [...new Set(
+            players
+                .map(p => p.team)
+                .filter(Boolean)
+                .filter(t => t !== "—")
+        )]
+        .sort();
+
+
+    const positions =
+        [...new Set(
+            players
+                .map(p => p.position)
+                .filter(Boolean)
+                .filter(p => p !== "—")
+        )]
+        .sort();
+
+
+    teams.forEach(team => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = team;
+        option.textContent = team;
+
+        teamFilter.appendChild(option);
+
+    });
+
+
+    positions.forEach(position => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = position;
+        option.textContent = position;
+
+        positionFilter.appendChild(option);
+
+    });
+
+}
+
+
+/* =========================
+   FILTER + SORT
+========================= */
+
+function applyFilters(){
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const team =
+        teamFilter.value;
+
+
+    const position =
+        positionFilter.value;
+
+
+    filteredPlayers =
+        players.filter(player => {
+
+            const matchesSearch =
+                !search ||
+                player.name
+                    .toLowerCase()
+                    .includes(search) ||
+
+                String(player.team)
+                    .toLowerCase()
+                    .includes(search) ||
+
+                String(player.country)
+                    .toLowerCase()
+                    .includes(search);
+
+
+            const matchesTeam =
+                team === "all" ||
+                player.team === team;
+
+
+            const matchesPosition =
+                position === "all" ||
+                player.position === position;
+
+
+            return (
+                matchesSearch &&
+                matchesTeam &&
+                matchesPosition
+            );
+
+        });
+
+
+    sortPlayers();
+
+    currentPage = 1;
+
+    render();
+
+}
+
+
+/* =========================
+   SORT
+========================= */
+
+function sortPlayers(){
+
+    const sort =
+        sortFilter.value;
+
+
+    filteredPlayers.sort(
+        (a,b) => {
+
+            if(sort === "name-asc"){
+
+                return a.name
+                    .localeCompare(b.name);
+
+            }
+
+
+            if(sort === "name-desc"){
+
+                return b.name
+                    .localeCompare(a.name);
+
+            }
+
+
+            if(sort === "team"){
+
+                return String(a.team)
+                    .localeCompare(
+                        String(b.team)
+                    );
+
+            }
+
+
+            if(sort === "height"){
+
+                return parseHeight(b.height)
+                    -
+                    parseHeight(a.height);
+
+            }
+
+
+            if(sort === "weight"){
+
+                return parseWeight(b.weight)
+                    -
+                    parseWeight(a.weight);
+
+            }
+
+
+            return 0;
+
+        }
+    );
+
+}
+
+
+/* =========================
+   HEIGHT
+========================= */
+
+function parseHeight(value){
+
+    if(!value){
+
+        return 0;
+
+    }
+
+
+    const text =
+        String(value)
+            .toLowerCase()
+            .trim();
+
+
+    const feetMatch =
+        text.match(
+            /(\d+)\s*-\s*(\d+)/
+        );
+
+
+    if(feetMatch){
+
+        return (
+            Number(feetMatch[1]) * 12
+        ) + Number(feetMatch[2]);
+
+    }
+
+
+    const cmMatch =
+        text.match(
+            /(\d+(?:\.\d+)?)\s*cm/
+        );
+
+
+    if(cmMatch){
+
+        return (
+            Number(cmMatch[1]) / 2.54
+        );
+
+    }
+
+
+    return parseFloat(text) || 0;
+
+}
+
+
+/* =========================
+   WEIGHT
+========================= */
+
+function parseWeight(value){
+
+    if(!value){
+
+        return 0;
+
+    }
+
+
+    const number =
+        parseFloat(
+            String(value)
+                .replace(/,/g,"")
+        );
+
+
+    if(
+        String(value)
+            .toLowerCase()
+            .includes("kg")
+    ){
+
+        return number * 2.20462;
+
+    }
+
+
+    return number;
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render(){
+
+    resultCount.textContent =
+        filteredPlayers.length.toLocaleString();
+
+
+    if(filteredPlayers.length === 0){
+
+        playerGrid.innerHTML = "";
+
+        pagination.innerHTML = "";
+
+        emptyTitle.textContent =
+            "No players found";
+
+        emptyMessage.textContent =
+            "Try another player name, team or position.";
+
+        retryBtn.style.display =
+            "none";
+
+        emptyState.classList.add("show");
+
+        return;
+
+    }
+
+
+    emptyState.classList.remove("show");
+
+
+    const totalPages =
+        Math.ceil(
+            filteredPlayers.length /
+            PLAYERS_PER_PAGE
+        );
+
+
+    if(currentPage > totalPages){
+
+        currentPage = totalPages;
+
+    }
+
+
+    const start =
+        (currentPage - 1)
+        *
+        PLAYERS_PER_PAGE;
+
+
+    const end =
+        start +
+        PLAYERS_PER_PAGE;
+
+
+    const visible =
+        filteredPlayers.slice(
+            start,
+            end
+        );
+
+
+    playerGrid.innerHTML =
+        visible
+            .map(createPlayerCard)
+            .join("");
+
+
+    renderPagination(
+        totalPages
+    );
+
+}
+
+
+/* =========================
+   PLAYER CARD
+========================= */
+
+function createPlayerCard(player){
+
+    const image =
+        getPlayerImage(player);
+
+
+    const imageHTML =
+        image
+
+        ?
+
+        `
+        <img
+            class="player-photo"
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(player.name)}"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+
+        <div
+            class="photo-placeholder"
+            style="display:none"
+        >
+            ${escapeHTML(
+                player.name
+                    .charAt(0)
+                    .toUpperCase()
+            )}
+        </div>
+        `
+
+        :
+
+        `
+        <div class="photo-placeholder">
+            ${escapeHTML(
+                player.name
+                    .charAt(0)
+                    .toUpperCase()
+            )}
+        </div>
+        `;
+
+
+    return `
+
+        <article
+            class="player-card"
+            onclick="openPlayer(${escapeHTML(player.id)})"
+        >
+
+            <div class="card-top">
+
+                <span class="team-badge">
+                    ${escapeHTML(player.team)}
+                </span>
+
+                <span class="player-number">
+                    ${escapeHTML(player.number)}
+                </span>
+
+            </div>
+
+
+            <div class="player-photo-wrap">
+
+                ${imageHTML}
+
+            </div>
+
+
+            <div class="card-info">
+
+                <div class="player-name">
+                    ${escapeHTML(player.name)}
+                </div>
+
+
+                <div class="player-meta">
+
+                    <span class="meta-pill">
+                        ${escapeHTML(player.position)}
+                    </span>
+
+                    <span class="meta-pill">
+                        ${escapeHTML(player.height)}
+                    </span>
+
+                    <span class="meta-pill">
+                        ${escapeHTML(player.weight)}
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <span>
+                        ${escapeHTML(player.country)}
+                    </span>
+
+                    <span>
+                        VIEW PROFILE →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+function renderPagination(totalPages){
+
+    pagination.innerHTML = "";
+
+
+    if(totalPages <= 1){
+
+        return;
+
+    }
+
+
+    const previous =
+        document.createElement("button");
+
+    previous.className =
+        "page-btn";
+
+    previous.textContent =
+        "‹";
+
+    previous.disabled =
+        currentPage === 1;
+
+    previous.onclick =
+        () => {
+
+            if(currentPage > 1){
+
+                currentPage--;
+
+                render();
+
+                window.scrollTo({
+                    top:document.getElementById(
+                        "players"
+                    ).offsetTop - 80,
+                    behavior:"smooth"
+                });
+
+            }
+
+        };
+
+
+    pagination.appendChild(previous);
+
+
+    const maxButtons = 7;
+
+
+    let start =
+        Math.max(
+            1,
+            currentPage -
+            Math.floor(maxButtons / 2)
+        );
+
+
+    let end =
+        Math.min(
+            totalPages,
+            start + maxButtons - 1
+        );
+
+
+    if(
+        end - start + 1
+        <
+        maxButtons
+    ){
+
+        start =
+            Math.max(
+                1,
+                end - maxButtons + 1
+            );
+
+    }
+
+
+    for(
+        let page = start;
+        page <= end;
+        page++
+    ){
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "page-btn" +
+            (
+                page === currentPage
+                ? " active"
+                : ""
+            );
+
+        button.textContent =
+            page;
+
+        button.onclick =
+            () => {
+
+                currentPage = page;
+
+                render();
+
+                window.scrollTo({
+                    top:document.getElementById(
+                        "players"
+                    ).offsetTop - 80,
+                    behavior:"smooth"
+                });
+
+            };
+
+
+        pagination.appendChild(button);
+
+    }
+
+
+    const next =
+        document.createElement("button");
+
+    next.className =
+        "page-btn";
+
+    next.textContent =
+        "›";
+
+    next.disabled =
+        currentPage === totalPages;
+
+    next.onclick =
+        () => {
+
+            if(currentPage < totalPages){
+
+                currentPage++;
+
+                render();
+
+                window.scrollTo({
+                    top:document.getElementById(
+                        "players"
+                    ).offsetTop - 80,
+                    behavior:"smooth"
+                });
+
+            }
+
+        };
+
+
+    pagination.appendChild(next);
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function openPlayer(id){
+
+    const player =
+        players.find(
+            p =>
+                String(p.id)
+                ===
+                String(id)
+        );
+
+
+    if(!player){
+
+        console.warn(
+            "Player not found:",
+            id
+        );
+
+        return;
+
+    }
+
+
+    const modal =
+        document.getElementById(
+            "playerModal"
+        );
+
+
+    const image =
+        getPlayerImage(player);
+
+
+    const modalImage =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    if(image){
+
+        modalImage.src = image;
+
+        modalImage.style.display =
+            "block";
+
+    }
+
+    else{
+
+        modalImage.removeAttribute(
+            "src"
+        );
+
+        modalImage.style.display =
+            "none";
+
+    }
+
+
+    document.getElementById(
+        "modalTeam"
+    ).textContent =
+        player.teamName
+        ?
+        `${player.teamName} · ${player.team}`
+        :
+        player.team;
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+        player.name;
+
+
+    document.getElementById(
+        "modalSub"
+    ).textContent =
+        `${player.position} · ${player.country}`;
+
+
+    document.getElementById(
+        "modalPosition"
+    ).textContent =
+        player.position;
+
+
+    document.getElementById(
+        "modalHeight"
+    ).textContent =
+        player.height;
+
+
+    document.getElementById(
+        "modalWeight"
+    ).textContent =
+        player.weight;
+
+
+    document.getElementById(
+        "modalNumber"
+    ).textContent =
+        player.number;
+
+
+    document.getElementById(
+        "modalCountry"
+    ).textContent =
+        player.country;
+
+
+    document.getElementById(
+        "modalCollege"
+    ).textContent =
+        player.college;
+
+
+    const career =
+        document.getElementById(
+            "modalCareer"
+        );
+
+
+    const careerParts = [];
+
+
+    if(player.draft !== "—"){
+
+        careerParts.push(
+            `Draft: ${player.draft}`
+        );
+
+    }
+
+
+    if(player.experience !== "—"){
+
+        careerParts.push(
+            `Experience: ${player.experience}`
+        );
+
+    }
+
+
+    career.textContent =
+        careerParts.length
+        ?
+        careerParts.join(" · ")
+        :
+        "No career information available.";
+
+
+    const awards =
+        document.getElementById(
+            "modalAwards"
+        );
+
+
+    if(player.awards.length){
+
+        awards.innerHTML =
+            player.awards
+                .map(
+                    award =>
+                    `
+                    <span class="award">
+                        ${escapeHTML(award)}
+                    </span>
+                    `
+                )
+                .join("");
+
+    }
+
+    else{
+
+        awards.innerHTML =
+            `
+            <span
+                style="
+                    color:#667180;
+                    font-size:12px;
+                "
+            >
+                No awards listed.
+            </span>
+            `;
+
+    }
+
+
+    modal.classList.add("open");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeModal(){
+
+    const modal =
+        document.getElementById(
+            "playerModal"
+        );
+
+
+    modal.classList.remove("open");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================
+   EVENTS
+========================= */
+
+searchInput.addEventListener(
+    "input",
+    applyFilters
+);
+
+
+teamFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+positionFilter.addEventListener(
+    "change",
+    applyFilters
+);
+
+
+sortFilter.addEventListener(
+    "change",
+    () => {
+
+        sortPlayers();
+
+        currentPage = 1;
+
+        render();
+
+    }
+);
+
+
+document.getElementById(
+    "closeModal"
+).addEventListener(
+    "click",
+    closeModal
+);
+
+
+document.getElementById(
+    "playerModal"
+).addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target.id
+            ===
+            "playerModal"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+retryBtn.addEventListener(
+    "click",
+    () => {
+
+        emptyState.classList.remove(
+            "show"
+        );
+
+        loadDatabase();
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+loadDatabase();
 
 </script>
 
