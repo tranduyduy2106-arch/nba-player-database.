@@ -1,1542 +1,2089 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NBA Player Database</title>
 
 <style>
-:root{
-  --bg:#080a0f;
-  --panel:#10131a;
-  --panel2:#151922;
-  --line:#262b36;
-  --text:#f5f7fa;
-  --muted:#8d95a3;
-  --red:#e31837;
-  --red2:#ff3555;
-  --green:#37d67a;
-  --yellow:#f4c542;
-}
-
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  background:
-    radial-gradient(circle at 80% -10%, rgba(227,24,55,.16), transparent 30%),
-    var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
+    background:#07090d;
+    color:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-button,
-input,
-select{
-  font:inherit;
+header{
+    height:72px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,9,13,.95);
+    border-bottom:1px solid #242936;
+    backdrop-filter:blur(15px);
 }
 
-button{
-  cursor:pointer;
+.nav{
+    width:94%;
+    max-width:1450px;
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-/* NAV */
-
-.navbar{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:68px;
-  border-bottom:1px solid var(--line);
-  background:rgba(8,10,15,.9);
-  backdrop-filter:blur(16px);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 5%;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:900;
-  letter-spacing:-.5px;
+    width:42px;
+    height:52px;
 }
 
-.logo-mark{
-  width:34px;
-  height:34px;
-  border-radius:8px;
-  background:var(--red);
-  display:grid;
-  place-items:center;
-  font-size:15px;
+.brand-title{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:.08em;
 }
 
-.logo span{
-  color:var(--muted);
-  font-weight:500;
+.brand-sub{
+    font-size:10px;
+    color:#777f8d;
+    margin-top:4px;
+    letter-spacing:.15em;
 }
 
-.nav-links{
-  display:flex;
-  gap:25px;
+.live{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    font-size:11px;
+    color:#9ba3af;
 }
 
-.nav-links a{
-  color:var(--muted);
-  text-decoration:none;
-  font-size:14px;
-}
-
-.nav-links a:hover{
-  color:white;
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#2ed158;
+    box-shadow:0 0 10px #2ed158;
 }
 
 /* HERO */
 
 .hero{
-  padding:75px 5% 45px;
-  max-width:1450px;
-  margin:auto;
+    width:94%;
+    max-width:1450px;
+    margin:auto;
+    padding:70px 0 45px;
 }
 
-.kicker{
-  color:var(--red2);
-  text-transform:uppercase;
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:800;
-  margin-bottom:14px;
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:40px;
+    align-items:end;
 }
 
-.hero h1{
-  font-size:clamp(40px,6vw,78px);
-  line-height:.95;
-  letter-spacing:-4px;
-  max-width:900px;
+.eyebrow{
+    color:#e31837;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.2em;
+    margin-bottom:15px;
 }
 
-.hero p{
-  color:var(--muted);
-  max-width:700px;
-  margin-top:22px;
-  line-height:1.7;
-  font-size:16px;
+h1{
+    font-size:clamp(45px,6vw,82px);
+    line-height:.9;
+    letter-spacing:-.055em;
 }
 
-.hero-stats{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:35px;
+h1 span{
+    color:#e31837;
 }
 
-.hero-stat{
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.025);
-  border-radius:12px;
-  padding:17px 22px;
-  min-width:145px;
+.description{
+    max-width:700px;
+    color:#858e9c;
+    line-height:1.7;
+    margin-top:25px;
+    font-size:14px;
 }
 
-.hero-stat strong{
-  display:block;
-  font-size:25px;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.hero-stat span{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:5px;
+.stat{
+    padding:20px;
+    border:1px solid #242936;
+    background:#10131a;
+    border-radius:14px;
+}
+
+.stat-number{
+    font-size:28px;
+    font-weight:900;
+}
+
+.stat-label{
+    color:#777f8d;
+    font-size:9px;
+    margin-top:7px;
+    letter-spacing:.12em;
 }
 
 /* CONTROLS */
 
-.container{
-  width:90%;
-  max-width:1450px;
-  margin:auto;
-}
-
 .controls{
-  position:sticky;
-  top:68px;
-  z-index:50;
-  padding:18px 0;
-  background:rgba(8,10,15,.92);
-  backdrop-filter:blur(15px);
+    width:94%;
+    max-width:1450px;
+    margin:0 auto 30px;
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:10px;
 }
 
-.control-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:12px;
+.control{
+    height:48px;
+    background:#0e1117;
+    color:#eee;
+    border:1px solid #242936;
+    border-radius:9px;
+    padding:0 14px;
+    outline:none;
 }
 
-.input,
-.select{
-  width:100%;
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:white;
-  border-radius:10px;
-  padding:13px 14px;
-  outline:none;
+.control:focus{
+    border-color:#555d6b;
 }
 
-.input:focus,
-.select:focus{
-  border-color:var(--red);
+/* DATABASE BAR */
+
+.database-bar{
+    width:94%;
+    max-width:1450px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
 }
 
-.results-bar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:24px 0 18px;
+.database-title{
+    font-size:18px;
+    font-weight:900;
 }
 
-.results-bar strong{
-  font-size:18px;
+.database-status{
+    font-size:11px;
+    color:#777f8d;
 }
 
-.results-bar span{
-  color:var(--muted);
-  font-size:13px;
-}
+/* GRID */
 
-/* PLAYER GRID */
+.grid{
+    width:94%;
+    max-width:1450px;
+    margin:auto;
 
-.player-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  padding-bottom:80px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
 .card{
-  position:relative;
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:linear-gradient(145deg,var(--panel2),var(--panel));
-  border-radius:16px;
-  padding:20px;
-  min-height:300px;
-  transition:.22s ease;
-  cursor:pointer;
+    min-height:380px;
+    background:#10131a;
+    border:1px solid #242936;
+    border-radius:17px;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    transition:.25s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  border-color:#414957;
-  box-shadow:0 15px 45px rgba(0,0,0,.35);
+    transform:translateY(-5px);
+    border-color:#444b58;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
 
-.card-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
+.card-image{
+    height:270px;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(227,24,55,.18),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #171b24,
+            #0c0f14
+        );
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
 }
 
-.team-badge{
-  padding:6px 9px;
-  border-radius:7px;
-  background:rgba(227,24,55,.12);
-  color:#ff5b72;
-  font-size:11px;
-  font-weight:800;
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center bottom;
+}
+
+.card-info{
+    padding:16px;
+}
+
+.player-name{
+    font-size:18px;
+    font-weight:900;
+}
+
+.team{
+    margin-top:7px;
+    color:#aab2be;
+    font-size:12px;
+}
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:13px;
+}
+
+.badge{
+    padding:5px 8px;
+    background:#0b0e13;
+    border:1px solid #242936;
+    border-radius:6px;
+    color:#9099a7;
+    font-size:9px;
 }
 
 .number{
-  color:#4d5563;
-  font-size:22px;
-  font-weight:900;
+    position:absolute;
+    right:13px;
+    top:11px;
+    color:#717a88;
+    font-size:11px;
+    font-weight:bold;
 }
 
-.avatar{
-  width:92px;
-  height:92px;
-  margin:22px 0 15px;
-  border-radius:50%;
-  background:
-    linear-gradient(145deg,#292f3b,#11141b);
-  border:1px solid #363d49;
-  display:grid;
-  place-items:center;
-  font-size:27px;
-  font-weight:900;
+/* PAGINATION */
+
+.pagination{
+    width:94%;
+    max-width:1450px;
+    margin:30px auto 70px;
+    display:flex;
+    justify-content:center;
+    gap:7px;
 }
 
-.card h2{
-  font-size:21px;
-  letter-spacing:-.5px;
+.page{
+    width:40px;
+    height:40px;
+    border:1px solid #242936;
+    background:#10131a;
+    color:white;
+    border-radius:7px;
+    cursor:pointer;
 }
 
-.position{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:6px;
+.page.active{
+    background:#e31837;
+    border-color:#e31837;
 }
 
-.card-meta{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:17px;
-}
-
-.tag{
-  border:1px solid var(--line);
-  border-radius:7px;
-  padding:6px 8px;
-  color:#c5cad2;
-  font-size:11px;
-}
-
-.mini-stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--line);
-  margin-top:18px;
-  padding-top:15px;
-  gap:10px;
-}
-
-.mini-stat strong{
-  display:block;
-  font-size:16px;
-}
-
-.mini-stat span{
-  color:var(--muted);
-  font-size:10px;
-  margin-top:3px;
-}
-
-/* EMPTY */
-
-.empty{
-  display:none;
-  text-align:center;
-  padding:70px 20px;
-  color:var(--muted);
+.page:disabled{
+    opacity:.3;
 }
 
 /* MODAL */
 
 .modal{
-  position:fixed;
-  inset:0;
-  z-index:200;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:rgba(0,0,0,.78);
-  backdrop-filter:blur(8px);
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(10px);
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
 }
 
-.modal.show{
-  display:flex;
+.modal.open{
+    display:flex;
 }
 
 .modal-box{
-  width:min(950px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border:1px solid #303642;
-  border-radius:20px;
-  background:#0d1016;
-  box-shadow:0 30px 100px rgba(0,0,0,.65);
+    width:min(1050px,100%);
+    max-height:90vh;
+    overflow:auto;
+
+    background:#0d1016;
+    border:1px solid #303642;
+    border-radius:20px;
 }
 
-.modal-header{
-  padding:28px;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+.modal-top{
+    display:grid;
+    grid-template-columns:340px 1fr;
+}
+
+.modal-image{
+    height:430px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(227,24,55,.2),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #171b24,
+            #0a0d12
+        );
+}
+
+.modal-image img{
+    width:100%;
+    height:430px;
+    object-fit:contain;
+}
+
+.modal-content{
+    padding:38px;
 }
 
 .close{
-  width:36px;
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--panel);
-  color:white;
-  font-size:20px;
+    float:right;
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#191d25;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
 }
 
-.profile{
-  display:grid;
-  grid-template-columns:240px 1fr;
-  gap:30px;
-  padding:30px;
+.modal-team{
+    color:#e31837;
+    font-weight:900;
+    font-size:11px;
+    letter-spacing:.15em;
+    margin-bottom:12px;
 }
 
-.profile-avatar{
-  height:240px;
-  border-radius:18px;
-  background:linear-gradient(145deg,#292f3b,#11141b);
-  display:grid;
-  place-items:center;
-  font-size:65px;
-  font-weight:900;
-  border:1px solid #343b48;
+.modal-name{
+    font-size:42px;
+    font-weight:950;
+    line-height:1;
+    margin-bottom:28px;
 }
 
-.profile h2{
-  font-size:38px;
-  letter-spacing:-1.5px;
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
 }
 
-.profile-sub{
-  color:var(--muted);
-  margin-top:8px;
+.info{
+    padding:13px;
+    border:1px solid #242936;
+    background:#11151c;
+    border-radius:9px;
 }
 
-.data-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:25px;
+.info-label{
+    color:#6f7886;
+    font-size:9px;
+    text-transform:uppercase;
 }
 
-.data-box{
-  background:var(--panel);
-  border:1px solid var(--line);
-  padding:14px;
-  border-radius:10px;
+.info-value{
+    margin-top:6px;
+    font-size:13px;
+    font-weight:800;
 }
 
-.data-box span{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:7px;
+.modal-section{
+    padding:25px 38px;
+    border-top:1px solid #242936;
 }
 
-.data-box strong{
-  font-size:16px;
+.section-title{
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.14em;
+    margin-bottom:14px;
 }
 
-.section{
-  padding:0 30px 30px;
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:8px;
 }
 
-.section h3{
-  font-size:17px;
-  margin-bottom:15px;
+.mini{
+    background:#11151c;
+    border:1px solid #242936;
+    padding:13px 5px;
+    text-align:center;
+    border-radius:8px;
 }
 
-.stats-table{
-  width:100%;
-  border-collapse:collapse;
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:10px;
+.mini strong{
+    display:block;
+    font-size:17px;
 }
 
-.stats-table th,
-.stats-table td{
-  text-align:left;
-  padding:13px;
-  border-bottom:1px solid var(--line);
-  font-size:13px;
+.mini span{
+    display:block;
+    margin-top:5px;
+    color:#707987;
+    font-size:8px;
 }
 
-.stats-table th{
-  color:var(--muted);
-  font-weight:600;
-  background:var(--panel);
+.pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
-.awards{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+.pill{
+    padding:8px 10px;
+    background:#171b23;
+    border:1px solid #242936;
+    border-radius:7px;
+    font-size:10px;
+    color:#b7bec9;
 }
 
-.award{
-  padding:8px 11px;
-  border-radius:8px;
-  background:rgba(244,197,66,.1);
-  border:1px solid rgba(244,197,66,.2);
-  color:#f4c542;
-  font-size:12px;
+/* LOADING */
+
+.loading{
+    text-align:center;
+    padding:80px 20px;
+    color:#818a98;
 }
 
-.injury{
-  border:1px solid var(--line);
-  background:var(--panel);
-  border-radius:10px;
-  padding:14px;
-  margin-bottom:9px;
-  display:grid;
-  grid-template-columns:100px 1fr auto;
-  gap:15px;
-  align-items:center;
+.spinner{
+    width:34px;
+    height:34px;
+    margin:0 auto 18px;
+
+    border:3px solid #262c36;
+    border-top-color:#e31837;
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
 }
 
-.injury-date{
-  color:var(--muted);
-  font-size:12px;
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-.status{
-  padding:6px 8px;
-  border-radius:7px;
-  font-size:11px;
-  font-weight:700;
-}
+/* ERROR */
 
-.status.out{
-  color:#ff657d;
-  background:rgba(227,24,55,.1);
-}
+.error{
+    width:94%;
+    max-width:900px;
+    margin:50px auto;
+    padding:25px;
 
-.status.returned{
-  color:var(--green);
-  background:rgba(55,214,122,.1);
-}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:30px 5%;
-  color:var(--muted);
-  font-size:12px;
-  display:flex;
-  justify-content:space-between;
+    border:1px solid #54232d;
+    background:#190c10;
+    color:#ff9aaa;
+    border-radius:12px;
+    line-height:1.7;
 }
 
 /* RESPONSIVE */
 
 @media(max-width:1100px){
-  .player-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
 
-  .control-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .controls{
+        grid-template-columns:1fr 1fr;
+    }
 }
 
 @media(max-width:760px){
-  .nav-links{
-    display:none;
-  }
 
-  .hero h1{
-    letter-spacing:-2px;
-  }
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .player-grid{
-    grid-template-columns:1fr;
-  }
+    .modal-top{
+        grid-template-columns:1fr;
+    }
 
-  .control-grid{
-    grid-template-columns:1fr;
-  }
+    .modal-image{
+        height:300px;
+    }
 
-  .profile{
-    grid-template-columns:1fr;
-  }
+    .modal-image img{
+        height:300px;
+    }
 
-  .profile-avatar{
-    height:180px;
-  }
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
 
-  .data-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .stat{
+        padding:13px;
+    }
 
-  .injury{
-    grid-template-columns:1fr;
-  }
+    .stat-number{
+        font-size:21px;
+    }
 
-  footer{
-    flex-direction:column;
-    gap:8px;
-  }
+    .stat-label{
+        font-size:8px;
+    }
+}
+
+@media(max-width:500px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .modal-name{
+        font-size:32px;
+    }
+
+    .stat-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="logo">
-    <div class="logo-mark">NBA</div>
-    PLAYER DATABASE
-  </div>
+<header>
 
-  <div class="nav-links">
-    <a href="#players">Players</a>
-    <a href="#database">Database</a>
-    <a href="#about">About</a>
-  </div>
-</nav>
+<div class="nav">
 
-<header class="hero">
-  <div class="kicker">Basketball Data Project</div>
+<div class="brand">
 
-  <h1>NBA PLAYER<br>DATABASE</h1>
+<img
+class="logo"
+src="https://cdn.nba.com/logos/leagues/logo-nba.svg"
+alt="NBA"
+>
 
-  <p>
-    Cơ sở dữ liệu cầu thủ NBA với thông tin thể hình,
-    đội bóng, thống kê, danh hiệu và lịch sử chấn thương.
-  </p>
+<div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <strong id="totalPlayers">0</strong>
-      <span>Cầu thủ trong database</span>
-    </div>
+<div class="brand-title">
+NBA DATABASE
+</div>
 
-    <div class="hero-stat">
-      <strong>30</strong>
-      <span>NBA Teams</span>
-    </div>
+<div class="brand-sub">
+PLAYER INFORMATION SYSTEM
+</div>
 
-    <div class="hero-stat">
-      <strong>2026</strong>
-      <span>Database season</span>
-    </div>
-  </div>
+</div>
+
+</div>
+
+<div class="live">
+
+<span class="dot"></span>
+
+LIVE DATABASE
+
+</div>
+
+</div>
+
 </header>
 
-<section class="controls" id="database">
-  <div class="container">
 
-    <div class="control-grid">
+<main>
 
-      <input
-        id="search"
-        class="input"
-        type="text"
-        placeholder="Tìm cầu thủ, đội bóng..."
-      >
+<section class="hero">
 
-      <select id="team" class="select">
-        <option value="">Tất cả đội</option>
-      </select>
+<div class="hero-grid">
 
-      <select id="position" class="select">
-        <option value="">Tất cả vị trí</option>
-        <option value="PG">PG</option>
-        <option value="SG">SG</option>
-        <option value="SF">SF</option>
-        <option value="PF">PF</option>
-        <option value="C">C</option>
-      </select>
+<div>
 
-      <select id="sort" class="select">
-        <option value="name">Tên A-Z</option>
-        <option value="age">Tuổi</option>
-        <option value="ppg">PPG</option>
-        <option value="height">Chiều cao</option>
-      </select>
+<div class="eyebrow">
+NATIONAL BASKETBALL ASSOCIATION
+</div>
 
-    </div>
+<h1>
+NBA<br>
+PLAYER <span>DATABASE</span>
+</h1>
 
-  </div>
+<p class="description">
+Search and explore NBA players with roster,
+physical profile, statistics, achievements and
+career information.
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<div
+class="stat-number"
+id="totalPlayers"
+>
+—
+</div>
+
+<div class="stat-label">
+PLAYERS LOADED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+30
+</div>
+
+<div class="stat-label">
+NBA TEAMS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+class="stat-number"
+id="visiblePlayers"
+>
+—
+</div>
+
+<div class="stat-label">
+CURRENT VIEW
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<main class="container" id="players">
 
-  <div class="results-bar">
-    <strong>Player Directory</strong>
-    <span id="resultCount"></span>
-  </div>
+<section class="controls">
 
-  <div id="playerGrid" class="player-grid"></div>
+<input
+id="search"
+class="control"
+placeholder="Search player..."
+>
 
-  <div id="empty" class="empty">
-    Không tìm thấy cầu thủ phù hợp.
-  </div>
+<select
+id="team"
+class="control"
+>
+
+<option value="">
+All Teams
+</option>
+
+</select>
+
+
+<select
+id="position"
+class="control"
+>
+
+<option value="">
+All Positions
+</option>
+
+</select>
+
+
+<select
+id="sort"
+class="control"
+>
+
+<option value="az">
+Name A → Z
+</option>
+
+<option value="za">
+Name Z → A
+</option>
+
+<option value="height">
+Height
+</option>
+
+<option value="weight">
+Weight
+</option>
+
+</select>
+
+</section>
+
+
+<section class="database-bar">
+
+<div class="database-title">
+Player Directory
+</div>
+
+<div
+class="database-status"
+id="status"
+>
+Connecting...
+</div>
+
+</section>
+
+
+<div
+id="loading"
+class="loading"
+>
+
+<div class="spinner"></div>
+
+Loading NBA player database...
+
+</div>
+
+
+<div
+id="error"
+class="error"
+style="display:none"
+></div>
+
+
+<section
+id="grid"
+class="grid"
+style="display:none"
+></section>
+
+
+<div
+id="pagination"
+class="pagination"
+style="display:none"
+></div>
 
 </main>
-
-<footer id="about">
-  <div>NBA PLAYER DATABASE</div>
-  <div>Personal basketball data project · 2026</div>
-</footer>
 
 
 <!-- MODAL -->
 
-<div class="modal" id="modal">
+<div
+id="modal"
+class="modal"
+>
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <div class="modal-header">
-      <div>
-        <div class="kicker">Player Profile</div>
-        <div id="modalTeam"></div>
-      </div>
+<div class="modal-top">
 
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
+<div class="modal-image">
 
-    <div class="profile">
+<img
+id="modalImg"
+src=""
+alt=""
+>
 
-      <div id="modalAvatar" class="profile-avatar"></div>
+</div>
 
-      <div>
 
-        <h2 id="modalName"></h2>
+<div class="modal-content">
 
-        <div id="modalSub" class="profile-sub"></div>
+<button
+class="close"
+onclick="closeModal()"
+>
+×
+</button>
 
-        <div class="data-grid">
 
-          <div class="data-box">
-            <span>Chiều cao</span>
-            <strong id="mHeight"></strong>
-          </div>
+<div
+id="modalTeam"
+class="modal-team"
+></div>
 
-          <div class="data-box">
-            <span>Cân nặng</span>
-            <strong id="mWeight"></strong>
-          </div>
 
-          <div class="data-box">
-            <span>Tuổi</span>
-            <strong id="mAge"></strong>
-          </div>
+<div
+id="modalName"
+class="modal-name"
+></div>
 
-          <div class="data-box">
-            <span>Quốc tịch</span>
-            <strong id="mNation"></strong>
-          </div>
 
-          <div class="data-box">
-            <span>Draft</span>
-            <strong id="mDraft"></strong>
-          </div>
+<div
+id="infoGrid"
+class="info-grid"
+></div>
 
-          <div class="data-box">
-            <span>Năm vào NBA</span>
-            <strong id="mNBA"></strong>
-          </div>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
-    </div>
+<div class="modal-section">
 
-    <section class="section">
+<div class="section-title">
+STATISTICS
+</div>
 
-      <h3>Season Statistics</h3>
+<div
+id="statGrid"
+class="stat-grid"
+></div>
 
-      <table class="stats-table">
-        <thead>
-          <tr>
-            <th>PPG</th>
-            <th>RPG</th>
-            <th>APG</th>
-            <th>SPG</th>
-            <th>BPG</th>
-            <th>FG%</th>
-            <th>3P%</th>
-            <th>FT%</th>
-          </tr>
-        </thead>
+</div>
 
-        <tbody>
-          <tr>
-            <td id="sPPG"></td>
-            <td id="sRPG"></td>
-            <td id="sAPG"></td>
-            <td id="sSPG"></td>
-            <td id="sBPG"></td>
-            <td id="sFG"></td>
-            <td id="s3P"></td>
-            <td id="sFT"></td>
-          </tr>
-        </tbody>
-      </table>
 
-    </section>
+<div class="modal-section">
 
-    <section class="section">
+<div class="section-title">
+AWARDS & ACHIEVEMENTS
+</div>
 
-      <h3>Career Achievements</h3>
+<div
+id="awards"
+class="pills"
+></div>
 
-      <div id="awards" class="awards"></div>
+</div>
 
-    </section>
 
-    <section class="section">
+<div class="modal-section">
 
-      <h3>Injury History</h3>
+<div class="section-title">
+INJURY HISTORY
+</div>
 
-      <div id="injuries"></div>
+<div
+id="injuries"
+class="pills"
+></div>
 
-    </section>
+</div>
 
-  </div>
+</div>
+
 </div>
 
 
 <script>
 
-/* =========================================================
-   PLAYER DATABASE
-   =========================================================
+/* =====================================================
+   CONFIG
+===================================================== */
 
-   Đây là dữ liệu mẫu để chạy giao diện.
-   Khi có nguồn dữ liệu chính thức, có thể thay object
-   trong mảng PLAYERS bằng dữ liệu thật.
-========================================================= */
+const API =
+"https://www.balldontlie.io/api/v1/players";
 
-const PLAYERS = [
+const NBA_IMAGE =
+"https://cdn.nba.com/headshots/nba/latest/1040x760/";
 
-{
- name:"Victor Wembanyama",
- team:"San Antonio Spurs",
- abbr:"SAS",
- number:1,
- position:"C",
- height:224,
- weight:106,
- age:22,
- nation:"France",
- draft:"2023 — Pick 1",
- nba:2023,
 
- stats:{
-   ppg:26.2,
-   rpg:10.1,
-   apg:4.0,
-   spg:1.8,
-   bpg:3.8,
-   fg:47.6,
-   three:35.2,
-   ft:83.0
- },
+const PER_PAGE = 24;
 
- awards:[
-   "Rookie of the Year",
-   "All-Rookie First Team",
-   "Defensive honors"
- ],
 
- injuries:[
-   {
-     date:"2025",
-     type:"Ankle",
-     status:"returned"
-   }
- ]
-},
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-{
- name:"Bam Adebayo",
- team:"Miami Heat",
- abbr:"MIA",
- number:13,
- position:"C",
- height:206,
- weight:115,
- age:29,
- nation:"USA",
- draft:"2017 — Pick 14",
- nba:2017,
+let players = [];
 
- stats:{
-   ppg:20.1,
-   rpg:9.8,
-   apg:4.3,
-   spg:1.0,
-   bpg:0.8,
-   fg:49.1,
-   three:31.0,
-   ft:79.8
- },
+let filtered = [];
 
- awards:[
-   "NBA All-Star",
-   "All-Defensive Team",
-   "Olympic Gold Medal"
- ],
+let currentPage = 1;
 
- injuries:[
-   {
-     date:"2024",
-     type:"Knee",
-     status:"returned"
-   }
- ]
-},
 
-{
- name:"Kevin Durant",
- team:"Houston Rockets",
- abbr:"HOU",
- number:7,
- position:"SF",
- height:208,
- weight:109,
- age:37,
- nation:"USA",
- draft:"2007 — Pick 2",
- nba:2007,
+/* =====================================================
+   DOM
+===================================================== */
 
- stats:{
-   ppg:26.0,
-   rpg:6.4,
-   apg:4.4,
-   spg:0.9,
-   bpg:1.1,
-   fg:52.3,
-   three:41.0,
-   ft:88.5
- },
+const grid =
+document.getElementById("grid");
 
- awards:[
-   "2× NBA Champion",
-   "2× Finals MVP",
-   "NBA MVP",
-   "15× All-Star",
-   "4× Scoring Champion",
-   "Olympic Gold Medal"
- ],
+const loading =
+document.getElementById("loading");
 
- injuries:[
-   {
-     date:"2019",
-     type:"Achilles",
-     status:"returned"
-   },
-   {
-     date:"2024",
-     type:"Calf",
-     status:"returned"
-   }
- ]
-},
+const error =
+document.getElementById("error");
 
-{
- name:"Joel Embiid",
- team:"Philadelphia 76ers",
- abbr:"PHI",
- number:21,
- position:"C",
- height:213,
- weight:127,
- age:32,
- nation:"Cameroon",
- draft:"2014 — Pick 3",
- nba:2014,
+const pagination =
+document.getElementById("pagination");
 
- stats:{
-   ppg:30.6,
-   rpg:11.2,
-   apg:4.2,
-   spg:1.0,
-   bpg:1.7,
-   fg:49.9,
-   three:33.8,
-   ft:88.3
- },
+const search =
+document.getElementById("search");
 
- awards:[
-   "NBA MVP",
-   "NBA Scoring Champion",
-   "7× All-Star",
-   "All-NBA",
-   "All-Defensive Team"
- ],
+const team =
+document.getElementById("team");
 
- injuries:[
-   {
-     date:"2024",
-     type:"Knee",
-     status:"returned"
-   },
-   {
-     date:"2025",
-     type:"Knee",
-     status:"out"
-   }
- ]
-},
+const position =
+document.getElementById("position");
 
-{
- name:"Giannis Antetokounmpo",
- team:"Milwaukee Bucks",
- abbr:"MIL",
- number:34,
- position:"PF",
- height:211,
- weight:110,
- age:31,
- nation:"Greece",
- draft:"2013 — Pick 15",
- nba:2013,
+const sort =
+document.getElementById("sort");
 
- stats:{
-   ppg:30.4,
-   rpg:11.9,
-   apg:6.5,
-   spg:1.2,
-   bpg:1.5,
-   fg:60.1,
-   three:35.0,
-   ft:70.5
- },
 
- awards:[
-   "2× NBA MVP",
-   "NBA Champion",
-   "Finals MVP",
-   "8× All-Star",
-   "Defensive Player of the Year",
-   "Most Improved Player"
- ],
+/* =====================================================
+   LOAD
+===================================================== */
 
- injuries:[
-   {
-     date:"2024",
-     type:"Calf",
-     status:"returned"
-   }
- ]
-},
+async function loadPlayers(){
 
-{
- name:"Stephen Curry",
- team:"Golden State Warriors",
- abbr:"GSW",
- number:30,
- position:"PG",
- height:188,
- weight:84,
- age:38,
- nation:"USA",
- draft:"2009 — Pick 7",
- nba:2009,
+try{
 
- stats:{
-   ppg:24.5,
-   rpg:4.4,
-   apg:6.1,
-   spg:1.1,
-   bpg:0.2,
-   fg:43.8,
-   three:39.7,
-   ft:92.0
- },
+let all = [];
 
- awards:[
-   "4× NBA Champion",
-   "2× NBA MVP",
-   "Finals MVP",
-   "12× All-Star",
-   "2× Scoring Champion",
-   "3× Three-Point Champion"
- ],
+let page = 1;
 
- injuries:[
-   {
-     date:"2024",
-     type:"Ankle",
-     status:"returned"
-   }
- ]
-},
+let more = true;
 
-{
- name:"LeBron James",
- team:"Los Angeles Lakers",
- abbr:"LAL",
- number:23,
- position:"SF",
- height:206,
- weight:113,
- age:41,
- nation:"USA",
- draft:"2003 — Pick 1",
- nba:2003,
 
- stats:{
-   ppg:24.4,
-   rpg:7.8,
-   apg:8.2,
-   spg:0.9,
-   bpg:0.6,
-   fg:50.5,
-   three:37.6,
-   ft:73.5
- },
+/*
+   Load multiple pages.
+   The API may impose a limit.
+*/
 
- awards:[
-   "4× NBA Champion",
-   "4× NBA MVP",
-   "4× Finals MVP",
-   "21× All-Star",
-   "All-Time Scoring Leader",
-   "Olympic Gold Medal"
- ],
+while(more && page <= 30){
 
- injuries:[
-   {
-     date:"2023",
-     type:"Foot",
-     status:"returned"
-   }
- ]
-},
+const response =
+await fetch(
+`${API}?per_page=100&page=${page}`
+);
 
-{
- name:"Tyrese Haliburton",
- team:"Indiana Pacers",
- abbr:"IND",
- number:0,
- position:"PG",
- height:196,
- weight:84,
- age:26,
- nation:"USA",
- draft:"2020 — Pick 12",
- nba:2020,
 
- stats:{
-   ppg:18.7,
-   rpg:3.5,
-   apg:9.2,
-   spg:1.4,
-   bpg:0.5,
-   fg:47.2,
-   three:39.5,
-   ft:85.9
- },
+if(!response.ok){
 
- awards:[
-   "2× NBA All-Star",
-   "All-NBA",
-   "All-Rookie Team"
- ],
+throw new Error(
+"API request failed."
+);
 
- injuries:[
-   {
-     date:"2025",
-     type:"Achilles",
-     status:"out"
-   }
- ]
-},
-
-{
- name:"Jimmy Butler III",
- team:"Golden State Warriors",
- abbr:"GSW",
- number:10,
- position:"SF",
- height:201,
- weight:104,
- age:36,
- nation:"USA",
- draft:"2011 — Pick 30",
- nba:2011,
-
- stats:{
-   ppg:17.3,
-   rpg:5.6,
-   apg:5.9,
-   spg:1.3,
-   bpg:0.4,
-   fg:50.0,
-   three:35.4,
-   ft:85.0
- },
-
- awards:[
-   "6× NBA All-Star",
-   "5× All-Defensive Team",
-   "Most Improved Player"
- ],
-
- injuries:[
-   {
-     date:"2024",
-     type:"Knee",
-     status:"returned"
-   }
- ]
 }
+
+
+const data =
+await response.json();
+
+
+if(
+!data.data ||
+!data.data.length
+){
+
+break;
+
+}
+
+
+all =
+all.concat(data.data);
+
+
+more =
+data.meta &&
+data.meta.next_page
+? true
+: false;
+
+
+page++;
+
+}
+
+
+/*
+   Remove duplicate IDs
+*/
+
+const map =
+new Map();
+
+
+all.forEach(player => {
+
+if(player.id){
+
+map.set(
+player.id,
+player
+);
+
+}
+
+});
+
+
+players =
+Array.from(
+map.values()
+)
+.map(normalize);
+
+
+filtered =
+[...players];
+
+
+document
+.getElementById("totalPlayers")
+.textContent =
+players.length;
+
+
+document
+.getElementById("visiblePlayers")
+.textContent =
+players.length;
+
+
+document
+.getElementById("status")
+.textContent =
+`${players.length} PLAYERS LOADED`;
+
+
+loading.style.display =
+"none";
+
+
+grid.style.display =
+"grid";
+
+
+pagination.style.display =
+"flex";
+
+
+populateFilters();
+
+render();
+
+
+}
+
+catch(err){
+
+loading.style.display =
+"none";
+
+
+error.style.display =
+"block";
+
+
+error.innerHTML = `
+
+<strong>
+DATABASE CONNECTION ERROR
+</strong>
+
+<br><br>
+
+${escapeHTML(err.message)}
+
+<br><br>
+
+The external player API may be
+temporarily unavailable or may have
+changed its access policy.
+
+`;
+
+}
+
+}
+
+
+/* =====================================================
+   NORMALIZE
+===================================================== */
+
+function normalize(p){
+
+return {
+
+id:p.id,
+
+name:
+`${p.first_name || ""}
+ ${p.last_name || ""}`
+.trim(),
+
+team:
+p.team
+? p.team.full_name
+: "Unknown",
+
+teamAbbr:
+p.team
+? p.team.abbreviation
+: "",
+
+position:
+p.position || "",
+
+height:
+p.height_feet
+?
+`${p.height_feet}'${p.height_inches || 0}"`
+:
+"",
+
+weight:
+p.weight_pounds
+?
+`${p.weight_pounds} lb`
+:
+"",
+
+number:
+p.jersey_number || "",
+
+country:
+p.country || "",
+
+college:
+p.college || "",
+
+stats:{},
+
+awards:[],
+
+injuries:[]
+
+};
+
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+function populateFilters(){
+
+const teams =
+[
+...new Set(
+players
+.map(p => p.team)
+.filter(Boolean)
+)
+]
+.sort();
+
+
+teams.forEach(t => {
+
+team.innerHTML += `
+<option value="${escapeHTML(t)}">
+${escapeHTML(t)}
+</option>
+`;
+
+});
+
+
+const positions =
+[
+...new Set(
+players
+.map(p => p.position)
+.filter(Boolean)
+)
+]
+.sort();
+
+
+positions.forEach(p => {
+
+position.innerHTML += `
+<option value="${escapeHTML(p)}">
+${escapeHTML(p)}
+</option>
+`;
+
+});
+
+}
+
+
+/* =====================================================
+   APPLY
+===================================================== */
+
+function apply(){
+
+const q =
+search.value
+.toLowerCase()
+.trim();
+
+
+const selectedTeam =
+team.value;
+
+
+const selectedPosition =
+position.value;
+
+
+filtered =
+players.filter(p => {
+
+const matchSearch =
+!q ||
+p.name
+.toLowerCase()
+.includes(q);
+
+
+const matchTeam =
+!selectedTeam ||
+p.team === selectedTeam;
+
+
+const matchPosition =
+!selectedPosition ||
+p.position === selectedPosition;
+
+
+return (
+matchSearch &&
+matchTeam &&
+matchPosition
+);
+
+});
+
+
+sortPlayers();
+
+currentPage = 1;
+
+render();
+
+}
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+function sortPlayers(){
+
+const mode =
+sort.value;
+
+
+if(mode === "az"){
+
+filtered.sort(
+(a,b) =>
+a.name.localeCompare(b.name)
+);
+
+}
+
+
+if(mode === "za"){
+
+filtered.sort(
+(a,b) =>
+b.name.localeCompare(a.name)
+);
+
+}
+
+
+if(mode === "height"){
+
+filtered.sort(
+(a,b) =>
+parseHeight(b.height)
+-
+parseHeight(a.height)
+);
+
+}
+
+
+if(mode === "weight"){
+
+filtered.sort(
+(a,b) =>
+parseWeight(b.weight)
+-
+parseWeight(a.weight)
+);
+
+}
+
+}
+
+
+/* =====================================================
+   PARSE HEIGHT
+===================================================== */
+
+function parseHeight(v){
+
+if(!v)
+return 0;
+
+
+const m =
+v.match(/(\d+)'(\d+)/);
+
+
+if(!m)
+return 0;
+
+
+return (
+Number(m[1]) * 12 +
+Number(m[2])
+);
+
+}
+
+
+/* =====================================================
+   PARSE WEIGHT
+===================================================== */
+
+function parseWeight(v){
+
+if(!v)
+return 0;
+
+
+const m =
+v.match(/\d+/);
+
+
+return m
+? Number(m[0])
+: 0;
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render(){
+
+grid.innerHTML = "";
+
+
+document
+.getElementById("visiblePlayers")
+.textContent =
+filtered.length;
+
+
+document
+.getElementById("status")
+.textContent =
+`${filtered.length} MATCHING PLAYERS`;
+
+
+const start =
+(currentPage - 1)
+* PER_PAGE;
+
+
+const pagePlayers =
+filtered.slice(
+start,
+start + PER_PAGE
+);
+
+
+pagePlayers.forEach(player => {
+
+grid.appendChild(
+createCard(player)
+);
+
+});
+
+
+renderPagination();
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+function createCard(player){
+
+const card =
+document.createElement("article");
+
+
+card.className =
+"card";
+
+
+card.onclick =
+() => openModal(player);
+
+
+const image =
+NBA_IMAGE +
+player.id +
+".png";
+
+
+card.innerHTML = `
+
+<div class="number">
+${escapeHTML(player.number)}
+</div>
+
+<div class="card-image">
+
+<img
+src="${image}"
+alt="${escapeHTML(player.name)}"
+loading="lazy"
+onerror="this.style.display='none'"
+>
+
+</div>
+
+
+<div class="card-info">
+
+<div class="player-name">
+${escapeHTML(player.name)}
+</div>
+
+<div class="team">
+${escapeHTML(player.team)}
+</div>
+
+
+<div class="badges">
+
+${
+player.position
+?
+`
+<span class="badge">
+${escapeHTML(player.position)}
+</span>
+`
+:""
+}
+
+
+${
+player.height
+?
+`
+<span class="badge">
+${escapeHTML(player.height)}
+</span>
+`
+:""
+}
+
+
+${
+player.weight
+?
+`
+<span class="badge">
+${escapeHTML(player.weight)}
+</span>
+`
+:""
+}
+
+</div>
+
+</div>
+
+`;
+
+
+return card;
+
+}
+
+
+/* =====================================================
+   PAGINATION
+===================================================== */
+
+function renderPagination(){
+
+pagination.innerHTML = "";
+
+
+const pages =
+Math.ceil(
+filtered.length /
+PER_PAGE
+);
+
+
+if(pages <= 1)
+return;
+
+
+const previous =
+document.createElement("button");
+
+
+previous.className =
+"page";
+
+
+previous.textContent =
+"‹";
+
+
+previous.disabled =
+currentPage === 1;
+
+
+previous.onclick = () => {
+
+currentPage--;
+
+render();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+pagination.appendChild(
+previous
+);
+
+
+let start =
+Math.max(
+1,
+currentPage - 2
+);
+
+
+let end =
+Math.min(
+pages,
+currentPage + 2
+);
+
+
+for(
+let i=start;
+i<=end;
+i++
+){
+
+const button =
+document.createElement("button");
+
+
+button.className =
+"page";
+
+
+if(i === currentPage){
+
+button.classList.add(
+"active"
+);
+
+}
+
+
+button.textContent =
+i;
+
+
+button.onclick = () => {
+
+currentPage = i;
+
+render();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+pagination.appendChild(
+button
+);
+
+}
+
+
+const next =
+document.createElement("button");
+
+
+next.className =
+"page";
+
+
+next.textContent =
+"›";
+
+
+next.disabled =
+currentPage === pages;
+
+
+next.onclick = () => {
+
+currentPage++;
+
+render();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+pagination.appendChild(
+next
+);
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(player){
+
+const modal =
+document.getElementById(
+"modal"
+);
+
+
+modal.classList.add(
+"open"
+);
+
+
+document
+.getElementById("modalImg")
+.src =
+NBA_IMAGE +
+player.id +
+".png";
+
+
+document
+.getElementById("modalName")
+.textContent =
+player.name;
+
+
+document
+.getElementById("modalTeam")
+.textContent =
+`${player.team} ${
+player.number
+?
+"#"+player.number
+:""
+}`;
+
+
+const info =
+document.getElementById(
+"infoGrid"
+);
+
+
+info.innerHTML = "";
+
+
+addInfo(
+"Position",
+player.position
+);
+
+
+addInfo(
+"Height",
+player.height
+);
+
+
+addInfo(
+"Weight",
+player.weight
+);
+
+
+addInfo(
+"Country",
+player.country
+);
+
+
+addInfo(
+"College",
+player.college
+);
+
+
+function addInfo(
+label,
+value
+){
+
+info.innerHTML += `
+
+<div class="info">
+
+<div class="info-label">
+${label}
+</div>
+
+<div class="info-value">
+${escapeHTML(
+value || "—"
+)}
+</div>
+
+</div>
+
+`;
+
+}
+
+
+renderStats(player);
+
+renderAwards(player);
+
+renderInjuries(player);
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function renderStats(player){
+
+const container =
+document.getElementById(
+"statGrid"
+);
+
+
+container.innerHTML = "";
+
+
+const stats = [
+
+["PPG","—"],
+["RPG","—"],
+["APG","—"],
+["SPG","—"],
+["BPG","—"],
+["FG%","—"]
 
 ];
 
 
-/* =========================================================
-   DOM
-========================================================= */
+stats.forEach(
+([label,value]) => {
 
-const grid = document.getElementById("playerGrid");
-const search = document.getElementById("search");
-const teamFilter = document.getElementById("team");
-const positionFilter = document.getElementById("position");
-const sortFilter = document.getElementById("sort");
-const empty = document.getElementById("empty");
-const resultCount = document.getElementById("resultCount");
-const totalPlayers = document.getElementById("totalPlayers");
+container.innerHTML += `
 
+<div class="mini">
 
-/* =========================================================
-   TEAM FILTER
-========================================================= */
+<strong>
+${value}
+</strong>
 
-const teams = [...new Set(PLAYERS.map(p => p.team))].sort();
+<span>
+${label}
+</span>
 
-teams.forEach(team => {
+</div>
 
-  const option = document.createElement("option");
-
-  option.value = team;
-  option.textContent = team;
-
-  teamFilter.appendChild(option);
+`;
 
 });
 
+}
 
-/* =========================================================
-   HELPERS
-========================================================= */
 
-function initials(name){
+/* =====================================================
+   AWARDS
+===================================================== */
 
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0,2)
-    .map(x => x[0])
-    .join("")
-    .toUpperCase();
+function renderAwards(player){
+
+const container =
+document.getElementById(
+"awards"
+);
+
+
+container.innerHTML = "";
+
+
+if(!player.awards.length){
+
+container.innerHTML = `
+<span class="pill">
+No award data
+</span>
+`;
+
+return;
 
 }
 
 
-function renderPlayers(){
+player.awards.forEach(
+award => {
 
-  let list = [...PLAYERS];
+container.innerHTML += `
+<span class="pill">
+${escapeHTML(award)}
+</span>
+`;
 
-  const q = search.value.toLowerCase().trim();
-  const team = teamFilter.value;
-  const position = positionFilter.value;
-  const sort = sortFilter.value;
-
-
-  if(q){
-
-    list = list.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.team.toLowerCase().includes(q) ||
-      p.abbr.toLowerCase().includes(q)
-    );
-
-  }
-
-
-  if(team){
-    list = list.filter(p => p.team === team);
-  }
-
-
-  if(position){
-    list = list.filter(p => p.position === position);
-  }
-
-
-  if(sort === "name"){
-    list.sort((a,b) => a.name.localeCompare(b.name));
-  }
-
-  if(sort === "age"){
-    list.sort((a,b) => b.age - a.age);
-  }
-
-  if(sort === "ppg"){
-    list.sort((a,b) => b.stats.ppg - a.stats.ppg);
-  }
-
-  if(sort === "height"){
-    list.sort((a,b) => b.height - a.height);
-  }
-
-
-  grid.innerHTML = "";
-
-  resultCount.textContent =
-    `${list.length} cầu thủ`;
-
-  empty.style.display =
-    list.length ? "none" : "block";
-
-
-  list.forEach(player => {
-
-    const card = document.createElement("article");
-
-    card.className = "card";
-
-    card.onclick = () => openModal(player);
-
-    card.innerHTML = `
-
-      <div class="card-top">
-
-        <div class="team-badge">
-          ${player.abbr}
-        </div>
-
-        <div class="number">
-          #${player.number}
-        </div>
-
-      </div>
-
-      <div class="avatar">
-        ${initials(player.name)}
-      </div>
-
-      <h2>${player.name}</h2>
-
-      <div class="position">
-        ${player.position} · ${player.team}
-      </div>
-
-      <div class="card-meta">
-
-        <div class="tag">
-          ${player.height} cm
-        </div>
-
-        <div class="tag">
-          ${player.weight} kg
-        </div>
-
-        <div class="tag">
-          ${player.age} tuổi
-        </div>
-
-      </div>
-
-      <div class="mini-stats">
-
-        <div class="mini-stat">
-          <strong>${player.stats.ppg}</strong>
-          <span>PPG</span>
-        </div>
-
-        <div class="mini-stat">
-          <strong>${player.stats.rpg}</strong>
-          <span>RPG</span>
-        </div>
-
-        <div class="mini-stat">
-          <strong>${player.stats.apg}</strong>
-          <span>APG</span>
-        </div>
-
-      </div>
-    `;
-
-    grid.appendChild(card);
-
-  });
+});
 
 }
 
 
-totalPlayers.textContent = PLAYERS.length;
+/* =====================================================
+   INJURIES
+===================================================== */
 
-renderPlayers();
+function renderInjuries(player){
 
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-search.addEventListener("input", renderPlayers);
-teamFilter.addEventListener("change", renderPlayers);
-positionFilter.addEventListener("change", renderPlayers);
-sortFilter.addEventListener("change", renderPlayers);
+const container =
+document.getElementById(
+"injuries"
+);
 
 
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal(player){
-
-  document.getElementById("modal").classList.add("show");
-
-  document.getElementById("modalAvatar").textContent =
-    initials(player.name);
-
-  document.getElementById("modalName").textContent =
-    player.name;
-
-  document.getElementById("modalSub").textContent =
-    `${player.position} · #${player.number} · ${player.team}`;
-
-  document.getElementById("modalTeam").textContent =
-    player.team;
+container.innerHTML = "";
 
 
-  document.getElementById("mHeight").textContent =
-    `${player.height} cm`;
+if(!player.injuries.length){
 
-  document.getElementById("mWeight").textContent =
-    `${player.weight} kg`;
+container.innerHTML = `
+<span class="pill">
+No injury data
+</span>
+`;
 
-  document.getElementById("mAge").textContent =
-    player.age;
-
-  document.getElementById("mNation").textContent =
-    player.nation;
-
-  document.getElementById("mDraft").textContent =
-    player.draft;
-
-  document.getElementById("mNBA").textContent =
-    player.nba;
-
-
-  document.getElementById("sPPG").textContent =
-    player.stats.ppg;
-
-  document.getElementById("sRPG").textContent =
-    player.stats.rpg;
-
-  document.getElementById("sAPG").textContent =
-    player.stats.apg;
-
-  document.getElementById("sSPG").textContent =
-    player.stats.spg;
-
-  document.getElementById("sBPG").textContent =
-    player.stats.bpg;
-
-  document.getElementById("sFG").textContent =
-    player.stats.fg + "%";
-
-  document.getElementById("s3P").textContent =
-    player.stats.three + "%";
-
-  document.getElementById("sFT").textContent =
-    player.stats.ft + "%";
-
-
-  const awards =
-    document.getElementById("awards");
-
-  awards.innerHTML = "";
-
-  player.awards.forEach(a => {
-
-    const el = document.createElement("div");
-
-    el.className = "award";
-
-    el.textContent = a;
-
-    awards.appendChild(el);
-
-  });
-
-
-  const injuries =
-    document.getElementById("injuries");
-
-  injuries.innerHTML = "";
-
-  if(!player.injuries.length){
-
-    injuries.innerHTML =
-      `<div class="data-box">Không có dữ liệu.</div>`;
-
-  }else{
-
-    player.injuries.forEach(i => {
-
-      const row = document.createElement("div");
-
-      row.className = "injury";
-
-      row.innerHTML = `
-
-        <div class="injury-date">
-          ${i.date}
-        </div>
-
-        <div>
-          <strong>${i.type}</strong>
-        </div>
-
-        <div class="status ${i.status}">
-          ${
-            i.status === "out"
-              ? "OUT"
-              : "RETURNED"
-          }
-        </div>
-
-      `;
-
-      injuries.appendChild(row);
-
-    });
-
-  }
+return;
 
 }
 
+
+player.injuries.forEach(
+injury => {
+
+container.innerHTML += `
+<span class="pill">
+${escapeHTML(injury)}
+</span>
+`;
+
+});
+
+}
+
+
+/* =====================================================
+   CLOSE
+===================================================== */
 
 function closeModal(){
 
-  document
-    .getElementById("modal")
-    .classList.remove("show");
+document
+.getElementById("modal")
+.classList.remove(
+"open"
+);
 
 }
 
 
-document.getElementById("modal")
-  .addEventListener("click", function(e){
+document
+.getElementById("modal")
+.addEventListener(
+"click",
+e => {
 
-    if(e.target === this){
-      closeModal();
-    }
+if(
+e.target.id === "modal"
+){
 
-  });
+closeModal();
 
-
-document.addEventListener("keydown", function(e){
-
-  if(e.key === "Escape"){
-    closeModal();
-  }
+}
 
 });
+
+
+document.addEventListener(
+"keydown",
+e => {
+
+if(
+e.key === "Escape"
+){
+
+closeModal();
+
+}
+
+});
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+search.addEventListener(
+"input",
+apply
+);
+
+team.addEventListener(
+"change",
+apply
+);
+
+position.addEventListener(
+"change",
+apply
+);
+
+sort.addEventListener(
+"change",
+apply
+);
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadPlayers();
 
 </script>
 
